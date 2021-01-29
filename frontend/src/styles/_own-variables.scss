@@ -1,0 +1,34 @@
+/*
+
+Variáveis que irão ser utilizadas nos arquivos .scss em todo o projeto
+Também serão utilizadas no arquivo de customização das variáveis nativas do Bootstrap.
+
+*/
+
+$color-primary:   #4F8E3F;
+$color-secondary: #F2B638;
+$color-info:      #2FA5BD;
+$color-warning:   #FCCC27;
+$color-danger:    #E8313A;
+$color-success:   #198754;
+
+$gray-9:  #181A18;
+$gray-8:  #252624;
+$gray-7:  #494D49;
+$gray-6:  #626661;
+$gray-5:  #7A8079;
+$gray-4:  #939991;
+$gray-3:  #ABB2AA;
+$gray-2:  #C4CCC2;
+$gray-1:  #F5FFF2;
+
+
+$bp-xs: 0;
+$bp-sm: 600px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-xxl: 1400px;
+
+
+$body-font-size:   clamp(16px, 1.9vw, 12px);

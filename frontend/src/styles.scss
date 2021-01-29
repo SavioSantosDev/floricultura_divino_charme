@@ -1,0 +1,18 @@
+// *** ARQUIVO DE ESTILOS GLOBAIS *** //
+
+// Arquivo próprio para variáveis sass.
+@import "./styles/own-variables";
+
+// Bootstrap 5 (Já com as variáveis customizadas)
+@import "./styles/custom-bootstrap";
+
+// Material Icons
+@import '~material-icons/iconfont/material-icons.css';
+
+
+body {
+  font-size: $body-font-size;
+}
+
+
+
