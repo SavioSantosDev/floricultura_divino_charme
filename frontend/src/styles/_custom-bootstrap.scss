@@ -2,6 +2,7 @@
 
 @import "./own-variables";
 
+$white:    #fff !default;
 $gray-100: $gray-1;
 $gray-200: $gray-2;
 $gray-300: $gray-3;
@@ -11,7 +12,6 @@ $gray-600: $gray-6;
 $gray-700: $gray-7;
 $gray-800: $gray-8;
 $gray-900: $gray-9;
-$white:    #fff !default;
 $black:    #000 !default;
 
 
@@ -22,10 +22,11 @@ $info:          $color-info;
 $warning:       $color-warning;
 $danger:        $color-danger;
 $light:         $gray-1;
-$dark:          $gray-8;
+$dark1:         $gray-8;
+$dark2:         $gray-9;
 
-$in-dark:     $gray-7;
-$in-light:    $gray-2;
+$in-dark:     $color-in-dark;
+$in-light:    $color-in-light;
 
 // scss-docs-start theme-colors-map
 $theme-colors: (
@@ -36,7 +37,8 @@ $theme-colors: (
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
-  "dark":       $dark,
+  "dark-1":     $dark1,
+  "dark-2":     $dark2,
   "in-light":   $in-light,
   "in-dark":    $in-dark
 );
@@ -125,7 +127,7 @@ $grid-gutter-width:           1rem;
 // Define common padding and border radius sizes and more.
 
 $border-width:                2px;
-$border-color:                $in-light;
+$border-color:                $gray-2;
 
 $border-radius:               .5rem;
 $border-radius-sm:            .25rem;
@@ -193,7 +195,7 @@ $input-padding-x:   1rem;
 
 // $input-bg:                              $white !default;
 $input-disabled-bg:                     $gray-2;
-$input-disabled-border-color:           $in-light;
+$input-disabled-border-color:           $gray-2;
 
 // $input-color:                           $body-color !default;
 $input-border-color:                    $gray-2;

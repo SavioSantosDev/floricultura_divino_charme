@@ -14,5 +14,29 @@ body {
   font-size: $body-font-size;
 }
 
+ul { list-style-type: none; }
 
+svg { fill: currentColor; }
+
+.symbol {
+  width: $body-line-height;
+  height: $body-line-height;
+}
+
+.divider-in-dark {
+  width: 100%;
+  height: 2px;
+  background-color: $gray-7;
+}
+.divider-in-light {
+  width: 100%;
+  height: 2px;
+  background-color: $gray-3;
+}
+
+.mini-title {
+  font-size: $h4-font-size;
+  text-transform: uppercase;
+  font-family: $headings-font-family;
+}
 

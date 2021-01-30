@@ -5,6 +5,7 @@ Também serão utilizadas no arquivo de customização das variáveis nativas do
 
 */
 
+// Cores principais
 $color-primary:   #4F8E3F;
 $color-secondary: #F2B638;
 $color-info:      #2FA5BD;
@@ -12,6 +13,7 @@ $color-warning:   #FCCC27;
 $color-danger:    #E8313A;
 $color-success:   #198754;
 
+// Tons de cinza
 $gray-9:  #181A18;
 $gray-8:  #252624;
 $gray-7:  #494D49;
@@ -22,7 +24,12 @@ $gray-3:  #ABB2AA;
 $gray-2:  #C4CCC2;
 $gray-1:  #F5FFF2;
 
+// Cores para contrastes
+$color-in-dark:   $gray-3;
+$color-in-light:  $gray-7;
 
+
+// Breakpoints
 $bp-xs: 0;
 $bp-sm: 600px;
 $bp-md: 768px;
@@ -30,5 +37,6 @@ $bp-lg: 992px;
 $bp-xl: 1200px;
 $bp-xxl: 1400px;
 
-
+// Tamahno da fonte do body
 $body-font-size:   clamp(16px, 1.9vw, 12px);
+$body-line-height:   clamp(16px * 1.5, 1.9vw * 1.5, 12px * 1.5);
