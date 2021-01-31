@@ -10,6 +10,11 @@
 @import '~material-icons/iconfont/material-icons.css';
 
 
+::selection {
+  background-color: $color-primary;
+  color: white;
+}
+
 body {
   font-size: $body-font-size;
 }
@@ -18,10 +23,13 @@ ul { list-style-type: none; }
 
 svg { fill: currentColor; }
 
+// Tamanho dos simbolos/icones svg
 .symbol {
   width: $body-line-height;
   height: $body-line-height;
 }
+.material-icons { font-size: $body-line-height; }
+
 
 .divider-in-dark {
   width: 100%;
@@ -34,9 +42,30 @@ svg { fill: currentColor; }
   background-color: $gray-3;
 }
 
+
 .mini-title {
   font-size: $h4-font-size;
   text-transform: uppercase;
   font-family: $headings-font-family;
 }
 
+.section-title {
+  @extend .mini-title;
+  color: $color-primary;
+  display: flex;
+  align-items: center;
+
+  &::after, &::before{
+    content: '';
+    width: 30px;
+    height: 2px;
+    background-color: $color-primary;
+  }
+
+  &::before { margin-right: .5rem;}
+  &::after { margin-left: .5rem;}
+}
+
+
+// Ajustando algumas classes do bootstrap
+.container-fluid { max-width: 1920px; }

@@ -1,1 +1,30 @@
-<p>gallery-preview works!</p>
+<section id="s-gallery-preview" class="py-6 py-md-7 py-lg-8">
+  <div class="container-fluid">
+
+    <header class="mb-5 mb-md-6 text-center d-flex flex-column align-items-center">
+      <div class="section-title">Galeria</div>
+      <h1>Visite a nossa galeria de fotos</h1>
+    </header>
+
+    <!-- Estilização da galeria será feita com o gallery.scss - Que também será utilizado para a galeria principal -->
+    <div class="gallery">
+
+      <div class="gallery-row" *ngFor="let row of gallery">
+        <div class="gallery-imgs" >
+          <div
+            *ngFor="let image of row; index as i"
+            [style.backgroundImage]="'url('+image+')'"
+            class="img"
+          ></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+      <a routerLink="/galeria" class="btn btn-primary rounded-pill">Galeria completa</a>
+    </div>
+
+  </div>
+</section>
+

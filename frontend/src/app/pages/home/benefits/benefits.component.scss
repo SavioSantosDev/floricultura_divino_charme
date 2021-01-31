@@ -1,0 +1,28 @@
+@import "../../../../styles/own-variables";
+
+#s-benefits {
+
+  // Limitar o tamanho do card e adicionar um efeito de hover nas bordas
+
+  .benefit-card { max-width: 368px; }
+  .benefit-card > div { transition: .2s; }
+  .benefit-card > div:hover { border-color: $color-primary !important; }
+
+  svg {
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+
+    .decoration-right, .decoration-left {
+      animation-name: meditation;
+      animation-iteration-count: infinite;
+      animation-duration: 5s;
+      animation-timing-function: ease-in-out;
+    }
+  }
+}
+
+
+@keyframes meditation {
+  50% { transform: translateY(16px); }
+}

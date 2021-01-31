@@ -1,0 +1,36 @@
+@import "../../../../styles/own-variables";
+
+#products-preview {
+
+  .product {
+
+    cursor: pointer;
+    text-decoration: none;
+    transition: .2s;
+
+    // Limitar largura e adicionar um efeito de hover
+    figure {
+      max-width: 368px;
+      transition: .2s;
+    }
+    &:hover {
+      transform: translateY(-4px);
+      figure { border-color: $color-primary !important; }
+    }
+
+    // Tamanhos diferentes para telas
+    img {
+      width: 100%;
+      object-fit: contain;
+      height: 128px;
+
+      @media (min-width: $bp-sm) { height: 208px; }
+      @media (min-width: $bp-md) { height: 256px; }
+      @media (min-width: $bp-lg) { height: 320px; }
+    }
+
+
+
+  }
+
+}

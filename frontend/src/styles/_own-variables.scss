@@ -38,5 +38,9 @@ $bp-xl: 1200px;
 $bp-xxl: 1400px;
 
 // Tamahno da fonte do body
-$body-font-size:   clamp(16px, 1.9vw, 12px);
-$body-line-height:   clamp(16px * 1.5, 1.9vw * 1.5, 12px * 1.5);
+$body-font-size:   clamp(12px, 1.9vw, 16px);
+$body-line-height:   clamp(12px * 1.5, 1.9vw * 1.5, 16px * 1.5);
+
+@mixin remove-transition() {
+  @media (prefers-reduced-motion: reduce) { transition: none; }
+}
