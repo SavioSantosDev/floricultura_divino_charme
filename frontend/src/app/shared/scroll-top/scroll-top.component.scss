@@ -1,0 +1,11 @@
+@import "../../../styles/own-variables";
+
+.scroll-top {
+  position: fixed;
+  z-index: 1030;  // Fixed do bootstrap. Para não dar conflitos com outros componentes
+  right: 1.5rem;
+  bottom: 1.5rem;
+  transition: .2s;
+
+  &:hover { background-color: $color-primary !important; color: white; }
+}

@@ -1,1 +1,57 @@
-<p>gallery works!</p>
+<!-- Os objetos passados deverão conter as mesma propriedades -->
+<app-breadcrumb [links]="[{label: 'Galeria'}]"></app-breadcrumb>
+
+<app-scroll-top></app-scroll-top>
+
+<section id="s-gallery" class="section">
+
+  <div class="container">
+    <div class="row">
+      <header class="col-12 col-md-10 col-lg-8 mb-4 mb-md-5">
+        <h1>{{ pageGallery.title }}</h1>
+        <p class="text-in-light">{{ pageGallery.content }}</p>
+        <small class="d-block text-primary">{{ pageGallery.info }}</small>
+      </header>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <!-- Estilização da galeria será feita com o gallery.scss - Que também será utilizado para a galeria principal -->
+    <div class="gallery">
+
+      <div class="gallery-row" *ngFor="let row of images">
+        <div class="gallery-imgs" >
+          <div
+            *ngFor="let image of row; index as i"
+            [style.backgroundImage]="'url('+image.path+')'"
+            class="img"
+            data-bs-toggle="modal"
+            data-bs-target="#imageFullscreen"
+            (click)="modalImagePath = image.path; modalImageName = image.name"
+          ></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Modal para exibir a imagem em tela cheia -->
+<div class="modal fade" id="imageFullscreen" tabindex="-1" aria-labelledby="imageFullscreenLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+
+      <header class="modal-header">
+        <h5 class="modal-title" id="imageFullscreenLabel">{{ modalImageName }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </header>
+
+      <div class="modal-body">
+        <img [src]="modalImagePath" class="w-100 mh-100" [style.objectFit]="'contain'">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

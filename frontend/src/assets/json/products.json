@@ -1,0 +1,122 @@
+[
+  {
+    "name": "anturio",
+    "category": "planta",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/product1.png",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "rosa-do-deserto",
+    "category": "planta",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/img1.jpg",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "caqueiro-verde",
+    "category": "vasos",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/product1.png",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "humus-flor",
+    "category": "adubos",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/img2.jpg",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "lirios",
+    "category": "planta",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/product1.png",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "umbu",
+    "category": "planta",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/img6.jpg",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "lirios",
+    "category": "artesanato",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/img7.jpg",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "lembrancinhas",
+    "category": "artesanato",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/product1.png",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "anturio",
+    "category": "planta",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/img1.jpg",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "laranjeira",
+    "category": "planta",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/product1.png",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "caqueiro-grande",
+    "category": "vasos",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/img7.jpg",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  },
+  {
+    "name": "rosas",
+    "category": "planta",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "images": [
+      "assets/images/product1.png",
+      "assets/images/product2.png",
+      "assets/images/product3.png"
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "info": {
+    "emails": [ "contato@floriculturadc.com" ],
+    "phones": [ "(77) 99165-4556", "(88) 95324-5432" ],
+    "social": {
+      "instagram": "divino._charme"
+    }
+  },
+  "locations": [
+    {
+      "city": "Botuporã",
+      "uf": "BA",
+      "address": "Av. Paramirim, 141 - Centro",
+      "lat": 123456789,
+      "lng": 987654321
+    },
+    {
+      "city": "Tanque Novo",
+      "uf": "BA",
+      "address": "Rua. Francisco Borges, 200 - Centro",
+      "lat": 1122334455,
+      "lng": 5544332211
+    }
+  ]
+}

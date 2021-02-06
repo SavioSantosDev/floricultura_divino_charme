@@ -1,1 +1,85 @@
-<p>products-list works!</p>
+<app-breadcrumb [links]="[{label: 'Produtos'}]"></app-breadcrumb>
+<app-scroll-top></app-scroll-top>
+
+<section id="s-productsList" class="section">
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- Dividida em uma barra de filtros (top no mobile e lateral a partir de LG) e a listagem de produtos.  -->
+
+      <!-- Filtros -->
+      <aside class="col-12 bg-light py-3">
+        <div class="border-bottom mb-3">
+          <button
+            type="button"
+            class="btn p-0 w-100 text-uppercase fw-bold d-flex align-items-center"
+            data-bs-toggle="collapse"
+            data-bs-target="#checkboxes"
+            aria-expanded="false"
+            aria-controls="checkboxes"
+          >Filtros <span class="material-icons ms-1" [style.fontSize]="'12px'">keyboard_arrow_down</span></button>
+        </div>
+        <div class="collapse" id="checkboxes">
+          <form>
+            <!-- Tudo -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="tudo" checked>
+              <label class="form-check-label" for="tudo">Tudo</label>
+            </div>
+            <!-- Plantas -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="plantas">
+              <label class="form-check-label" for="plantas">Plantas</label>
+            </div>
+            <!-- Adubos -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="adubos">
+              <label class="form-check-label" for="adubos">Adubos</label>
+            </div>
+            <!-- Vasos -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="vasos">
+              <label class="form-check-label" for="vasos">Vasos</label>
+            </div>
+            <!-- Artesanato -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="artesanato">
+              <label class="form-check-label" for="artesanato">Artesanato</label>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary rounded-pill py-2 px-3 d-flex aling-items-center">
+                Filtrar <span class="material-icons ms-1">search</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </aside>
+
+      <!-- Listagem dos produtos -->
+      <div class="col-12">
+        <header class="bg-light mb-3 px-3 py-3 py-md-4  px-lg-6 py-lg-6 mx-n3"> <!-- Margin negativa para o bg-light cobrir tudo -->
+          <h1 class="text-primary">Plantas</h1>
+        </header>
+        <div class="row g-3">
+
+          <!-- Listagem -->
+          <div class="col-6 col-md-4 col-xl-3" *ngFor="let product of products">
+            <a class="product-card" [routerLink]="product.name">
+              <img class="product-img" [src]="product.images[0]" [alt]="product.name">
+              <h2 class="product-name">{{ product.name | camelCase }}</h2>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Botão de carregar mais -->
+        <div class="d-flex justify-content-center mt-3 mt-md-5">
+          <button class="btn btn-primary rounded-pill">Carregar mais ítens</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+

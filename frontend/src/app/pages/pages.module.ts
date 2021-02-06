@@ -12,12 +12,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   declarations: [
     PagesComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     RouterModule
-  ]
+  ],
 })
 export class PagesModule { }

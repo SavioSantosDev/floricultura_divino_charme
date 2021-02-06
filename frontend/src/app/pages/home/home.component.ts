@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { PageHome } from 'src/models/PageHome';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  pageHome: PageHome;   // Conteúdo da página home
+
+  constructor(route: ActivatedRoute) {
+    this.pageHome = route.snapshot.data.pageHome;
+    console.log(this.pageHome);
+    console.log(this.pageHome.sBanner);
+  }
 
   ngOnInit(): void {
   }

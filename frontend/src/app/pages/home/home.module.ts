@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
+import { SharedModule } from './../../shared/shared.module';
 import { HomeComponent } from './home.component';
 import { TopComponent } from './top/top.component';
 import { BenefitsComponent } from './benefits/benefits.component';
@@ -11,10 +12,18 @@ import { ProductsLinksComponent } from './products-links/products-links.componen
 
 
 @NgModule({
-  declarations: [HomeComponent, TopComponent, BenefitsComponent, GalleryPreviewComponent, ProductsPreviewComponent, ProductsLinksComponent],
+  declarations: [
+    HomeComponent,
+    TopComponent,
+    BenefitsComponent,
+    GalleryPreviewComponent,
+    ProductsPreviewComponent,
+    ProductsLinksComponent
+  ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    SharedModule
   ]
 })
 export class HomeModule { }

@@ -42,30 +42,37 @@ svg { fill: currentColor; }
   background-color: $gray-3;
 }
 
-
-.mini-title {
-  font-size: $h4-font-size;
-  text-transform: uppercase;
-  font-family: $headings-font-family;
+.section {
+  padding-bottom: 3rem;
+  @media (min-width: $bp-md) { padding-bottom: 4rem; }
+  @media (min-width: $bp-lg) { padding-bottom: 6rem; }
 }
 
-.section-title {
-  @extend .mini-title;
-  color: $color-primary;
+.section-header {
+  margin-bottom: 2rem;
+  text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
 
-  &::after, &::before{
-    content: '';
-    width: 30px;
-    height: 2px;
-    background-color: $color-primary;
+  @media (min-width: $bp-md) { margin-bottom: 3rem; }
+
+  .section-title {
+    font-size: $h4-font-size;
+    text-transform: uppercase;
+    font-family: $headings-font-family;
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+
+    &::after, &::before{
+      content: '';
+      width: 30px;
+      height: 2px;
+      background-color: $color-primary;
+    }
+
+    &::before { margin-right: .5rem;}
+    &::after { margin-left: .5rem;}
   }
-
-  &::before { margin-right: .5rem;}
-  &::after { margin-left: .5rem;}
 }
-
-
-// Ajustando algumas classes do bootstrap
-.container-fluid { max-width: 1920px; }

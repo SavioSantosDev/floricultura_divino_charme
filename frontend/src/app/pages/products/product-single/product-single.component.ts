@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ɵLocaleDataIndex } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import * as Bootstrap from 'bootstrap';
+import { Carousel  } from 'bootstrap';
+
+import { Product } from './../../../../models/Product';
 
 @Component({
   selector: 'app-product-single',
@@ -7,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductSingleComponent implements OnInit {
 
-  constructor() { }
+  // O produto requisitado
+  product: Product;
+
+  constructor(
+    private route: ActivatedRoute
+    ) {
+    this.product = this.route.snapshot.data.product;
+  }
 
   ngOnInit(): void {
   }
-
 }

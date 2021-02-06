@@ -1,0 +1,27 @@
+@import "../../../../styles/own-variables";
+
+@mixin imgBase() {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  object-position: top;
+}
+
+#s-productSingle {
+
+  .img-view {
+    @include imgBase();
+    max-height: 256px;
+    width : 100%;
+
+    @media (min-width: $bp-md) { max-height: 320px; }
+    @media (min-width: $bp-lg) { max-height: 400px; }
+  }
+}
+
+#carouselProducts {
+  .img-slide {
+    @include imgBase();
+    margin: 0 auto;
+  }
+}

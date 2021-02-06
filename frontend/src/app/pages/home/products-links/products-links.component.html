@@ -1,34 +1,16 @@
 <section id="products-links" class="py-6 py-md-7 py-lg-8">
   <div class="container">
 
-    <header class="mb-5 mb-md-6 text-center d-flex flex-column align-items-center">
-      <div class="section-title">Produtos</div>
-      <h1>Dê uma olhada em nossos produtos</h1>
+    <header class="section-header">
+      <div class="section-title">{{ sProducts?.subtitle }}</div>
+      <h1>{{ sProducts?.title }}</h1>
     </header>
 
-    <div class="row justify-content-between gy-3">
-      <!-- PLANTAS -->
-      <a class="col-auto text-center  product">
-        <img src="../../../../assets/images/img5.jpg" alt="Plantas" class="product-img rounded-pill">
-        <h2 class="mt-4 mt-md-5">Plantas</h2>
-      </a>
-
-      <!-- VASOS -->
-      <a class="col-auto text-center  product">
-        <img src="../../../../assets/images/img2.jpg" alt="Vasos" class="product-img rounded-pill">
-        <h2 class="mt-4 mt-md-5">Vasos</h2>
-      </a>
-
-      <!-- ADUBOS -->
-      <a class="col-auto text-center  product">
-        <img src="../../../../assets/images/img3.jpg" alt="Adubos" class="product-img rounded-pill">
-        <h2 class="mt-4 mt-md-5">Adubos</h2>
-      </a>
-
-      <!-- ARTESANATO -->
-      <a class="col-auto text-center  product">
-        <img src="../../../../assets/images/img4.jpg" alt="Artesanato" class="product-img rounded-pill">
-        <h2 class="mt-4 mt-md-5">Artesanato</h2>
+    <!-- Produtos oferecidos pela loja em categorias -->
+    <div class="row justify-content-between gy-5">
+      <a *ngFor="let product of sProducts?.products" class="col-auto text-center  product" routerLink="/produtos">
+        <img [src]="product.image" [alt]="product.category" class="product-img rounded-pill">
+        <h2 class="mt-4 mt-md-5">{{ product.category }}</h2>
       </a>
     </div>
 

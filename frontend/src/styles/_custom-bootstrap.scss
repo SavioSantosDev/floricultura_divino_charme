@@ -61,7 +61,7 @@ $min-contrast-ratio:   3;
 // $enable-button-pointers:      true !default;
 $enable-rfs:                  false !default;
 // $enable-validation-icons:     true !default;
-// $enable-negative-margins:     false !default;
+$enable-negative-margins:     true !default;
 // $enable-deprecation-messages: true !default;
 // $enable-important-utilities:  true !default;
 
@@ -118,7 +118,7 @@ $container-max-widths: (
 // Set the number of columns and specify the width of the gutters.
 
 // $grid-columns:                12 !default;
-$grid-gutter-width:           1rem;
+$grid-gutter-width:           2rem;
 // $grid-row-columns:            6 !default;
 
 // $gutters: $spacers !default;

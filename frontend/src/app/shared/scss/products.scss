@@ -1,0 +1,44 @@
+@import "../../../styles/own-variables";
+
+// Estilização dos cards de produtos
+
+// Link - a
+.product-card {
+  border: 2px solid $gray-2;
+  background-color: $gray-1;
+  border-radius: .5rem;
+  height: 100%;
+  width: 100%;
+  max-width: 368px;
+  padding: 1rem;
+  transition: .2s;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto; // Como possui limitação de largura, em telas gigantes centralizar dentro da col
+
+
+  &:hover { border-color: $color-primary; transform: translateY(-8px); }
+
+  .product-img {
+    width: 100%;
+    max-height: 96px;
+    object-fit: contain;
+
+    @media (min-width: $bp-sm) { max-height: 128px; }
+    @media (min-width: $bp-lg) { max-height: 208px; }
+    @media (min-width: $bp-xl) { max-height: 256px; }
+  }
+
+  .product-name {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+    word-break: break-word;
+
+    @media (min-width: $bp-md) { margin-top: 2rem; }
+  }
+}

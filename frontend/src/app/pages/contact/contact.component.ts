@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Contact } from 'src/models/Contact';
+import { PageContact } from 'src/models/PageContact';
 
 @Component({
   selector: 'app-contact',
@@ -7,7 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  contact: Contact;
+  pageContact: PageContact;
+
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    this.contact = this.route.snapshot.data.contact;
+    this.pageContact = this.route.snapshot.data.pageContact;
+  }
 
   ngOnInit(): void {
   }

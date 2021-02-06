@@ -1,1 +1,22 @@
-<p>about works!</p>
+<!-- Os objetos passados deverão conter as mesma propriedades -->
+<app-breadcrumb [links]="[{label: 'Sobre'}]"></app-breadcrumb>
+
+<section id="s-about" class="section">
+  <div class="container">
+    <div class="row justify-content-center  gy-5">
+
+      <div class="col-12 col-md-10 col-lg-8">
+        <header class="mb-3 mb-md-4">
+          <h1>{{ pageAbout.title }}</h1>
+        </header>
+        <p class="text-in-light">{{ pageAbout.content }}</p>
+      </div>
+
+      <div class="col-12 col-md-10">
+        <img [src]="pageAbout.image" [alt]="pageAbout.title" class="w-100">
+      </div>
+
+    </div>
+  </div>
+</section>
+
