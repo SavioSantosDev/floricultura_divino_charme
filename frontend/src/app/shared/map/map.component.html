@@ -1,0 +1,10 @@
+<div class="position-absolute top-0 start-0 w-100 h-100  border rounded">
+  <div
+    id="map"
+    class="position-relative top-0 start-0 w-100 h-100"
+    leaflet
+    [leafletOptions]="options"
+    (leafletMapReady)="onMapReady($event)"
+  >
+  </div>
+</div>

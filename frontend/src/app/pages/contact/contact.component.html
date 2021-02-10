@@ -111,8 +111,17 @@
                 </strong>
               </header>
 
-              <!-- mapa -->
-              <div class="bg-dark-2 bg-gradient rounded border" [style.paddingTop]="'60%'"></div>
+              <!-- mapa. position: relative para pegar o mapa que está absolute -->
+              <div class="map">
+                <app-map [mapLat]="location.lat" [mapLng]="location.lng"></app-map>
+              </div>
+              <!-- Link para rotas no google maps -->
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline-primary w-100 mt-3 d-flex aling-items-center justify-content-center"
+                href='https://www.google.com/maps/dir/?api=1&destination={{ location.lat }},{{ location.lng }}'
+              ><span class="material-icons me-2">map</span> Ver rotas no Google Maps</a>
 
             </div>
 

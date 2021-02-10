@@ -32,7 +32,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/@glidejs/glide/src/assets/sass/glide.core.scss"
+              "./node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": [
               "bootstrap/dist/js/bootstrap.bundle.min.js"

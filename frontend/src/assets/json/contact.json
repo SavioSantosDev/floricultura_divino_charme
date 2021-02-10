@@ -11,15 +11,15 @@
       "city": "Botuporã",
       "uf": "BA",
       "address": "Av. Paramirim, 141 - Centro",
-      "lat": 123456789,
-      "lng": 987654321
+      "lat": -13.37814226233769,
+      "lng": -42.52245825526236
     },
     {
       "city": "Tanque Novo",
       "uf": "BA",
       "address": "Rua. Francisco Borges, 200 - Centro",
-      "lat": 1122334455,
-      "lng": 5544332211
+      "lat": -13.549116866407257,
+      "lng": -42.490874600328645
     }
   ]
 }
