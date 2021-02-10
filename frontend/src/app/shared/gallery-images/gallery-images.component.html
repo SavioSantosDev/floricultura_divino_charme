@@ -1,0 +1,45 @@
+<div class="gallery" *ngIf="galleryImages && galleryImages.length > 0; else noImages">
+  <div class="gallery-image-wrapper" *ngFor="let image of galleryImages">
+    <img
+      [src]="image.path"
+      class="gallery-image"
+      data-bs-toggle="modal"
+      data-bs-target="#imageFullscreen"
+      (click)="modalImagePath = image.path; modalImageName = image.name"
+    >
+    <!-- <div
+      [style.backgroundImage]="'url('+image.path+')'"
+      class="gallery-image"
+      data-bs-toggle="modal"
+      data-bs-target="#imageFullscreen"
+      (click)="modalImagePath = image.path; modalImageName = image.name"
+    ></div> -->
+  </div>
+</div>
+
+<!-- Caso não haja imagens na galeria -->
+<ng-template #noImages>
+  <div class="row">
+    <div class="container">
+      <div class="alert alert-info">Nenhuma imagem para ser exibida</div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Modal para exibir a imagem em tela cheia -->
+<div class="modal fade" id="imageFullscreen" tabindex="-1" aria-labelledby="imageFullscreenLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+
+      <header class="modal-header">
+        <h5 class="modal-title" id="imageFullscreenLabel">{{ modalImageName }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </header>
+
+      <div class="modal-body">
+        <img [src]="modalImagePath" class="w-100 mh-100" [style.objectFit]="'contain'">
+      </div>
+
+    </div>
+  </div>
+</div>

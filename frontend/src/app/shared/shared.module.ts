@@ -4,15 +4,17 @@ import { RouterModule } from '@angular/router';
 
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
-import { ImageFullscreenComponent } from './image-fullscreen/image-fullscreen.component';
 import { CamelCasePipe } from './pipes/camel-case.pipe';
+import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
+import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 
 @NgModule({
   declarations: [
     BreadcrumbComponent,
     ScrollTopComponent,
-    ImageFullscreenComponent,
-    CamelCasePipe
+    CamelCasePipe,
+    InfiniteScrollComponent,
+    GalleryImagesComponent
   ],
   imports: [
     CommonModule,
@@ -21,8 +23,9 @@ import { CamelCasePipe } from './pipes/camel-case.pipe';
   exports: [
     BreadcrumbComponent,
     ScrollTopComponent,
-    ImageFullscreenComponent,
-    CamelCasePipe
+    CamelCasePipe,
+    InfiniteScrollComponent,
+    GalleryImagesComponent
   ]
 })
 export class SharedModule { }

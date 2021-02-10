@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageFullscreenComponent } from './image-fullscreen.component';
+import { GalleryImagesComponent } from './gallery-images.component';
 
-describe('ImageFullscreenComponent', () => {
-  let component: ImageFullscreenComponent;
-  let fixture: ComponentFixture<ImageFullscreenComponent>;
+describe('GalleryImagesComponent', () => {
+  let component: GalleryImagesComponent;
+  let fixture: ComponentFixture<GalleryImagesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImageFullscreenComponent ]
+      declarations: [ GalleryImagesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageFullscreenComponent);
+    fixture = TestBed.createComponent(GalleryImagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

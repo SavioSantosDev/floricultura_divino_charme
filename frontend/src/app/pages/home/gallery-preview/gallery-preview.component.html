@@ -6,23 +6,7 @@
       <h1>{{ sGallery?.title }}</h1>
     </header>
 
-    <!-- Estilização da galeria será feita com o gallery.scss - Que também será utilizado para a galeria principal -->
-    <div class="gallery">
-
-      <div class="gallery-row" *ngFor="let row of images">
-        <div class="gallery-imgs" >
-          <div
-            *ngFor="let image of row; index as i"
-            [style.backgroundImage]="'url('+image.path+')'"
-            class="img"
-            data-bs-toggle="modal"
-            data-bs-target="#imageFullscreen"
-            (click)="modalImagePath = image.path; modalImageName = image.name"
-          ></div>
-        </div>
-      </div>
-
-    </div>
+    <app-gallery-images [galleryImages]="sGallery?.images"></app-gallery-images>
 
     <div class="d-flex justify-content-center mt-5">
       <a routerLink="/galeria" class="btn btn-primary rounded-pill">Galeria completa</a>
@@ -31,20 +15,3 @@
   </div>
 </section>
 
-<!-- Modal para exibir a imagem em tela cheia -->
-<div class="modal fade" id="imageFullscreen" tabindex="-1" aria-labelledby="imageFullscreenLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content">
-
-      <header class="modal-header">
-        <h5 class="modal-title" id="imageFullscreenLabel">{{ modalImageName }}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </header>
-
-      <div class="modal-body">
-        <img [src]="modalImagePath" class="w-100 mh-100" [style.objectFit]="'contain'">
-      </div>
-
-    </div>
-  </div>
-</div>

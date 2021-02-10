@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable, Subject } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { Image } from 'src/models/Image';
@@ -12,42 +13,36 @@ export class GalleryService {
 
   private readonly PATH = `${environment.API}gallery.json`;
 
+  private hasMoreImages = false; //
+
   constructor(private http: HttpClient) { }
 
   /**
-   * Listar todas as imagens da galeria
+   * Listar as imagens da galeria. Cada requisição irá listar uma quantidade limitada de imagens
    */
-  list(): Observable<Image[]> {
-    return this.http.get<Image[]>(this.PATH);
+  list(list = 1): Observable<Image[]>  {
+
+    if (list < 1) {
+      list = 1;
+    }
+
+    const limit = 6;  // Limite de imagens por requisição
+    const skip = (list - 1) * limit;  // Quantas imagens 'pular'
+
+    return this.http.get<Image[]>(this.PATH)
+      .pipe(
+        map((images: Image[]) => images.slice(skip, skip + limit)),
+        tap(images => {
+          this.hasMoreImages = images.length > 0;
+        }),
+        catchError(error => {
+          console.error(error);
+          return EMPTY;
+        })
+      );
   }
 
-
-  /**
-   * Agrupar o array de imagens em subarrays para exibir em 'linhas' de imagens no template
-   * @param images      O array inteiro das imagens
-   * @param rowsLength  Quantas imagens o subarray / linha deverá conter
-   */
-  groupImages(images: Image[], rowsLength: number): Image[][] {
-    const matriz: Image[][] = [];   // A matriz que será retornada
-    let row: Image[] = [];          // Uma 'linha' da matriz contendo rowsLength imagens
-
-    // Percorrer todas as imagens
-    images.forEach((image: Image, index: number) => {
-
-      // Quando o subarray tiver a quantidade especificada, adiciona-lo à matriz
-      if (index !== 0 && index % rowsLength === 0) {
-        matriz.push(row);
-        row = [];
-      }
-
-      row.push(image);  // Adicionar uma imagem ao subarray
-
-      // Quando chegar no final do array, adicionar as imagens restantes na matriz
-      if (index === images.length - 1) {
-        matriz.push(row);
-      }
-    });
-
-    return matriz; // Retornar a matriz
+  getHasMoreImages(): boolean {
+    return this.hasMoreImages;
   }
 }

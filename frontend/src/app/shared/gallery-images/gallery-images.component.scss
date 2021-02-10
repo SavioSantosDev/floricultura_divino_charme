@@ -1,0 +1,36 @@
+@import "../../../styles/own-variables";
+
+// Container contendo todas a imagens
+.gallery {
+
+  width: 100%;
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);  // Inicialmente exibir 2 imagens por linha
+  grid-gap: 1rem;
+
+  // 3 Imagens a partir de tablets
+  @media (min-width: $bp-md) { grid-template-columns: repeat(3, 1fr); }
+
+  // Bloco com uma única imagem
+  .gallery-image-wrapper {
+    position: relative;
+    padding-top: 100%;
+
+    // A imagem.
+    .gallery-image {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      width: 100%;
+      background-position: center;
+      background-size: cover;
+      object-fit: cover;
+      transition: .2s;
+      cursor: pointer;
+
+      &:hover { opacity: .8; }
+    }
+  }
+}
+
