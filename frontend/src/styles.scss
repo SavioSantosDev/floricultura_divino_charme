@@ -17,6 +17,7 @@
 
 body {
   font-size: $body-font-size;
+  overflow-x: hidden;
 }
 
 ul { list-style-type: none; }

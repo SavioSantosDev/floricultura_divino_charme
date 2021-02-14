@@ -1,0 +1,43 @@
+@import "../../../styles/own-variables";
+
+#s-about {
+  position: relative;
+
+  .plant-decoration-1 {
+
+    position: absolute;
+    transform: rotate(15.26deg);
+    display: none;
+
+    @media (min-width: $bp-lg) {
+      display: block;
+      width: 172px;
+      top: 120px; left: -30px;
+    }
+
+    @media (min-width: 1600px) {
+      width: 240px;
+      top: 160px;
+      left: -120px;
+    }
+  }
+
+  .plant-decoration-2 {
+
+    position: absolute;
+    transform: rotate(15.26deg);
+    display: none;
+
+    @media (min-width: $bp-lg) {
+      display: block;
+      width: 212px;
+      bottom: -50px; right: -50px;
+    }
+
+    @media (min-width: 1600px) {
+      width: 240px;
+      top: 300px;
+      bottom: -80px; right: -80px;
+    }
+  }
+}

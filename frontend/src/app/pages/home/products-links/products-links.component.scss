@@ -2,6 +2,25 @@
 
 #products-links {
 
+  position: relative;
+
+  .plant-decoration {
+    position: absolute;
+    transform: matrix(-0.73, 0.69, 0.69, 0.73, 0, 0);
+    display: none;
+
+    @media (min-width: $bp-lg) {
+      display: block;
+      width: 280px;
+      top: -100px; right: -140px;
+    }
+
+    @media (min-width: 1600px) {
+      width: 360px;
+      right: -200px;
+    }
+  }
+
   .product {
     position: relative;
     cursor: pointer;

@@ -1,6 +1,9 @@
 <section id="s-benefits" class="py-6 py-md-7 py-lg-8">
+
+  <img class="plant-decoration" src="assets/svg/plant04.svg" alt="Planta Enfeite">
+
   <div class="container">
-    <div class="row justify-content-center gy-5 gy-lg-0">
+    <div class="row justify-content-center gy-5 gy-xl-0">
 
       <header class="section-header">
         <div class="section-title">{{ sBenefits?.subtitle }}</div>
@@ -8,10 +11,10 @@
       </header>
 
       <!-- Os 3 cards de benefícios -->
-      <div *ngFor="let card of sBenefits?.cards" class="col-12 col-sm-8 col-md-6 col-lg-4   benefit-card">
+      <div *ngFor="let card of sBenefits?.cards" class="col-12 col-sm-8 col-md-6 col-xl-4   benefit-card">
         <div class="p-4 p-md-5 rounded border bg-light h-100">
 
-          <img [src]="card.image" [alt]="card.title">
+          <img [src]="card.image" [alt]="card.title" class="card-img">
 
           <div class="mt-5">
             <h2 class="text-center">{{ card.title }}</h2>
