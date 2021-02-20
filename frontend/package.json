@@ -23,6 +23,7 @@
     "bootstrap": "^5.0.0-beta1",
     "leaflet": "^1.7.1",
     "material-icons": "^0.5.2",
+    "ngx-drag-scroll": "^9.0.0-beta.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
