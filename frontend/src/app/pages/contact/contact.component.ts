@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Contact } from 'src/models/Contact';
+import { StoreInformation } from 'src/models/storeInformation/StoreInformation';
 import { PageContact } from 'src/models/PageContact';
 
 @Component({
@@ -11,13 +11,13 @@ import { PageContact } from 'src/models/PageContact';
 })
 export class ContactComponent implements OnInit {
 
-  contact: Contact;
+  storeInformation: StoreInformation;
   pageContact: PageContact;
 
   constructor(
     private route: ActivatedRoute
   ) {
-    this.contact = this.route.snapshot.data.contact;
+    this.storeInformation = this.route.snapshot.data.storeInformation;
     this.pageContact = this.route.snapshot.data.pageContact;
   }
 

@@ -1,0 +1,46 @@
+<app-store-information-base
+  [title]="title"
+  [infoText]="infoText"
+  [isDisabledAddButton]="true"
+>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- Renderizando os campos do formulário -->
+    <div class="row mb-3 mb-md-4">
+      <div class="col-12" [formGroup]="groupSocial">
+
+        <fieldset class="p-3 p-md-4 border rounded position-relative">
+
+          <!-- Campo instagram -->
+          <div class="mb-md-4">
+            <label class="form-label" for="instagram">Instagram</label>
+            <input class="form-control" id="instagram" formControlName="instagram">
+            <app-control-error-msg [control]="controlInstagram"  [controlLabel]="'Instagram'"></app-control-error-msg>
+          </div>
+
+        </fieldset>
+
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <!-- Submit -->
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary rounded-pill">
+          Salvar alterações
+        </button>
+      </div>
+      <!-- cancel -->
+      <div class="col-auto">
+        <button type="button" class="btn btn-outline-primary rounded-pill" routerLink="..">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+
+</app-store-information-base>
+
+<ng-template #noControls>
+  <div class="alert alert-info">Nenhum email</div>
+</ng-template>

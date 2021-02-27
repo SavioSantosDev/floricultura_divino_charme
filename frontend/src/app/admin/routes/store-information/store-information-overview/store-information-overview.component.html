@@ -1,0 +1,39 @@
+<!-- Emails -->
+<address class="p-3 p-md-4 border border-1 rounded d-flex">
+  <h4 class="w-20">E-mails</h4>
+  <div class="w-40">
+    <p class="text-in-light" *ngFor="let email of storeInformation.emails">{{ email }}</p>
+  </div>
+  <a class="material-icons link-dark text-decoration-none w-40"  [routerLink]="['emails']">arrow_forward_ios</a>
+</address>
+
+<!-- telefones -->
+<address class="p-3 p-md-4 border border-1 rounded d-flex">
+  <h4 class="w-20">Telefones</h4>
+  <div class="w-40">
+    <p class="text-in-light" *ngFor="let phones of storeInformation.phones">{{ phones }}</p>
+  </div>
+  <a class="material-icons link-dark text-decoration-none w-40" [routerLink]="['telefones']">arrow_forward_ios</a>
+</address>
+
+<!-- social -->
+<address class="p-3 p-md-4 border border-1 rounded d-flex">
+  <h4 class="w-20">Redes sociais</h4>
+  <div class="w-40">
+    <p class="text-in-light">
+      <svg class="me-2 symbol"><use xlink:href="#i-instagram"/></svg> {{ storeInformation.social.instagram }}
+    </p>
+  </div>
+  <a class="material-icons link-dark text-decoration-none w-40" [routerLink]="['redes-sociais']">arrow_forward_ios</a>
+</address>
+
+<!-- endereços -->
+<address class="p-3 p-md-4 border border-1 rounded d-flex">
+  <h4 class="w-20">Endereços</h4>
+  <div class="w-40">
+    <p class="text-in-light" *ngFor="let location of storeInformation.locations">
+      {{ location.city }} - {{ location.uf }}<br> {{ location.address }}
+    </p>
+  </div>
+  <a class="material-icons link-dark text-decoration-none w-40" [routerLink]="['enderecos']">arrow_forward_ios</a>
+</address>

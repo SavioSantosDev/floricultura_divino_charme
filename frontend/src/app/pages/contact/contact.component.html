@@ -72,7 +72,7 @@
           <div class="d-flex">
             <span class="material-icons me-3">mail</span>
             <strong class="d-grid gap-1">
-              <div *ngFor="let email of contact.info.emails">{{ email }}</div>
+              <div *ngFor="let email of storeInformation.emails">{{ email }}</div>
             </strong>
           </div>
 
@@ -80,7 +80,7 @@
           <div class="d-flex">
             <svg class="symbol me-3"><use xlink:href="#i-whatsapp"/></svg>
             <strong class="d-grid gap-1">
-              <div *ngFor="let phone of contact.info.phones">{{ phone }}</div>
+              <div *ngFor="let phone of storeInformation.phones">{{ phone }}</div>
             </strong>
           </div>
 
@@ -88,7 +88,7 @@
           <div class="d-flex">
             <svg class="symbol me-3"><use xlink:href="#i-instagram"/></svg>
             <strong class="d-grid gap-1">
-              <div>{{ contact.info.social.instagram }}</div>
+              <div>{{ storeInformation.social.instagram }}</div>
             </strong>
           </div>
 
@@ -104,7 +104,7 @@
           <div class="row justify-content-center gy-5">
 
             <!-- Cada localização -->
-            <div class="col-12 col-lg-6" *ngFor="let location of contact.locations">
+            <div class="col-12 col-lg-6" *ngFor="let location of storeInformation.locations">
 
               <!-- Cidade - Estado - Endereço -->
               <header class="mb-3 d-flex">

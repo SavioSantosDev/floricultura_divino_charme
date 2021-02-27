@@ -9,6 +9,7 @@ import { CamelCasePipe } from './pipes/camel-case.pipe';
 import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
 import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 import { MapComponent } from './map/map.component';
+import { ControlErrorMsgComponent } from './formularios/control-error-msg/control-error-msg.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MapComponent } from './map/map.component';
     CamelCasePipe,
     InfiniteScrollComponent,
     GalleryImagesComponent,
-    MapComponent
+    MapComponent,
+    ControlErrorMsgComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { MapComponent } from './map/map.component';
     CamelCasePipe,
     InfiniteScrollComponent,
     GalleryImagesComponent,
-    MapComponent
+    MapComponent,
+    ControlErrorMsgComponent
   ]
 })
 export class SharedModule { }

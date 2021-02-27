@@ -1,0 +1,47 @@
+<app-store-information-base
+  (addControl)="onAdd()"
+  [title]="title"
+  [infoText]="infoText"
+  [isDisabledAddButton]="controlsOfPhones.length >= maxControls"
+>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- Renderizando os campos do formulário -->
+    <div class="row mb-3 mb-md-4" *ngFor="let phone of controlsOfPhones; index as i">
+      <div class="col-12">
+
+        <fieldset class="p-3 p-md-4 border rounded position-relative">
+
+          <!-- Endereço -->
+          <div class="mb-3 mb-md-4">
+            <label class="form-label" [for]="'phone' + i">Telefone / Celular</label>
+            <input class="form-control" [id]="'phone' + i" [formControl]="phone">
+            <app-control-error-msg [control]="phone" [controlLabel]="'Telefone / Celular'"></app-control-error-msg>
+          </div>
+
+          <!-- Botão de remover -->
+          <button
+            type="button"
+            class="ms-auto d-block btn btn-outline-danger p-2"
+            title="Remover"
+            (click)="onRemove(i)"
+            [disabled]="controlsOfPhones.length <= 1"
+          >
+            <span class="material-icons d-block">delete</span>
+          </button>
+        </fieldset>
+
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="btn btn-primary rounded-pill">
+      Salvar alterações
+    </button>
+  </form>
+
+</app-store-information-base>
+
+<ng-template #noControls>
+  <div class="alert alert-info">Nenhum telefone ou celular</div>
+</ng-template>

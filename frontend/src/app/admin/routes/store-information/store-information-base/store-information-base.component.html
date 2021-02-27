@@ -1,0 +1,22 @@
+<header class="pb-3 mb-4">
+  <!-- Botão de voltar -->
+  <a routerLink=".." class="text-decoration-none fs-2 link-dark  d-block mb-3">
+    <span class="material-icons">arrow_back_ios</span>
+  </a>
+  <div class="d-flex justify-content-between">
+    <h3>{{ title }}</h3>
+
+    <!-- Adicionar novo campo -->
+    <button class="btn btn-primary p-2" title="Adicionar um E-mail" (click)="onAdd()" [disabled]="isDisabledAddButton" [style.transition]="'.2s'">
+      <span class="material-icons d-block">add</span>
+    </button>
+  </div>
+</header>
+
+<ng-content></ng-content>
+
+
+<!-- Texto informativo -->
+<div class="mt-3 mt-md-4">
+  <small class="text-info">{{ infoText }}</small>
+</div>

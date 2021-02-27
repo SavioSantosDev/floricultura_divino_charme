@@ -1,0 +1,100 @@
+<!-- Alterar entre as duas navbar apartir de lg -->
+<div class="bg-primary text-white h-100">
+
+  <!-- navbar aside no desktop -->
+  <nav class="navbar-admin
+    vh-100
+    py-5
+    px-2
+    d-none
+    d-lg-flex
+    flex-column
+    justify-content-between
+    align-items-center
+    position-sticky
+    top-0
+    left-0
+  ">
+    <!-- Cabeçalho com logo -->
+    <header>
+      <svg class="d-block mb-3 mx-auto brand"><use xlink:href="#i-brand"/></svg>
+      <h4 class="text-center">Painel de administração</h4>
+    </header>
+
+    <div class="navbar-admin-nav   d-flex flex-column">
+      <!-- inicio -->
+      <a class="nav-link d-flex align-items-center" [routerLink]="['visao-geral']" routerLinkActive="active">
+        <span class="material-icons me-2">home</span> <span class="py-2">Visão geral</span>
+      </a>
+
+      <!-- gerenciar os produtos -->
+      <a class="nav-link d-flex align-items-center" [routerLink]="['gerenciar-produtos']" routerLinkActive="active">
+        <span class="material-icons me-2">shopping_cart</span> <span class="py-2">Gerenciar produtos</span>
+      </a>
+
+      <!-- informações da loja -->
+      <a class="nav-link d-flex align-items-center" [routerLink]="['informacoes-loja']" routerLinkActive="active">
+        <span class="material-icons me-2">account_box</span> <span class="py-2">Informações da loja</span>
+      </a>
+
+      <!-- Galeira -->
+      <a class="nav-link d-flex align-items-center" [routerLink]="['galeria-fotos']" routerLinkActive="active">
+        <span class="material-icons me-2">filter</span> <span class="py-2">Galeria de fotos</span>
+      </a>
+
+      <!-- Editar -->
+      <a class="nav-link d-flex align-items-center" [routerLink]="['editar-paginas']" routerLinkActive="active">
+        <span class="material-icons me-2">create</span> <span class="py-2">Editar páginas</span>
+      </a>
+    </div>
+
+    <!-- Sair -->
+    <button class="btn btn-primary d-flex align-items-center">
+      <strong class="me-2">Sair</strong> <span class="material-icons">exit_to_app</span>
+    </button>
+  </nav>
+
+
+  <!-- navbar admin for mobile devices -->
+  <nav class="navbar-admin-mobile p-3  d-lg-none">
+
+    <drag-scroll [drag-scroll-y-disabled]="true">
+      <svg class="me-5  brand" drag-scroll-item><use xlink:href="#i-brand"/></svg>
+
+      <!-- inicio -->
+      <a class="navigation-link" [routerLink]="['home']" routerLinkActive="active" drag-scroll-item>
+        <span class="material-icons">home</span> <span class="py-2">Visão geral</span>
+      </a>
+
+      <!-- gerenciar os produtos -->
+      <a class="navigation-link" [routerLink]="['gerenciar-produtos']" routerLinkActive="active" drag-scroll-item>
+        <span class="material-icons">shopping_cart</span> <span class="py-2">Gerenciar produtos</span>
+      </a>
+
+      <!-- informações da loja -->
+      <a class="navigation-link" [routerLink]="['informacoes-loja']" routerLinkActive="active" drag-scroll-item>
+        <span class="material-icons">account_box</span> <span class="py-2">Informações da loja</span>
+      </a>
+
+      <!-- Galeira -->
+      <a class="navigation-link" [routerLink]="['galeria-fotos']" routerLinkActive="active" drag-scroll-item>
+        <span class="material-icons">filter</span> <span class="py-2">Galeria de fotos</span>
+      </a>
+
+      <!-- Editar -->
+      <a class="navigation-link" [routerLink]="['editar-paginas']" routerLinkActive="active" drag-scroll-item>
+        <span class="material-icons">create</span> <span class="py-2">Editar páginas</span>
+      </a>
+
+      <!-- Sair -->
+      <a class="navigation-link" href="#" drag-scroll-item>
+        <span class="material-icons">exit_to_app</span> <span class="py-2">Sair</span>
+      </a>
+    </drag-scroll>
+
+  </nav>
+
+</div>
+
+
+

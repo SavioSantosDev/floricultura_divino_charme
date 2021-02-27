@@ -6,7 +6,7 @@ import { DragScrollModule } from 'ngx-drag-scroll';
 import { AdminRoutingModule } from './admin-routing.module';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin.component';
-import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.component';
+import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 
 
 @NgModule({

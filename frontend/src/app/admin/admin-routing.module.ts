@@ -11,28 +11,28 @@ const routes: Routes = [
     path: '', component: AdminComponent,
     children: [
       {
-        path: 'home',
-        loadChildren: () => import('./routes/home/home.module').then(mod => mod.HomeModule),
+        path: 'visao-geral',
+        loadChildren: () => import('./routes/overview/overview.module').then(mod => mod.OverviewModule),
       },
       {
         path: 'gerenciar-produtos',
-        loadChildren: () => import('./routes/products/products.module').then(mod => mod.ProductsModule),
+        loadChildren: () => import('./routes/products-management/products-management.module').then(mod => mod.ProductsManagementModule),
       },
       {
         path: 'informacoes-loja',
-        loadChildren: () => import('./routes/infos/infos.module').then(mod => mod.InfosModule),
+        loadChildren: () => import('./routes/store-information/store-information.module').then(mod => mod.StoreInformationModule),
       },
       {
         path: 'galeria-fotos',
-        loadChildren: () => import('./routes/gallery/gallery.module').then(mod => mod.GalleryModule),
+        loadChildren: () => import('./routes/photos-gallery/photos-gallery.module').then(mod => mod.PhotosGalleryModule),
       },
       {
         path: 'editar-paginas',
-        loadChildren: () => import('./routes/pages-content/pages-content.module').then(mod => mod.PagesContentModule),
+        loadChildren: () => import('./routes/edit-pages/edit-pages.module').then(mod => mod.EditPagesModule),
       },
       {
         path: '',
-        redirectTo: 'home'
+        redirectTo: 'visao-geral'
       }
     ]
   }

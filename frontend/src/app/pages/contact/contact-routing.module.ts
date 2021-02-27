@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './contact.component';
 
 import { PageContactResolver } from 'src/app/guards/resolvers/page-contact.resolver';
-import { ContactResolver } from 'src/app/guards/resolvers/contact.resolver';
+import { StoreInformationResolver } from 'src/app/guards/resolvers/store-information.resolver';
 
 const routes: Routes = [
   // /contato
   {
     path: '', component: ContactComponent,
     resolve: {
-      contact: ContactResolver,
+      storeInformation: StoreInformationResolver,
       pageContact: PageContactResolver
     }
   }
