@@ -4,7 +4,7 @@
   [infoText]="infoText"
   [isDisabledAddButton]="controlsOfEmails.length >= maxControls"
 >
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="formEmails" (ngSubmit)="onSubmit()">
 
     <!-- Renderizando os campos do formulário -->
     <div class="row justify-content-center mb-3 mb-md-4" *ngFor="let email of controlsOfEmails; index as i">

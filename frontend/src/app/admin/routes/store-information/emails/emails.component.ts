@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators, AbstractControl, FormGroup, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormArray, FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormBase } from 'src/app/shared/formularios/FormBase';
 
 import { Validation } from 'src/app/shared/formularios/Validation';
-import { StoreInformation } from 'src/models/storeInformation/StoreInformation';
+import { StoreInformation } from 'src/models/StoreInformation';
 
 @Component({
   selector: 'app-emails',
@@ -15,8 +15,6 @@ export class EmailsComponent extends FormBase {
 
   title = 'E-mails para contato';
   infoText = 'Adicione no máximo 2 e-mails que serão utilizados para o cliente entrar em contato com a loja.';
-
-  form; // Implementted
 
   emails: string[];
   maxControls = 2;
@@ -36,6 +34,7 @@ export class EmailsComponent extends FormBase {
   }
 
 
+  get formEmails(): FormGroup { return this.form as FormGroup; }
   get controlEmails(): FormArray { return this.form?.get('emails') as FormArray; }
   get controlsOfEmails(): FormControl[] { return this.controlEmails.controls as FormControl[]; }
 

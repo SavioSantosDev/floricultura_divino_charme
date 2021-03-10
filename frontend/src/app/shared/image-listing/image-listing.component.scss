@@ -1,0 +1,57 @@
+@import "../../../styles/own-variables";
+
+$images-per-row: 1, 2, 3, 4, 5, 6; // A quantidade de imagens que poderão ser visualizadsa por linha
+$brekpoints-for-images-per-row: (
+  "": 0px,
+  "md": $bp-md,
+  "xl": $bp-xl,
+);
+
+// Container contendo todas a imagens
+.image-container {
+
+  width: 100%;
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-gap: 1rem;
+
+  // Quantidade de imagens que serão vistas por linha
+  @each $infix, $bp in $brekpoints-for-images-per-row {
+    $infix: if($infix != '', '-' + $infix + '-', '-');  // -md- ou -
+
+    @each $amount in $images-per-row {
+
+      &.images-per-row#{$infix}#{$amount} {
+        @media (min-width: $bp) {
+          grid-template-columns: repeat($amount, 1fr);
+        }
+      }
+    }
+  }
+
+  // images-per-row-(1, 2, ...)
+  // images-per-row-md-(1, 2, ...)
+  // images-per-row-xl-(1, 2, ...)
+
+  // Bloco com uma única imagem
+  .image-wrapper {
+    position: relative;
+    padding-top: 100%; // A altura da imagem
+
+    // A imagem.
+    .image {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      width: 100%;
+      background-position: center;
+      background-size: cover;
+      object-fit: cover;
+      transition: .2s;
+      cursor: pointer;
+
+      &:hover { opacity: .8; }
+    }
+  }
+}
+

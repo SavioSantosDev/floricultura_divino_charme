@@ -1,9 +1,9 @@
 {
-  "sBanner": {
+  "banner": {
     "title": "Lorem ipsum silor domor sit amet sillun.",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod."
   },
-  "sBenefits": {
+  "benefits": {
     "title": "Por que ter plantas em casa?",
     "subtitle": "Benefícios",
     "cards": [
@@ -24,7 +24,7 @@
       }
     ]
   },
-  "sProducts": {
+  "products": {
     "title": "Dê uma olhada em nossos produtos",
     "subtitle": "Produtos",
     "products": [
@@ -46,7 +46,7 @@
       }
     ]
   },
-  "sFeaturedProducts": {
+  "featuredProducts": {
     "title": "Veja os ítens mais vendidos da loja",
     "subtitle": "Destaques",
     "products": [
@@ -82,7 +82,7 @@
       }
     ]
   },
-  "sGallery": {
+  "gallery": {
     "title": "Visite a nossa galeria de fotos",
     "subtitle": "Galeria",
     "images": [

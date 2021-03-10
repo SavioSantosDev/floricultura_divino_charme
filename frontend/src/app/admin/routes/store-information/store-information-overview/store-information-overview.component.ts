@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { StoreInformation } from 'src/models/storeInformation/StoreInformation';
+import { StoreInformation } from 'src/models/StoreInformation';
 
 @Component({
   selector: 'app-store-information-overview',

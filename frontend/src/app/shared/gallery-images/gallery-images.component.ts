@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { GalleryService } from 'src/app/services/gallery.service';
-import { Image } from 'src/models/Image';
+import { Photo } from 'src/models/Photo';
 
 @Component({
   selector: 'app-gallery-images',
@@ -10,12 +9,12 @@ import { Image } from 'src/models/Image';
 })
 export class GalleryImagesComponent implements OnInit {
 
-  @Input() galleryImages?: Image[]; // As imagens da galeria
+  @Input() galleryImages?: Photo[]; // As imagens da galeria
 
-  modalImagePath = '';    // A imagem que será visualizada na modal
-  modalImageName = '';    // O nome da imagem que será visualizada na modal
+  modalImagePath = '';
+  modalImageName = '';
 
-  constructor(private galleryService: GalleryService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

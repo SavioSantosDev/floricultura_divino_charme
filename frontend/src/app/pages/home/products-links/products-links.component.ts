@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { PageHomeSProducts } from 'src/models/PageHomeSProducts';
+import { HomePageProducts } from 'src/models/Pages';
 
 @Component({
   selector: 'app-products-links',
@@ -9,7 +9,7 @@ import { PageHomeSProducts } from 'src/models/PageHomeSProducts';
 })
 export class ProductsLinksComponent implements OnInit {
 
-  @Input() sProducts?: PageHomeSProducts;
+  @Input() sProducts?: HomePageProducts;
 
   constructor() { }
 

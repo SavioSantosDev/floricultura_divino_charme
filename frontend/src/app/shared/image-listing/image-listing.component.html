@@ -1,0 +1,9 @@
+<div class="image-container" [ngClass]="imagesPerRow" *ngIf="images && images!.length > 0">
+  <div class="image-wrapper" *ngFor="let image of images!">
+    <img
+      [src]="image.path"
+      class="image"
+      (click)="onClick(image.id)"
+    >
+  </div>
+</div>

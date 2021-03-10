@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageHomeResolver } from 'src/app/guards/resolvers/page-home.resolver';
+
+import { PageHomeResolver } from 'src/app/guards/resolvers/pages-resolvers/page-home.resolver';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [

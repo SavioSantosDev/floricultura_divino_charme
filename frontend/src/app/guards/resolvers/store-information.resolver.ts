@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { StoreInformation } from 'src/models/storeInformation/StoreInformation';
+import { StoreInformation } from 'src/models/StoreInformation';
 import { StoreInformationService } from 'src/app/services/store-information.service';
 
 

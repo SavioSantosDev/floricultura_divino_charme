@@ -1,0 +1,25 @@
+.img-preview-wrapper {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+
+  .img-preview {
+    position: absolute; top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top center;
+  }
+
+  .null-photo-preview {
+    @extend .img-preview;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: #909090;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-photos-gallery',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhotosGalleryComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }

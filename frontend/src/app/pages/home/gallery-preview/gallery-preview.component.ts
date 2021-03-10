@@ -1,8 +1,6 @@
 import { Component,  OnInit, Input } from '@angular/core';
 
-import { GalleryService } from 'src/app/services/gallery.service';
-import { Image } from 'src/models/Image';
-import { PageHomeSGallery } from 'src/models/PageHomeSGallery';
+import { HomePageGallery } from 'src/models/Pages';
 
 @Component({
   selector: 'app-gallery-preview',
@@ -11,8 +9,7 @@ import { PageHomeSGallery } from 'src/models/PageHomeSGallery';
 })
 export class GalleryPreviewComponent implements OnInit {
 
-  // Conteúdo da sessão galeria
-  @Input() sGallery?: PageHomeSGallery;
+  @Input() sGallery?: HomePageGallery;
 
   constructor() { }
 

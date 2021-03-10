@@ -4,7 +4,7 @@
   [infoText]="infoText"
   [isDisabledAddButton]="controlLocations.length >= maxControls"
 >
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="formLocations" (ngSubmit)="onSubmit()">
 
     <!-- Renderizando os campos do formulário -->
     <div class="row mb-3 mb-md-4" *ngFor="let location of groupOfLocations; index as i">

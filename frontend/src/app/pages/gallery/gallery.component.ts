@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 
-import { GalleryService } from 'src/app/services/gallery.service';
-import { Image } from 'src/models/Image';
-import { PageGallery } from 'src/models/PageGallery';
+import { Photo } from 'src/models/Photo';
+import { GalleryPage } from 'src/models/Pages';
+import { PhotosService } from 'src/app/services/photos.service';
 
 @Component({
   selector: 'app-gallery',
@@ -13,14 +13,14 @@ import { PageGallery } from 'src/models/PageGallery';
 })
 export class GalleryComponent implements OnInit {
 
-  galleryImages: Image[] = [];  // As imagens da galeria
-  pageGallery: PageGallery;     // Conteúdo da página. Via resolver tmb.
+  galleryImages: Photo[] = [];
+  pageGallery: GalleryPage;
 
   list = 1; // Será utilizado para requisitar as imagens em listas
 
   constructor(
     route: ActivatedRoute,
-    private galleryService: GalleryService
+    private photoService: PhotosService
   ) {
     this.pageGallery = route.snapshot.data.pageGallery; // Pegando os dados resolvidos
   }
@@ -35,24 +35,20 @@ export class GalleryComponent implements OnInit {
    * Enquanto houver imagens, requisita-las ao atingir a borda inferior da galeria
    */
   onIntersecting(): void {
-    if (this.galleryService.getHasMoreImages()) {
+    if (this.photoService.getHasMorePhotos()) {
       this.list ++;
       this.requestImages();
     }
   }
 
 
-  /**
-   * Requisitar as imagens através do serviço
-   */
   requestImages(): void {
-    this.galleryService.list(this.list)
-      .pipe(
-        take(1)
-      )
-      .subscribe(images => {
-        this.galleryImages = this.galleryImages.concat(images);
-      });
+    this.photoService.list(this.list).pipe(
+      take(1)
+    )
+    .subscribe(images => {
+      this.galleryImages = this.galleryImages.concat(images);
+    });
   }
 
 

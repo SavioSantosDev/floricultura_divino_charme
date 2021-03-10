@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
-import { StoreInformation } from 'src/models/storeInformation/StoreInformation';
-import { GeoLocation } from 'src/models/storeInformation/GeoLocation';
+import { StoreInformation, GeoLocation } from 'src/models/StoreInformation';
 import { StoreInformationBaseComponent } from '../store-information-base/store-information-base.component';
 import { Validation } from 'src/app/shared/formularios/Validation';
 import { FormBase } from 'src/app/shared/formularios/FormBase';
@@ -17,8 +16,6 @@ export class LocationsComponent extends FormBase {
 
   title = 'Endereços da loja';
   infoText = 'Os endereços da loja. Latitude e longitude correspondem as coordenadas para o usuário visualizar no mapa.';
-
-  form; // Implementted
 
   locations?: GeoLocation[];
   maxControls = 2;
@@ -81,8 +78,8 @@ export class LocationsComponent extends FormBase {
   }
 
 
-  // form.locations and form.locations.controls
-  get controlLocations(): FormArray { return this.form.get('locations') as FormArray; }
+  get formLocations(): FormGroup { return this.form as FormGroup; }
+  get controlLocations(): FormArray { return this.form?.get('locations') as FormArray; }
   get groupOfLocations(): FormGroup[] { return this.controlLocations.controls as FormGroup[]; }
 
   // Getters from each control in form.locations

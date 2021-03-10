@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
 import { FormBase } from 'src/app/shared/formularios/FormBase';
 import { Validation } from 'src/app/shared/formularios/Validation';
-import { StoreInformation } from 'src/models/storeInformation/StoreInformation';
+import { StoreInformation } from 'src/models/StoreInformation';
 
 @Component({
   selector: 'app-phones',
@@ -15,9 +16,7 @@ export class PhonesComponent extends FormBase {
   title = 'Endereços da loja';
   infoText = 'Os endereços da loja. Latitude e longitude correspondem as coordenadas para o usuário visualizar no mapa.';
 
-  form; // Implementted
-
-  phones?: string[];
+  phones: string[];
   maxControls = 2;
 
 
@@ -54,8 +53,8 @@ export class PhonesComponent extends FormBase {
     return this.formBuilder.control(phone, [ Validators.required, Validation.checkPhone() ]);
   }
 
-
-  get controlPhones(): FormArray { return this.form.get('phones') as FormArray; }
+  get formPhones(): FormGroup { return this.form as FormGroup; }
+  get controlPhones(): FormArray { return this.formPhones.get('phones') as FormArray; }
   get controlsOfPhones(): FormControl[] { return this.controlPhones.controls as FormControl[]; }
 
 
@@ -63,7 +62,7 @@ export class PhonesComponent extends FormBase {
    * Submitted the values form.
    */
   submit(): void {
-    console.log(this.form.value);
+    console.log(this.formPhones.value);
   }
 
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './about.component';
-import { PageAboutResolver } from 'src/app/guards/resolvers/page-about.resolver';
+import { PageAboutResolver } from 'src/app/guards/resolvers/pages-resolvers/page-about.resolver';
 
 const routes: Routes = [
   // /sobre

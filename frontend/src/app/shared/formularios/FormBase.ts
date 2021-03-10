@@ -2,7 +2,7 @@ import { FormArray, FormGroup } from '@angular/forms';
 
 export abstract class FormBase {
 
-  abstract form: FormGroup;
+  protected form?: FormGroup;
 
   constructor(
   ) { }
@@ -18,7 +18,9 @@ export abstract class FormBase {
    * If the form values is ok, the submit method will be called, else all fiedls ll be mark as touched
    */
   onSubmit(): void {
-    this.form.valid ? this.submit() : this.markAllFieldsAsTouched(this.form);
+    if (this.form) {
+      this.form.valid ? this.submit() : this.markAllFieldsAsTouched(this.form);
+    }
   }
 
 
@@ -44,6 +46,6 @@ export abstract class FormBase {
    * Clear the form values
    */
   reset(): void {
-    this.form.reset();
+    this.form?.reset();
   }
 }

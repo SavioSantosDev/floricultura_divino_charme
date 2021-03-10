@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './contact.component';
 
-import { PageContactResolver } from 'src/app/guards/resolvers/page-contact.resolver';
 import { StoreInformationResolver } from 'src/app/guards/resolvers/store-information.resolver';
+import { PageContactResolver } from 'src/app/guards/resolvers/pages-resolvers/page-contact.resolver';
 
 const routes: Routes = [
   // /contato

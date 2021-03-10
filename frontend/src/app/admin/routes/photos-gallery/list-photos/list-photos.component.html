@@ -1,0 +1,24 @@
+<!-- Filtros e Add foto -->
+<header class="d-flex align-items-start justify-content-between mb-3">
+  <ul class="filter p-0 m-0">
+    <li class="filter-item"><a href="#" class="filter-link active">Tudo</a></li>
+    <li class="filter-item"><a href="#" class="filter-link">Galeria</a></li>
+    <li class="filter-item"><a href="#" class="filter-link">Outras</a></li>
+  </ul>
+  <a class="btn btn-outline-primary rounded-pill d-flex align-items-center" [routerLink]="['adicionar']">
+    Adicionar uma nova foto <span class="material-icons d-block ms-2">add</span>
+  </a>
+</header>
+
+<!-- Listando todas as imagens que houver -->
+<app-image-listing *ngIf="photos && photos!.length > 0; else noImages"
+  [imagesPerRow]="['images-per-row-3', 'images-per-row-md-4', 'images-per-row-xl-6']"
+  [images]="photos"
+  (clickedImage)="navigateToEditPhoto($event)"
+>
+</app-image-listing>
+
+<!-- Caso não haja imagens -->
+<ng-template #noImages>
+  <div class="alert alert-info">Nenhuma imagem para ser exibida.</div>
+</ng-template>

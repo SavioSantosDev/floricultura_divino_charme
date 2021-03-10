@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { PageHomeSBenefits } from 'src/models/PageHomeSBenefits';
+import { HomePageBenefits } from 'src/models/Pages';
 
 @Component({
   selector: 'app-benefits',
@@ -9,7 +9,7 @@ import { PageHomeSBenefits } from 'src/models/PageHomeSBenefits';
 })
 export class BenefitsComponent implements OnInit {
 
-  @Input() sBenefits?: PageHomeSBenefits;
+  @Input() sBenefits?: HomePageBenefits;
 
   constructor() { }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { PageHomeSFeaturedProducts } from 'src/models/PageHomeSFeaturedProducts';
+import { HomePageFeaturedProducts } from 'src/models/Pages';
 
 @Component({
   selector: 'app-products-preview',
@@ -9,7 +9,7 @@ import { PageHomeSFeaturedProducts } from 'src/models/PageHomeSFeaturedProducts'
 })
 export class ProductsPreviewComponent implements OnInit {
 
-  @Input() sFeaturedProducts?: PageHomeSFeaturedProducts;
+  @Input() sFeaturedProducts?: HomePageFeaturedProducts;
 
   constructor() { }
 

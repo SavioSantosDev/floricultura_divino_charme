@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { StoreInformation } from 'src/models/storeInformation/StoreInformation';
-import { PageContact } from 'src/models/PageContact';
+import { StoreInformation } from 'src/models/StoreInformation';
+import { ContactPage } from 'src/models/Pages';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +12,7 @@ import { PageContact } from 'src/models/PageContact';
 export class ContactComponent implements OnInit {
 
   storeInformation: StoreInformation;
-  pageContact: PageContact;
+  pageContact: ContactPage;
 
   constructor(
     private route: ActivatedRoute
