@@ -1,13 +1,7 @@
-import express from 'express';
+import app from './app';
 
-const app = express();
-
-app.get('/api', (req, res) => {
-    return res.send('Olá mundo');
-});
-
-const port = 3333;
+const port = process.env.PORT || 3333;
 app.listen(port, () => {
   console.log();
-  console.log(`Server is running in port ${port}!`)
-})
+  console.log(`Server is running in port ${port}!`);
+});
