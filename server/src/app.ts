@@ -1,13 +1,22 @@
+import dotenv from 'dotenv';
+dotenv.config({
+  path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
+});
+
 import express from 'express';
+import { resolve } from 'path';
 import 'express-async-error';
 
-import sendEmail from './routes/send-email.routes';
+// import sendEmail from './routes/send-email.routes';
+import createConnection from './database/';
+import productCategoriesRoutes from './routes/product-categories.routes';
 import handlingError from './errors/handling.error';
 
 class App {
   app;
 
   constructor() {
+    createConnection();
     this.app = express();
     this.middlewares();
     this.routes();
@@ -17,13 +26,16 @@ class App {
   private middlewares(): void {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
+    this.app.use(express.static(resolve(__dirname, '..', 'uploads')));
   }
 
-  routes(): void {
-    this.app.use('/api/send-email', sendEmail);
+  private routes(): void {
+    // this.app.use('/api/send-email', sendEmail);
+    this.app.use('/admin/produtos/categorias', productCategoriesRoutes);
   }
 
-  errors(): void {
+  private errors(): void {
+    // this.app.use(handlingError.logErrors);
     this.app.use(handlingError.responseWithAnAppropriateError);
   }
 }

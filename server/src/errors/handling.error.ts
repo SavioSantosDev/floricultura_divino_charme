@@ -1,7 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
+import { MulterError } from 'multer';
+import { ValidationError } from 'yup';
 import { AppError } from './app.error';
 
 class HandlingErrors {
+  logErrors(err: Error, req: Request, res: Response, next: NextFunction) {
+    err instanceof ValidationError ? console.log(err.errors) : console.log(err);
+    return next(err);
+  }
+
   responseWithAnAppropriateError(
     err: Error,
     req: Request,
@@ -10,6 +17,18 @@ class HandlingErrors {
   ) {
     if (err instanceof AppError) {
       return res.status(err.statusCode).json({
+        error: err.message,
+      });
+    }
+
+    if (err instanceof ValidationError) {
+      return res.status(400).json({
+        error: err.errors,
+      });
+    }
+
+    if (err instanceof MulterError) {
+      return res.status(400).json({
         error: err.message,
       });
     }
