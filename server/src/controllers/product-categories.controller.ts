@@ -41,17 +41,16 @@ export default class ProductsCategoriesController {
         sub_categories: productSubCategories,
         image: image.path,
       };
-
       // Validating data
       const schema = yup.object().shape({
-        name: yup.string().required().min(3).max(20),
-        unique_name: yup.string().required().min(3).max(20),
+        name: yup.string().required().min(3).max(30),
+        unique_name: yup.string().required().min(3).max(30),
         sub_categories: yup
           .array()
           .of(
             yup.object().shape({
-              name: yup.string().min(3).max(20),
-              unique_name: yup.string().min(3).max(20),
+              name: yup.string().min(3).max(30),
+              unique_name: yup.string().min(3).max(30),
             }),
           )
           .max(8),
@@ -81,7 +80,6 @@ export default class ProductsCategoriesController {
         where: { unique_name: In(subCategoryUniqueNames) },
         relations: ['product_category'],
       });
-      console.log(productSubCategory);
       if (productSubCategory) {
         throw new AppError('Sub Category already exist!', 400);
       }
@@ -105,6 +103,52 @@ export default class ProductsCategoriesController {
 
       // Response with success and the createdProductCategory
       return res.status(201).json(createdProductCategory);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async index(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    try {
+      const productCategoryRepository = getCustomRepository(
+        ProductCategoryRepository,
+      );
+      const productCaterories = await productCategoryRepository.find({
+        relations: ['sub_categories'],
+      });
+      return res.status(200).json(productCaterories);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async show(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    try {
+      const { productCategoryId } = req.params;
+      if (!productCategoryId) {
+        throw new AppError('Missing productCategoryId', 400);
+      }
+
+      const productCategoryRepository = getCustomRepository(
+        ProductCategoryRepository,
+      );
+      const productCaterory = await productCategoryRepository.findOne({
+        where: { id: productCategoryId },
+        relations: ['sub_categories'],
+      });
+      if (!productCaterory) {
+        throw new AppError('no product categories has been found', 400);
+      }
+
+      return res.status(200).json(productCaterory);
     } catch (err) {
       next(err);
     }

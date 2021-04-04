@@ -13,5 +13,7 @@ routes.post(
   upload.single('image'),
   productCategoriesController.store,
 );
+routes.get('/', productCategoriesController.index);
+routes.get('/:productCategoryId', productCategoriesController.show);
 
 export default routes;
