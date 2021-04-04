@@ -145,10 +145,41 @@ export default class ProductsCategoriesController {
         relations: ['sub_categories'],
       });
       if (!productCaterory) {
-        throw new AppError('no product categories has been found', 400);
+        throw new AppError('No product category has been found', 400);
       }
 
       return res.status(200).json(productCaterory);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  async delete(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    try {
+      const { productCategoryId } = req.params;
+      if (!productCategoryId) {
+        throw new AppError('Missing Product Category ID', 400);
+      }
+
+      const productCategoryRepository = getCustomRepository(
+        ProductCategoryRepository,
+      );
+      const productCaterory = await productCategoryRepository.findOne({
+        where: { id: productCategoryId },
+        relations: ['sub_categories'],
+      });
+      if (!productCaterory) {
+        throw new AppError('No product category has been found', 400);
+      }
+      const deletedProductCategory = await productCategoryRepository.remove(
+        productCaterory,
+      );
+
+      return res.status(200).json(deletedProductCategory);
     } catch (err) {
       next(err);
     }

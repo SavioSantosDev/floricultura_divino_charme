@@ -15,5 +15,6 @@ routes.post(
 );
 routes.get('/', productCategoriesController.index);
 routes.get('/:productCategoryId', productCategoriesController.show);
+routes.delete('/:productCategoryId', productCategoriesController.delete);
 
 export default routes;
