@@ -1,11 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
-import { getCustomRepository, In } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 import * as yup from 'yup';
 
 import { AppError } from '../errors/app.error';
-import ProductCategoryRepository from '../repositories/product-category.repository';
-import ProductSubCategoryRepository from '../repositories/product-sub-category.repository';
 import simplifyString from '../utils/simplify-string';
+import {
+  ProductCategoryKeywordRepository,
+  ProductCategoryRepository,
+} from './../repositories/product-categories.repository';
 
 export default class ProductsCategoriesController {
   async store(
@@ -14,54 +16,51 @@ export default class ProductsCategoriesController {
     next: NextFunction,
   ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
     try {
-      const { name, subCategories } = req.body;
+      const { name, keywords } = req.body;
       const image = req.file as Express.Multer.File;
 
       if (!image) {
         throw new AppError('No files uploaded!', 400);
       }
 
-      // subCategories = undefined, 'value' or ['value1', 'value2'...];
-      // Convert all to array
-      const productSubCategories: {
-        name: string;
-        unique_name: string;
-      }[] = subCategories
-        ? Array.isArray(subCategories)
-          ? (subCategories as string[]).map((name: string) => {
-              return { name, unique_name: simplifyString(name) };
-            })
-          : [{ name: subCategories, unique_name: simplifyString(name) }]
+      // keywords = undefined | any or any[] ==> convert all to array
+      const arrKeywords: string[] = keywords
+        ? Array.isArray(keywords)
+          ? (keywords as string[]).map((keyword) => simplifyString(keyword))
+          : [simplifyString(keywords)]
         : [];
 
       // Make product-category data
       const data = {
         name: name as string,
         unique_name: simplifyString(name),
-        sub_categories: productSubCategories,
+        keywords: arrKeywords,
         image: image.path,
       };
-      // Validating data
-      const schema = yup.object().shape({
-        name: yup.string().required().min(3).max(30),
-        unique_name: yup.string().required().min(3).max(30),
-        sub_categories: yup
-          .array()
-          .of(
-            yup.object().shape({
-              name: yup.string().min(3).max(30),
-              unique_name: yup.string().min(3).max(30),
-            }),
-          )
-          .max(8),
-      });
-      await schema.validate(data, { abortEarly: false });
 
-      const productSubCategoryRepository = getCustomRepository(
-        ProductSubCategoryRepository,
-      );
+      // Validating data
+      const keywordsSchema = yup
+        .array()
+        .of(yup.string().min(3).max(20))
+        .max(20);
+
+      const productCategorySchema = yup.object().shape({
+        name: yup
+          .string()
+          .required('NAME is a required field')
+          .min(3)
+          .max(20, 'NAME must be at most 20 characters'),
+        unique_name: yup.string().required().min(3).max(20),
+        keywords: keywordsSchema,
+      });
+      await productCategorySchema.validate(data, { abortEarly: false });
+
+      // Get repositories
       const productCategoryRepository = getCustomRepository(
         ProductCategoryRepository,
+      );
+      const productCategoryKeywordRepository = getCustomRepository(
+        ProductCategoryKeywordRepository,
       );
 
       // Checking unique_name of the Product Category
@@ -72,22 +71,10 @@ export default class ProductsCategoriesController {
         throw new AppError('Category already exist!', 400);
       }
 
-      // Checking unique_name of the Sub categories
-      const subCategoryUniqueNames = data.sub_categories.map(
-        (value) => value.unique_name,
-      );
-      const productSubCategory = await productSubCategoryRepository.findOne({
-        where: { unique_name: In(subCategoryUniqueNames) },
-        relations: ['product_category'],
-      });
-      if (productSubCategory) {
-        throw new AppError('Sub Category already exist!', 400);
-      }
-
-      // Creating product sub-categories
-      const sub_categories = data.sub_categories.map((productSubCategory) => {
-        return productSubCategoryRepository.createProductSubCategory(
-          productSubCategory,
+      // Creating instances of product category keywords
+      const product_category_keywords = data.keywords.map((keyword) => {
+        return productCategoryKeywordRepository.createProductCategoryKeyword(
+          keyword,
         );
       });
 
@@ -96,8 +83,8 @@ export default class ProductsCategoriesController {
         {
           name: data.name,
           unique_name: data.unique_name,
-          sub_categories,
           image: data.image,
+          keywords: product_category_keywords,
         },
       );
 
@@ -118,7 +105,7 @@ export default class ProductsCategoriesController {
         ProductCategoryRepository,
       );
       const productCaterories = await productCategoryRepository.find({
-        relations: ['sub_categories'],
+        relations: ['keywords'],
       });
       return res.status(200).json(productCaterories);
     } catch (err) {
@@ -142,7 +129,7 @@ export default class ProductsCategoriesController {
       );
       const productCaterory = await productCategoryRepository.findOne({
         where: { id: productCategoryId },
-        relations: ['sub_categories'],
+        relations: ['keywords'],
       });
       if (!productCaterory) {
         throw new AppError('No product category has been found', 400);
@@ -170,7 +157,7 @@ export default class ProductsCategoriesController {
       );
       const productCaterory = await productCategoryRepository.findOne({
         where: { id: productCategoryId },
-        relations: ['sub_categories'],
+        relations: ['keywords'],
       });
       if (!productCaterory) {
         throw new AppError('No product category has been found', 400);

@@ -16,7 +16,7 @@ export default {
       file.mimetype !== 'image/svg+xmls'
     ) {
       const error = new multer.MulterError('LIMIT_UNEXPECTED_FILE');
-      error.message = 'Only SVG, PNG and JPEG / JPG files allowed!';
+      error.message = 'Only SVG, PNG and JPEG/JPG files allowed!';
       return cb(error);
     }
     return cb(null, true);
