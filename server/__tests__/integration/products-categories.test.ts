@@ -10,6 +10,8 @@ const routeStore = '/admin/produtos/categorias/adicionar/';
 const routeIndex = '/admin/produtos/categorias/';
 
 const imagePath = '__tests__/files/test.jpg';
+const updateImagePath = '__tests__/files/testUpdate.jpg';
+const largeImagePath = '__tests__/files/largeImage.jpg';
 const txtPath = '__tests__/files/test.txt';
 
 function reqPostFor(route: string) {
@@ -184,99 +186,156 @@ describe('Delete a product category', () => {
   });
 });
 
-// describe('Update method for product category', () => {
-//   it('should not update with missing Product Category ID', async () => {
-//     const response = await reqPutFor(`${routeIndex}/atualizar`);
-//     expect(response.status).toBe(400);
-//   });
+async function createTestProductCategory() {
+  const createdProductCategory = await reqPostFor(routeStore)
+    .field('name', 'Test')
+    .attach('image', imagePath);
+  return createdProductCategory.body.id;
+}
 
-//   it('should not update with invalid Product Category ID', async () => {
-//     const response = await reqPutFor(`${routeIndex}invalidID/atualizar`);
-//     expect(response.status).toBe(400);
-//   });
+describe('Update Product Category informations', () => {
+  let id: string;
+  /**
+   * Update NAME field
+   */
+  describe('Update name of product category', () => {
+    it('should not update with invalid Product Category ID', async () => {
+      id = await createTestProductCategory();
+      const response = await reqPutFor(`${routeIndex}invalidID/name`);
+      expect(response.status).toBe(400);
+    });
 
-//   it('should not update with invalid Product Category Name field', async () => {
+    it('should update with valid name and return the updated name', async () => {
+      const response = await reqPutFor(`${routeIndex}${id}/name`).send({
+        name: 'Updated test',
+      });
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('name', 'Updated test');
+      expect(response.body).toHaveProperty('unique_name', 'updated-test');
+    });
 
-//   });
+    it('should not update without field NAME', async () => {
+      const response = await reqPutFor(`${routeIndex}${id}/name`).send();
+      expect(response.status).toBe(400);
+    });
 
-//   it('should not update with invalid CATEGORY NAME field', async () => {
-//     const response1 = await reqPostFor(routeUpdate)
-//       .field('name', 'Hey bro - This is a very big phrase')
-//       .field('subCategories', 'sub-1')
-//       .field('subCategories', 'sub-2')
-//       .attach('image', imagePath);
-//     const response2 = await reqPostFor(routeUpdate)
-//       .field('subCategories', 'sub-1')
-//       .field('subCategories', 'sub-2')
-//       .attach('image', imagePath);
-//     expect(response1.status).toBe(400);
-//     expect(response2.status).toBe(400);
-//   });
+    it('should not update with invalid size for field NAME', async () => {
+      const response1 = await reqPutFor(`${routeIndex}${id}/name`).send({
+        name: 'Hey bro - This is a very big name',
+      });
+      expect(response1.status).toBe(400);
 
-//   it('should not create with invalid SUB-CATEGORIES field', async () => {
-//     const response1 = await reqPostFor(routeStore)
-//       .field('name', 'Product categorie')
-//       .field('subCategories', 'Hey bro - This is a very big word')
-//       .attach('image', imagePath);
-//     const response2 = await reqPostFor(routeStore)
-//       .field('name', 'Product categorie')
-//       .field('subCategories', 'su')
-//       .attach('image', imagePath);
-//     expect(response1.status).toBe(400);
-//     expect(response2.status).toBe(400);
-//   });
+      const response2 = await reqPutFor(`${routeIndex}${id}/name`).send({
+        name: 'He',
+      });
+      expect(response2.status).toBe(400);
+    });
 
-//   it('should not create with invalid IMAGE field', async () => {
-//     const response1 = await reqPostFor(routeStore)
-//       .field('name', 'Product categorie')
-//       .field('subCategories', 'sub-1')
-//       .field('subCategories', 'sub-2');
-//     const response2 = await reqPostFor(routeStore)
-//       .field('name', 'Product categorie')
-//       .field('subCategories', 'sub-1')
-//       .field('subCategories', 'sub-2')
-//       .attach('image', txtPath); // passing txt file
-//     expect(response1.status).toBe(400);
-//     expect(response2.status).toBe(400);
-//   });
+    it('should not update with exist product category name', async () => {
+      const response = await reqPutFor(`${routeIndex}${id}/name`).send({
+        name: 'Caqueiros',
+      });
+      expect(response.status).toBe(400);
+    });
+  });
 
-//   it('should create with valid fields and return infos of created product category', async () => {
-//     const response1 = await reqPostFor(routeStore)
-//       .field('name', 'Caqueiros')
-//       .attach('image', imagePath);
-//     expect(response1.status).toBe(201);
-//     expectInfosOfProductCategory(response1.body, 'Caqueiros', 'caqueiros');
+  /**
+   * Update keywords
+   */
+  describe('Update keywords of product category', () => {
+    it('should not update with invalid Product Category ID', async () => {
+      const response = await reqPutFor(`${routeIndex}invalidID/keywords`);
+      expect(response.status).toBe(400);
+    });
 
-//     const response2 = await reqPostFor(routeStore)
-//       .field('name', 'Adubos')
-//       .field('subCategories', 'Húmos flor')
-//       .attach('image', imagePath);
-//     expect(response2.status).toBe(201);
-//     expectInfosOfProductCategory(response2.body, 'Adubos', 'adubos');
+    it('should update with a single keyword', async () => {
+      const response = await reqPutFor(`${routeIndex}${id}/keywords`).send({
+        keywords: 'First keyword',
+      });
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('keywords');
+      expect(response.body.keywords[0]).toHaveProperty(
+        'keyword',
+        'first-keyword',
+      );
+    });
 
-//     const response3 = await reqPostFor(routeStore)
-//       .field('name', 'Plantas')
-//       .field('subCategories', 'Ornamentais')
-//       .field('subCategories', 'Arbóreas')
-//       .field('subCategories', 'Frutíferas')
-//       .attach('image', imagePath);
-//     expect(response3.status).toBe(201);
-//     expectInfosOfProductCategory(response3.body, 'Plantas', 'plantas');
-//   });
+    it('should update without keywords', async () => {
+      const response = await reqPutFor(`${routeIndex}${id}/keywords`).send();
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('keywords', []);
+    });
 
-//   it('should not create with same "name" or "unique_name" field for Categorie', async () => {
-//     const response = await reqPostFor(routeStore)
-//       .field('name', 'Plantas')
-//       .attach('image', imagePath);
-//     expect(response.status).toBe(400);
-//   });
+    it('should update with multile keywords', async () => {
+      const response = await reqPutFor(`${routeIndex}${id}/keywords`).send({
+        keywords: ['Edit First keyword', 'Second keyword', 'Third keyword'],
+      });
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('keywords');
+      expect(response.body.keywords[0]).toHaveProperty(
+        'keyword',
+        'edit-first-keyword',
+      );
+      expect(response.body.keywords[1]).toHaveProperty(
+        'keyword',
+        'second-keyword',
+      );
+      expect(response.body.keywords[2]).toHaveProperty(
+        'keyword',
+        'third-keyword',
+      );
+    });
 
-//   it('should not create with same "name or "unique_name" field for subCategories"', async () => {
-//     const response = await reqPostFor(routeStore)
-//       .field('name', 'Outra coisa')
-//       .field('subCategories', 'Ornamentais') // Already exist
-//       .field('subCategories', 'Ornamentais') // Already exist
-//       .attach('image', imagePath);
-//     expect(response.status).toBe(400);
-//   });
-// });
+    it('should not update with invalid size for KEYWORDS field', async () => {
+      const response1 = await reqPutFor(`${routeIndex}${id}/keywords`).send({
+        keywords: 'Hey bro - This is a very big name',
+      });
+      expect(response1.status).toBe(400);
+
+      const response2 = await reqPutFor(`${routeIndex}${id}/keywords`).send({
+        keywords: 'He',
+      });
+      expect(response2.status).toBe(400);
+    });
+  });
+
+  /**
+   * Update category image
+   */
+  describe('Update image of proudct category', () => {
+    it('should not update with invalid Product Category ID', async () => {
+      const response = await reqPutFor(`${routeIndex}invalidID/image`);
+      expect(response.status).toBe(400);
+    });
+
+    it('should update with valid image and return the path of updated image', async () => {
+      const response = await reqPutFor(`${routeIndex}${id}/image`).attach(
+        'image',
+        updateImagePath,
+      );
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('image');
+    });
+
+    it('should not update without image', async () => {
+      const response = await reqPutFor(`${routeIndex}${id}/image`);
+      expect(response.status).toBe(400);
+    });
+
+    it('should not update with invalid image type', async () => {
+      const response = await reqPutFor(`${routeIndex}${id}/image`).attach(
+        'image',
+        txtPath,
+      );
+      expect(response.status).toBe(400);
+    });
+
+    it('should not update with invalid image larger than 5mb', async () => {
+      const response = await reqPutFor(`${routeIndex}${id}/image`).attach(
+        'image',
+        largeImagePath,
+      );
+      expect(response.status).toBe(400);
+    });
+  });
+});

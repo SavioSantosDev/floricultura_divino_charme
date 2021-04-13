@@ -52,7 +52,8 @@ export default class ProductCategory implements IProductCategory {
     () => ProductCategoryKeyword,
     (keyword) => keyword.product_category,
     {
-      cascade: ['insert', 'update'],
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     },
   )
   @JoinColumn({ name: 'product_category_id' })
