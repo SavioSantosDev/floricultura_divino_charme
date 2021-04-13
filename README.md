@@ -1,8 +1,8 @@
-<img src="./images/cover.png" width="100%"/>
+<img src="./images/Cover.png" width="100%"/>
 
 # Floricultura Divino Charme
 
-**Visualize o layout do projeto no Figma:**
+**Visualize o layout do projeto no Figma:** 
 https://www.figma.com/file/dw4rKyjlzVQqqqSFh3DyHD/Floricultura-Divino-Charme-Copy
 
 ## Tecnologias utilizadas:
