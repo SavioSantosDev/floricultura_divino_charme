@@ -20,18 +20,7 @@ const fileFilter = (
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(
-      null,
-      resolve(
-        __dirname,
-        '..',
-        '..',
-        'uploads',
-        'images',
-        'products',
-        'categories',
-      ),
-    );
+    cb(null, resolve(__dirname, '..', '..', 'uploads', 'images', 'categories'));
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}_${randomNumber()}${extname(file.originalname)}`);

@@ -14,19 +14,12 @@ routes.post(
   productCategoriesController.store,
 );
 routes.get('/', productCategoriesController.index);
-routes.get('/:productCategoryId', productCategoriesController.show);
-routes.delete('/:productCategoryId', productCategoriesController.delete);
-
-// Update product category informations
-routes.put('/:productCategoryId/name', productCategoriesController.updateName);
+routes.get('/:uniqueName', productCategoriesController.show);
+routes.delete('/:uniqueName', productCategoriesController.delete);
 routes.put(
-  '/:productCategoryId/keywords',
-  productCategoriesController.updateKeywords,
-);
-routes.put(
-  '/:productCategoryId/image',
+  '/:uniqueName',
   upload.single('image'),
-  productCategoriesController.updateImage,
+  productCategoriesController.update,
 );
 
 export default routes;
