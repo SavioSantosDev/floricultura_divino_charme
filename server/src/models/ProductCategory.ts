@@ -7,8 +7,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import ProductCategoryKeyword from './ProductCategoryKeyword';
-// import ProductSubCategory from './ProductSubCategory';
+import { ProductCategoryKeyword } from './Keywords';
+import ProductSubCategory from './ProductSubCategory';
 
 export interface IProductCategory {
   id: string;
@@ -18,7 +18,7 @@ export interface IProductCategory {
   created_at: Date;
   updated_at: Date;
   keywords: ProductCategoryKeyword[];
-  // sub_categories: ProductSubCategory[];
+  product_sub_categories: ProductSubCategory[];
 }
 
 @Entity('product_categories')
@@ -49,6 +49,17 @@ export default class ProductCategory implements IProductCategory {
   updated_at!: Date;
 
   @OneToMany(
+    () => ProductSubCategory,
+    (product_sub_categories) => product_sub_categories.product_category,
+    {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+  )
+  @JoinColumn({ name: 'product_category_id' })
+  product_sub_categories!: ProductSubCategory[];
+
+  @OneToMany(
     () => ProductCategoryKeyword,
     (keyword) => keyword.product_category,
     {
@@ -58,14 +69,4 @@ export default class ProductCategory implements IProductCategory {
   )
   @JoinColumn({ name: 'product_category_id' })
   keywords!: ProductCategoryKeyword[];
-
-  // @OneToMany(
-  //   () => ProductSubCategory,
-  //   (sub_category) => sub_category.product_category,
-  //   {
-  //     cascade: ['insert', 'update'],
-  //   },
-  // )
-  // @JoinColumn({ name: 'product_category_id' })
-  // sub_categories!: ProductSubCategory[];
 }

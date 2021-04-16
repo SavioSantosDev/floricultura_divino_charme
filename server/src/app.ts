@@ -10,6 +10,7 @@ import 'express-async-error';
 // import sendEmail from './routes/send-email.routes';
 import createConnection from './database/';
 import productCategoriesRoutes from './routes/product-categories.routes';
+import productSubCategoriesRoutes from './routes/product-sub-categories.routes';
 import handlingError from './errors/handling.error';
 
 class App {
@@ -32,6 +33,10 @@ class App {
   private routes(): void {
     // this.app.use('/api/send-email', sendEmail);
     this.app.use('/admin/produtos/categorias', productCategoriesRoutes);
+    this.app.use(
+      '/admin/produtos/categorias/sub-categorias',
+      productSubCategoriesRoutes,
+    );
   }
 
   private errors(): void {

@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm';
+import { ProductCategoryKeyword } from '../models/Keywords';
 import ProductCategory, { IProductCategory } from '../models/ProductCategory';
-import ProductCategoryKeyword from '../models/ProductCategoryKeyword';
 
 /**
  * Repository for Product Category
@@ -28,8 +28,8 @@ export class ProductCategoryRepository extends Repository<ProductCategory> {
 @EntityRepository(ProductCategoryKeyword)
 export class ProductCategoryKeywordRepository extends Repository<ProductCategoryKeyword> {
   createProductCategoryKeyword(keyword: string): ProductCategoryKeyword {
-    const productSubCategory = new ProductCategoryKeyword();
-    productSubCategory.keyword = keyword;
-    return productSubCategory;
+    const productCategoryKeyword = new ProductCategoryKeyword();
+    productCategoryKeyword.keyword = keyword;
+    return productCategoryKeyword;
   }
 }

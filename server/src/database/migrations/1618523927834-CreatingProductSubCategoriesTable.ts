@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateProductsSubCategoriesTable1617396960741
+export class CreatingProductSubCategoriesTable1618523927834
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
@@ -24,6 +24,20 @@ export class CreateProductsSubCategoriesTable1617396960741
             type: 'varchar',
             length: '20',
             isUnique: true,
+          },
+          {
+            name: 'image',
+            type: 'varchar',
+          },
+          {
+            name: 'created_at',
+            type: 'timestamp',
+            default: 'now()',
+          },
+          {
+            name: 'updated_at',
+            type: 'timestamp',
+            default: 'now()',
           },
           {
             name: 'product_category_id',
