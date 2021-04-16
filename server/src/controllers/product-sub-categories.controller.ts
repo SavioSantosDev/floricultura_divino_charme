@@ -73,7 +73,7 @@ export default class ProductsCategoriesController {
         unique_name: data.unique_name,
       });
       if (productSubCategory) {
-        throw new AppError('Category already exist!', 400);
+        throw new AppError('Product Sub Category already exist!', 400);
       }
 
       // Creating instances of product category keywords
@@ -103,129 +103,210 @@ export default class ProductsCategoriesController {
     }
   }
 
-  // async delete(
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction,
-  // ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
-  //   try {
-  //     const { uniqueName } = req.params;
-  //     const productCategoryRepository = getCustomRepository(
-  //       ProductCategoryRepository,
-  //     );
-  //     const productCategory = await productCategoryRepository.findOne({
-  //       where: { unique_name: uniqueName },
-  //       relations: ['keywords'],
-  //     });
-  //     if (!productCategory) {
-  //       throw new AppError('No product category has been found', 400);
-  //     }
-  //     const deletedProductCategory = await productCategoryRepository.remove(
-  //       productCategory,
-  //     );
+  async index(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    try {
+      const productCategoryRepository = getCustomRepository(
+        ProductCategoryRepository,
+      );
+      const productSubCategoryRepository = getCustomRepository(
+        ProductSubCategoryRepository,
+      );
 
-  //     return res.status(200).json(deletedProductCategory);
-  //   } catch (err) {
-  //     next(err);
-  //   }
-  // }
+      // Checking product category
+      const { productCategoryUniqueName } = req.params;
+      const productCategory = await productCategoryRepository.findOne({
+        where: { unique_name: productCategoryUniqueName },
+      });
+      if (!productCategory) {
+        throw new AppError('No product category has been found', 400);
+      }
+      const productCaterories = await productSubCategoryRepository.find({
+        where: { product_category: productCategory },
+        relations: ['keywords'],
+      });
+      return res.status(200).json(productCaterories);
+    } catch (err) {
+      next(err);
+    }
+  }
 
-  // async update(
-  //   req: Request,
-  //   res: Response,
-  //   next: NextFunction,
-  // ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
-  //   try {
-  //     // Get repositories
-  //     const productCategoryRepository = getCustomRepository(
-  //       ProductCategoryRepository,
-  //     );
-  //     const productCategoryKeywordRepository = getCustomRepository(
-  //       ProductCategoryKeywordRepository,
-  //     );
+  async show(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    try {
+      const productCategoryRepository = getCustomRepository(
+        ProductCategoryRepository,
+      );
+      const productSubCategoryRepository = getCustomRepository(
+        ProductSubCategoryRepository,
+      );
 
-  //     // Checking if exists the product category
-  //     const { uniqueName } = req.params;
-  //     let productCategory: ProductCategory | undefined;
-  //     productCategory = await productCategoryRepository.findOne({
-  //       where: { unique_name: uniqueName },
-  //     });
-  //     if (!productCategory) {
-  //       throw new AppError('No product category has been found', 400);
-  //     }
+      // Checking product category
+      const { productCategoryUniqueName, unique_name } = req.params;
+      const product_category = await productCategoryRepository.findOne({
+        where: { unique_name: productCategoryUniqueName },
+      });
+      if (!product_category) {
+        throw new AppError('No product category has been found', 400);
+      }
 
-  //     const { name, keywords } = req.body;
-  //     const image = req.file as Express.Multer.File;
+      const productSubCategory = await productSubCategoryRepository.findOne({
+        where: { unique_name, product_category },
+        relations: ['keywords'],
+      });
+      if (!productSubCategory) {
+        throw new AppError('No product sub category has been found', 400);
+      }
 
-  //     if (!image) {
-  //       throw new AppError('No files uploaded!', 400);
-  //     }
+      return res.status(200).json(productSubCategory);
+    } catch (err) {
+      next(err);
+    }
+  }
 
-  //     // keywords = undefined | any or any[] ==> convert all to array
-  //     const arrKeywords: string[] = keywords
-  //       ? Array.isArray(keywords)
-  //         ? (keywords as string[]).map((keyword) => simplifyString(keyword))
-  //         : [simplifyString(keywords)]
-  //       : [];
+  async delete(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    try {
+      const productCategoryRepository = getCustomRepository(
+        ProductCategoryRepository,
+      );
+      const productSubCategoryRepository = getCustomRepository(
+        ProductSubCategoryRepository,
+      );
 
-  //     // Make product-category data
-  //     const data = {
-  //       name: name as string,
-  //       unique_name: simplifyString(name),
-  //       keywords: arrKeywords,
-  //       image: image.path,
-  //     };
+      // Checking product category
+      const { productCategoryUniqueName, unique_name } = req.params;
+      const product_category = await productCategoryRepository.findOne({
+        where: { unique_name: productCategoryUniqueName },
+      });
+      if (!product_category) {
+        throw new AppError('No product category has been found', 400);
+      }
 
-  //     // Validating data
-  //     const keywordsSchema = yup
-  //       .array()
-  //       .of(yup.string().min(3).max(20))
-  //       .max(20);
+      const productSubCategory = await productSubCategoryRepository.findOne({
+        where: { unique_name, product_category },
+        relations: ['keywords'],
+      });
+      if (!productSubCategory) {
+        throw new AppError('No product sub category has been found', 400);
+      }
+      const deletedProductCategory = await productSubCategoryRepository.remove(
+        productSubCategory,
+      );
 
-  //     const productCategorySchema = yup.object().shape({
-  //       name: yup
-  //         .string()
-  //         .required('NAME is a required field')
-  //         .min(3)
-  //         .max(20, 'NAME must be at most 20 characters'),
-  //       unique_name: yup.string().required().min(3).max(20),
-  //       keywords: keywordsSchema,
-  //     });
-  //     await productCategorySchema.validate(data, { abortEarly: false });
+      return res.status(200).json(deletedProductCategory);
+    } catch (err) {
+      next(err);
+    }
+  }
 
-  //     // Checking unique_name of the Product Category
-  //     productCategory = await productCategoryRepository.findOne({
-  //       unique_name: data.unique_name,
-  //     });
-  //     if (productCategory) {
-  //       throw new AppError('Category already exist!', 400);
-  //     }
+  async update(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    try {
+      const productCategoryRepository = getCustomRepository(
+        ProductCategoryRepository,
+      );
+      const productSubCategoryRepository = getCustomRepository(
+        ProductSubCategoryRepository,
+      );
+      const productSubCategoryKeywordRepository = getCustomRepository(
+        ProductSubCategoryKeywordRepository,
+      );
 
-  //     // Creating instances of product category keywords
-  //     const product_category_keywords = data.keywords.map((keyword) => {
-  //       return productCategoryKeywordRepository.createProductCategoryKeyword(
-  //         keyword,
-  //       );
-  //     });
+      // Checking product category
+      const { productCategoryUniqueName, unique_name } = req.params;
+      const product_category = await productCategoryRepository.findOne({
+        where: { unique_name: productCategoryUniqueName },
+      });
+      if (!product_category) {
+        throw new AppError('No product category has been found', 400);
+      }
+      // Checking product sub category
+      let productSubCategory = await productSubCategoryRepository.findOne({
+        where: { unique_name, product_category },
+      });
+      if (!productSubCategory) {
+        throw new AppError('No product sub category has been found', 400);
+      }
 
-  //     // Saving product-categorie data on database
-  //     const createdProductCategory = await productCategoryRepository.createAndSaveProductCategory(
-  //       {
-  //         name: data.name,
-  //         unique_name: data.unique_name,
-  //         image: data.image,
-  //         keywords: product_category_keywords,
-  //       },
-  //     );
+      const { name, keywords } = req.body;
+      const image = req.file as Express.Multer.File;
 
-  //     // Response with success and the createdProductCategory
-  //     return res.status(201).json(createdProductCategory);
-  //   } catch (err) {
-  //     const image = req.file as Express.Multer.File;
-  //     if (image) {
-  //       unlinkSync(image.path);
-  //     }
-  //     next(err);
-  //   }
-  // }
+      if (!image) {
+        throw new AppError('No files uploaded!', 400);
+      }
+
+      // keywords = undefined | any or any[] ==> convert all to array
+      const arrKeywords: string[] = keywords
+        ? Array.isArray(keywords)
+          ? (keywords as string[]).map((keyword) => simplifyString(keyword))
+          : [simplifyString(keywords)]
+        : [];
+
+      // Make product-category data
+      const data = {
+        name: name as string,
+        unique_name: simplifyString(name),
+        keywords: arrKeywords,
+        image: image.path,
+      };
+
+      // Validating data
+      const keywordsSchema = yup
+        .array()
+        .of(yup.string().min(3).max(20))
+        .max(20);
+      const productCategorySchema = yup.object().shape({
+        name: yup.string().required().min(3).max(20),
+        unique_name: yup.string().required().min(3).max(20),
+        keywords: keywordsSchema,
+      });
+      await productCategorySchema.validate(data, { abortEarly: false });
+
+      // Checking unique_name of the Product Sub Category
+      productSubCategory = await productSubCategoryRepository.findOne({
+        unique_name: data.unique_name,
+      });
+      if (productSubCategory) {
+        throw new AppError('Product Sub Category already exist!', 400);
+      }
+
+      // Creating instances of product category keywords
+      const createdKeywords = data.keywords.map((keyword) => {
+        return productSubCategoryKeywordRepository.createKeyword(keyword);
+      });
+
+      // Saving product-categorie data on database
+      const updatedSubProductCategory = await productSubCategoryRepository.save(
+        {
+          name: data.name,
+          unique_name: data.unique_name,
+          image: data.image,
+          product_category,
+          keywords: createdKeywords,
+        },
+      );
+
+      // Response with success and the createdProductCategory
+      return res.status(200).json(updatedSubProductCategory);
+    } catch (err) {
+      const image = req.file as Express.Multer.File;
+      if (image) {
+        unlinkSync(image.path);
+      }
+      next(err);
+    }
+  }
 }

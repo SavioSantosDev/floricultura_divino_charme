@@ -30,6 +30,14 @@ export function reqStore(route: string): request.Test {
   return request(app).post(`${route}adicionar/`);
 }
 
+export function reqIndex(route: string): request.Test {
+  return request(app).get(route);
+}
+
+export function reqShow(route: string, uniqueName: string): request.Test {
+  return request(app).get(`${route}${uniqueName}`);
+}
+
 export function reqDelete(route: string, uniqueName: string): request.Test {
   return request(app).delete(`${route}${uniqueName}`);
 }

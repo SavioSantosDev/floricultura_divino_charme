@@ -13,13 +13,19 @@ routes.post(
   upload.single('image'),
   productSubCategoriesController.store,
 );
-// routes.get('/', productCategoriesController.index);
-// routes.get('/:uniqueName', productCategoriesController.show);
-// routes.delete('/:uniqueName', productCategoriesController.delete);
-// routes.put(
-//   '/:uniqueName',
-//   upload.single('image'),
-//   productCategoriesController.update,
-// );
+routes.get('/:productCategoryUniqueName', productSubCategoriesController.index);
+routes.get(
+  '/:productCategoryUniqueName/:unique_name',
+  productSubCategoriesController.show,
+);
+routes.delete(
+  '/:productCategoryUniqueName/:unique_name',
+  productSubCategoriesController.delete,
+);
+routes.put(
+  '/:productCategoryUniqueName/:unique_name',
+  upload.single('image'),
+  productSubCategoriesController.update,
+);
 
 export default routes;

@@ -6,6 +6,10 @@ import {
 import {
   makeSut,
   storeSut,
+  reqIndex,
+  reqShow,
+  reqDelete,
+  updateSut,
   expectSutName,
   expectSutUniqueName,
   expectSutKeywords,
@@ -15,6 +19,8 @@ import {
   makeSut as makeProductCategory,
   storeSut as storeProductCategory,
 } from '../utils/product-categories.utils';
+
+const routeIndex = '/admin/produtos/categorias/sub-categorias';
 
 const imagePath = '__tests__/files/test.jpg';
 const updateImagePath = '__tests__/files/testUpdate.jpg';
@@ -30,7 +36,7 @@ beforeAll(async () => {
   const productCategoryUniqueName = (
     await storeProductCategory('/admin/produtos/categorias/', productCategory)
   ).body.unique_name;
-  route = `/admin/produtos/categorias/sub-categorias/${productCategoryUniqueName}/`;
+  route = `${routeIndex}/${productCategoryUniqueName}/`;
 });
 
 afterAll(async () => {
@@ -38,6 +44,12 @@ afterAll(async () => {
 });
 
 describe('Store Product Sub Categories', () => {
+  it('should not create with invalid product category name', async () => {
+    const sut = makeSut('Caqueiros', undefined, imagePath);
+    const response = await storeSut(`${routeIndex}/invalid/`, sut);
+    expect(response.status).toBe(400);
+  });
+
   it('should create without keywords and valid name & image field', async () => {
     const sut = makeSut('Caqueiros', undefined, imagePath);
     const response = await storeSut(route, sut);
@@ -123,150 +135,199 @@ describe('Store Product Sub Categories', () => {
   });
 });
 
-// describe('Index products categories', () => {
-//   it('should list all created products categories', async () => {
-//     const response = await reqIndex(routeIndex);
-//     expect(response.status).toBe(200);
-//     expect(response.body.length).toEqual(amountProductCategories);
-//   });
-// });
+describe('Index products sub ategories', () => {
+  it('should not list with invalid product category name', async () => {
+    const response = await reqIndex(`${routeIndex}/invalid/`);
+    expect(response.status).toBe(400);
+  });
 
-// describe('Show a single product category', () => {
-//   it('should not show product category with invalid Name', async () => {
-//     const response = await reqShow(routeIndex, 'invalid');
-//     expect(response.status).toBe(400);
-//   });
+  it('should list all created products categories', async () => {
+    const response = await reqIndex(route);
+    expect(response.status).toBe(200);
+    expect(response.body.length).toEqual(amountProductSubCategories);
+  });
+});
 
-//   it('should show product category with valid Name', async () => {
-//     const unique_name = await getUniqueName(0); // First created
-//     const response = await reqShow(routeIndex, unique_name);
-//     expect(response.status).toBe(200);
-//     expectSutName(response, 'Caqueiros');
-//     expectSutUniqueName(response, 'caqueiros');
-//     expectSutKeywords(response, []);
-//   });
-// });
+/**
+ * Used for Show, Delete and Update methods
+ */
+async function getUniqueName(index: number) {
+  const response = await reqIndex(route);
+  return response.body[index].unique_name;
+}
 
-// describe('Delete a product category', () => {
-//   it('should not delete with invalid Name', async () => {
-//     const beforeAmount = await productCategoriesAmount();
-//     const response = await reqDelete(routeIndex, 'invalid');
-//     const afterAmount = await productCategoriesAmount();
+describe('Show a single product sub category', () => {
+  it('should show with invalid product category name', async () => {
+    const response = await reqIndex(`${routeIndex}/invalid/`);
+    expect(response.status).toBe(400);
+  });
 
-//     expect(response.status).toBe(400);
-//     expect(beforeAmount).toEqual(afterAmount);
-//   });
+  it('should not show product category with invalid Name', async () => {
+    const response = await reqShow(route, 'invalid');
+    expect(response.status).toBe(400);
+  });
 
-//   it('should delete with valid Name and return all infos of the deleted product category', async () => {
-//     const unique_name = await getUniqueName(0); // First created
-//     const beforeAmount = await productCategoriesAmount();
-//     const response = await reqDelete(routeIndex, unique_name);
-//     const afterAmount = await productCategoriesAmount();
+  it('should show product category with valid Name', async () => {
+    const unique_name = await getUniqueName(0); // First created
+    const response = await reqShow(route, unique_name);
+    expect(response.status).toBe(200);
+    expectSutName(response, 'Caqueiros');
+    expectSutUniqueName(response, 'caqueiros');
+    expectSutKeywords(response, []);
+  });
+});
 
-//     expect(response.status).toBe(200);
-//     expect(afterAmount).toEqual(beforeAmount - 1);
-//     expectSutName(response, 'Caqueiros');
-//     expectSutUniqueName(response, 'caqueiros');
-//     expectSutKeywords(response, []);
-//     amountProductCategories--;
-//   });
-// });
+/**
+ * Return the number of product categories
+ */
+async function productSubCategoriesAmount() {
+  return (await reqIndex(route)).body.length;
+}
 
-// describe('Update Product Category informations', () => {
-//   let unique_name: string;
+describe('Delete a product sub category', () => {
+  it('should not delete with invalid product category name', async () => {
+    const beforeAmount = await productSubCategoriesAmount();
+    const response = await reqDelete(`${routeIndex}/invalid/`, 'invalid');
+    const afterAmount = await productSubCategoriesAmount();
+    expect(response.status).toBe(400);
+    expect(beforeAmount).toEqual(afterAmount);
+  });
 
-//   it('should not update with invalid id', async () => {
-//     await storeTestProductCategory();
-//     unique_name = await getUniqueName(amountProductCategories - 1); // last created
+  it('should not delete with invalid product sub category name', async () => {
+    const beforeAmount = await productSubCategoriesAmount();
+    const response = await reqDelete(route, 'invalid');
+    const afterAmount = await productSubCategoriesAmount();
 
-//     const sut = makeSut('Updated', undefined, imagePath);
-//     const response = await updateSut(routeIndex, 'invalid', sut);
-//     expect(response.status).toBe(400);
+    expect(response.status).toBe(400);
+    expect(beforeAmount).toEqual(afterAmount);
+  });
 
-//     const confirmResponse = await reqShow(routeIndex, unique_name);
-//     expectSutName(confirmResponse, 'Update Test');
-//     expectSutUniqueName(confirmResponse, 'update-test');
-//     expectSutKeywords(confirmResponse, []);
-//   });
+  it('should delete with valid parameters and return all infos of the deleted product category', async () => {
+    const unique_name = await getUniqueName(0); // First created
+    const beforeAmount = await productSubCategoriesAmount();
+    const response = await reqDelete(route, unique_name);
+    const afterAmount = await productSubCategoriesAmount();
+    expect(response.status).toBe(200);
+    expect(afterAmount).toEqual(beforeAmount - 1);
+    expectSutName(response, 'Caqueiros');
+    expectSutUniqueName(response, 'caqueiros');
+    expectSutKeywords(response, []);
+    amountProductSubCategories--;
+  });
+});
 
-//   it('should update without keywords and valid name & image field', async () => {
-//     const sut = makeSut('Updated', undefined, updateImagePath);
-//     const response = await updateSut(routeIndex, unique_name, sut);
-//     expect(response.status).toBe(201);
-//     expectSutName(response, 'Updated');
-//     expectSutUniqueName(response, 'updated');
-//     expectSutKeywords(response, []);
-//   });
+async function storeTestProductSubCategory() {
+  const sut = makeSut('Update Test', undefined, imagePath);
+  await storeSut(route, sut);
+  amountProductSubCategories++;
+}
 
-//   it('should update with one keyword and valid name & image field', async () => {
-//     const sut = makeSut('Second Update', 'keyword 1', imagePath);
-//     const response = await updateSut(routeIndex, unique_name, sut);
-//     expect(response.status).toBe(201);
-//     expectSutName(response, 'Second Update');
-//     expectSutUniqueName(response, 'second-update');
-//     expectSutKeywords(response, ['keyword-1']);
-//   });
+describe('Update Product Sub Category informations', () => {
+  let unique_name: string;
 
-//   it('should update with multiple keywords and valid name & image field', async () => {
-//     const sut = makeSut(
-//       'Third Update',
-//       ['keyword 1', 'keyword 2', 'keyword 3'],
-//       updateImagePath,
-//     );
-//     const response = await updateSut(routeIndex, unique_name, sut);
-//     expect(response.status).toBe(201);
-//     expectSutName(response, 'Third Update');
-//     expectSutUniqueName(response, 'third-update');
-//     expectSutKeywords(response, ['keyword-1', 'keyword-2', 'keyword-3']);
-//   });
+  it('should not update with invalid product category name', async () => {
+    await storeTestProductSubCategory();
+    unique_name = await getUniqueName(amountProductSubCategories - 1); // last created
 
-//   it('should not update without image', async () => {
-//     const sut = makeSut('Test update', undefined, undefined);
-//     const response = await updateSut(routeIndex, unique_name, sut);
-//     expect(response.status).toBe(400);
-//   });
+    const sut = makeSut('Updated', undefined, imagePath);
+    const response = await updateSut(`${routeIndex}/invalid/`, 'invalid', sut);
+    expect(response.status).toBe(400);
 
-//   it('should not update with invalid File type', async () => {
-//     const sut = makeSut('TestIMAGE', undefined, txtPath);
-//     const response = await updateSut(routeIndex, unique_name, sut);
-//     expect(response.status).toBe(400);
-//   });
+    const confirmResponse = await reqShow(route, unique_name);
+    expectSutName(confirmResponse, 'Update Test');
+    expectSutUniqueName(confirmResponse, 'update-test');
+    expectSutKeywords(confirmResponse, []);
+  });
 
-//   it('should not update with large image size', async () => {
-//     const sut = makeSut('TestIMAGE', undefined, largeImagePath);
-//     const response = await updateSut(routeIndex, unique_name, sut);
-//     expect(response.status).toBe(400);
-//   });
+  it('should not update with invalid product sub category name', async () => {
+    const sut = makeSut('Updated', undefined, imagePath);
+    const response = await updateSut(route, 'invalid', sut);
+    expect(response.status).toBe(400);
 
-//   it('should not update without field NAME', async () => {
-//     const sut = makeSut(undefined, undefined, imagePath);
-//     const response = await updateSut(routeIndex, unique_name, sut);
-//     expect(response.status).toBe(400);
-//   });
+    const confirmResponse = await reqShow(route, unique_name);
+    expectSutName(confirmResponse, 'Update Test');
+    expectSutUniqueName(confirmResponse, 'update-test');
+    expectSutKeywords(confirmResponse, []);
+  });
 
-//   it('should not update with invalid size for field NAME', async () => {
-//     const sut = makeSut(
-//       'Hey bro - This is a very big name',
-//       undefined,
-//       imagePath,
-//     );
-//     const response = await updateSut(routeIndex, unique_name, sut);
-//     expect(response.status).toBe(400);
-//   });
+  it('should update without keywords and valid name & image field', async () => {
+    const sut = makeSut('Updated', undefined, updateImagePath);
+    const response = await updateSut(route, unique_name, sut);
+    expect(response.status).toBe(200);
+    expectSutName(response, 'Updated');
+    expectSutUniqueName(response, 'updated');
+    expectSutKeywords(response, []);
+  });
 
-//   it('should not update with invalid size for KEYWORDS', async () => {
-//     const sut = makeSut(
-//       'Test KEYWORDS',
-//       'Hey bro - This is a very big name',
-//       imagePath,
-//     );
-//     const response = await updateSut(routeIndex, unique_name, sut);
-//     expect(response.status).toBe(400);
-//   });
+  it('should update with one keyword and valid name & image field', async () => {
+    const sut = makeSut('Second Update', 'keyword 1', imagePath);
+    const response = await updateSut(route, unique_name, sut);
+    expect(response.status).toBe(200);
+    expectSutName(response, 'Second Update');
+    expectSutUniqueName(response, 'second-update');
+    expectSutKeywords(response, ['keyword-1']);
+  });
 
-//   it('should not update with exists name', async () => {
-//     const sut = makeSut('Plantas', undefined, imagePath);
-//     const response = await updateSut(routeIndex, unique_name, sut);
-//     expect(response.status).toBe(400);
-//   });
-// });
+  it('should update with multiple keywords and valid name & image field', async () => {
+    const sut = makeSut(
+      'Third Update',
+      ['keyword 1', 'keyword 2', 'keyword 3'],
+      updateImagePath,
+    );
+    const response = await updateSut(route, unique_name, sut);
+    expect(response.status).toBe(200);
+    expectSutName(response, 'Third Update');
+    expectSutUniqueName(response, 'third-update');
+    expectSutKeywords(response, ['keyword-1', 'keyword-2', 'keyword-3']);
+  });
+
+  it('should not update without image', async () => {
+    const sut = makeSut('Test update', undefined, undefined);
+    const response = await updateSut(route, unique_name, sut);
+    expect(response.status).toBe(400);
+  });
+
+  it('should not update with invalid File type', async () => {
+    const sut = makeSut('TestIMAGE', undefined, txtPath);
+    const response = await updateSut(route, unique_name, sut);
+    expect(response.status).toBe(400);
+  });
+
+  it('should not update with large image size', async () => {
+    const sut = makeSut('TestIMAGE', undefined, largeImagePath);
+    const response = await updateSut(route, unique_name, sut);
+    expect(response.status).toBe(400);
+  });
+
+  it('should not update without field NAME', async () => {
+    const sut = makeSut(undefined, undefined, imagePath);
+    const response = await updateSut(route, unique_name, sut);
+    expect(response.status).toBe(400);
+  });
+
+  it('should not update with invalid size for field NAME', async () => {
+    const sut = makeSut(
+      'Hey bro - This is a very big name',
+      undefined,
+      imagePath,
+    );
+    const response = await updateSut(route, unique_name, sut);
+    expect(response.status).toBe(400);
+  });
+
+  it('should not update with invalid size for KEYWORDS', async () => {
+    const sut = makeSut(
+      'Test KEYWORDS',
+      'Hey bro - This is a very big name',
+      imagePath,
+    );
+    const response = await updateSut(route, unique_name, sut);
+    expect(response.status).toBe(400);
+  });
+
+  it('should not update with exists name', async () => {
+    const sut = makeSut('Plantas', undefined, imagePath);
+    const response = await updateSut(route, unique_name, sut);
+    expect(response.status).toBe(400);
+  });
+});

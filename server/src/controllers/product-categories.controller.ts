@@ -249,17 +249,15 @@ export default class ProductsCategoriesController {
       });
 
       // Saving product-categorie data on database
-      const createdProductCategory = await productCategoryRepository.createAndSaveProductCategory(
-        {
-          name: data.name,
-          unique_name: data.unique_name,
-          image: data.image,
-          keywords: product_category_keywords,
-        },
-      );
+      const updatedProductCategory = await productCategoryRepository.save({
+        name: data.name,
+        unique_name: data.unique_name,
+        image: data.image,
+        keywords: product_category_keywords,
+      });
 
-      // Response with success and the createdProductCategory
-      return res.status(201).json(createdProductCategory);
+      // Response with success and the updatedProductCategory
+      return res.status(201).json(updatedProductCategory);
     } catch (err) {
       const image = req.file as Express.Multer.File;
       if (image) {
