@@ -15,15 +15,15 @@ routes.post(
 );
 routes.get('/:productCategoryUniqueName', productSubCategoriesController.index);
 routes.get(
-  '/:productCategoryUniqueName/:unique_name',
+  '/:productCategoryUniqueName/:uniqueName',
   productSubCategoriesController.show,
 );
 routes.delete(
-  '/:productCategoryUniqueName/:unique_name',
+  '/:productCategoryUniqueName/:uniqueName',
   productSubCategoriesController.delete,
 );
 routes.put(
-  '/:productCategoryUniqueName/:unique_name',
+  '/:productCategoryUniqueName/:uniqueName',
   upload.single('image'),
   productSubCategoriesController.update,
 );

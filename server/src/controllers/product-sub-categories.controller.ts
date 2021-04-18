@@ -1,15 +1,268 @@
 import { Request, Response, NextFunction } from 'express';
-import { getCustomRepository } from 'typeorm';
 import * as yup from 'yup';
 import { unlinkSync } from 'fs';
 
 import { AppError } from '../errors/app.error';
 import simplifyString from '../utils/simplify-string';
-import { ProductCategoryRepository } from '../repositories/product-categories.repository';
-import {
-  ProductSubCategoryKeywordRepository,
-  ProductSubCategoryRepository,
-} from '../repositories/product-sub-categories.repository';
+
+import Repositories from '../repositories/custom-repositories';
+import ProductCategory from '../models/ProductCategory';
+import ProductSubCategory from '../models/ProductSubCategory';
+import { ProductSubCategoryKeyword } from '../models/Keywords';
+
+class Schemas {
+  static nameSchema = yup.string().required().max(20);
+  static keywordsSchema = yup.array().of(yup.string().max(20)).max(20);
+
+  static async validateNameSchema(name?: string) {
+    await Schemas.nameSchema.validate(name, { abortEarly: false });
+  }
+
+  static async validateKeywordsSchema(keywrods?: string[]) {
+    await Schemas.keywordsSchema.validate(keywrods, { abortEarly: false });
+  }
+}
+
+class UserErrors {
+  static noFilesUploaded(): never {
+    throw new AppError('No files uploaded!', 400);
+  }
+
+  static productSubCategoryAlreadyExists(): never {
+    throw new AppError('Product Sub Category already exist!', 400);
+  }
+
+  static noProductSubCategoryHasBeenFound(): never {
+    throw new AppError('No Product Sub Category has been found', 400);
+  }
+
+  static noProductCategoryHasBeenFound(): never {
+    throw new AppError('No Product Category has been found', 400);
+  }
+}
+
+type Keywords = undefined | string | string[];
+
+class StoreAndUpdate {
+  private storeName?: string;
+  private storeUniqueName?: string;
+  private storeKeywords?: ProductSubCategoryKeyword[];
+  private storeImage?: Express.Multer.File;
+  private storeProductCategory?: ProductCategory;
+
+  private keywords?: string[]; // Received
+  private productSubCategory?: ProductSubCategory;
+
+  constructor(
+    private readonly productCategoryUniqueName: string,
+    name: unknown,
+    keywords: Keywords,
+    image: unknown,
+    private readonly uniqueName?: string,
+  ) {
+    if (name && typeof name === 'string') {
+      this.storeName = name;
+      this.storeUniqueName = simplifyString(name);
+    }
+    this.storeImage = image as Express.Multer.File;
+    this.keywords = this.convertKeywordsToArray(keywords);
+  }
+
+  private convertKeywordsToArray(keywords: Keywords) {
+    return keywords
+      ? Array.isArray(keywords)
+        ? (keywords as string[]).map((keyword) => simplifyString(keyword))
+        : [simplifyString(keywords)]
+      : [];
+  }
+
+  private throwErrorIfNoFilesUploaded() {
+    if (!this.storeImage) {
+      UserErrors.noFilesUploaded();
+    }
+  }
+
+  private async getProductCategory() {
+    this.storeProductCategory = await Repositories.productCategory().findOne({
+      unique_name: this.productCategoryUniqueName,
+    });
+  }
+
+  private errorIfNoProductCategoryHasBeenFound() {
+    if (!this.storeProductCategory) {
+      UserErrors.noProductCategoryHasBeenFound();
+    }
+  }
+
+  private async errorIfProductSubCategoryAlreadyExists() {
+    const productSubCategory = await Repositories.productSubCategory().findOne({
+      where: {
+        unique_name: this.storeUniqueName,
+        product_category: this.storeProductCategory,
+      },
+      relations: ['keywords'],
+    });
+    if (productSubCategory) {
+      UserErrors.productSubCategoryAlreadyExists();
+    }
+  }
+
+  private async errorIfNoProductSubCategoryHasBeenFound() {
+    const productSubCategory = await Repositories.productSubCategory().findOne({
+      where: {
+        unique_name: this.uniqueName,
+        product_category: this.storeProductCategory,
+      },
+      relations: ['keywords'],
+    });
+    if (!productSubCategory) {
+      UserErrors.noProductSubCategoryHasBeenFound();
+    }
+  }
+
+  private createInstancesOfKeywords() {
+    if (this.keywords) {
+      this.storeKeywords = this.keywords.map((keyword) => {
+        const productSubCategoryKeyword = new ProductSubCategoryKeyword();
+        productSubCategoryKeyword.keyword = keyword;
+        return productSubCategoryKeyword;
+      });
+    }
+  }
+
+  private createProductSubCategory() {
+    this.createInstancesOfKeywords();
+    return Repositories.productSubCategory().create({
+      name: this.storeName,
+      unique_name: this.storeUniqueName,
+      image: this.storeImage?.path,
+      keywords: this.storeKeywords,
+      product_category: this.storeProductCategory,
+    });
+  }
+
+  private async saveProductSubCategoryOnDatabase() {
+    if (this.productSubCategory) {
+      await Repositories.productSubCategory().save(this.productSubCategory);
+    }
+  }
+
+  removeImageFromUploads() {
+    if (this.storeImage) {
+      unlinkSync(this.storeImage.path);
+    }
+  }
+
+  /**
+   * Public method called for store a new produt sub category
+   */
+  async storeAndGetCreatedProductSubCategory(): Promise<ProductSubCategory> {
+    await this.getProductCategory();
+    this.errorIfNoProductCategoryHasBeenFound();
+
+    this.throwErrorIfNoFilesUploaded();
+
+    await Schemas.validateNameSchema(this.storeName);
+    await Schemas.validateNameSchema(this.storeUniqueName);
+    await Schemas.validateKeywordsSchema(this.keywords);
+
+    await this.errorIfProductSubCategoryAlreadyExists();
+
+    this.productSubCategory = this.createProductSubCategory();
+    await this.saveProductSubCategoryOnDatabase();
+    return this.productSubCategory;
+  }
+
+  /**
+   * Public method called for update data of the exist product sub category
+   */
+  async updateAndGetUpdatedProductSubCategory(): Promise<ProductSubCategory> {
+    await this.getProductCategory();
+    this.errorIfNoProductCategoryHasBeenFound();
+
+    this.throwErrorIfNoFilesUploaded();
+    await this.errorIfNoProductSubCategoryHasBeenFound();
+
+    await Schemas.validateNameSchema(this.storeName);
+    await Schemas.validateNameSchema(this.storeUniqueName);
+    await Schemas.validateKeywordsSchema(this.keywords);
+
+    await this.errorIfProductSubCategoryAlreadyExists();
+
+    this.productSubCategory = this.createProductSubCategory();
+    await this.saveProductSubCategoryOnDatabase();
+    return this.productSubCategory;
+  }
+}
+
+/**
+ * Methods that don't need to handle request data - Index, Show and Delete
+ */
+class IndexAndShowAndDelete {
+  private productSubCategories?: ProductSubCategory[];
+  private productSubCategory?: ProductSubCategory | undefined;
+  private productCategory?: ProductCategory;
+
+  constructor(
+    private readonly productCategoryUniqueName: string,
+    private readonly unique_name?: string,
+  ) {}
+
+  private async getProductCategory() {
+    this.productCategory = await Repositories.productCategory().findOne({
+      unique_name: this.productCategoryUniqueName,
+    });
+  }
+
+  private throwErrorIfNoProductCategoryHasBeenFound() {
+    if (!this.productCategory) {
+      UserErrors.noProductCategoryHasBeenFound();
+    }
+  }
+
+  private async findAllProductSubCategories() {
+    return await Repositories.productSubCategory().find({
+      where: { product_category: this.productCategory },
+      relations: ['keywords'],
+    });
+  }
+
+  private async findOneProductSubCategory() {
+    return await Repositories.productSubCategory().findOne({
+      where: {
+        unique_name: this.unique_name,
+        product_category: this.productCategory,
+      },
+      relations: ['keywords'],
+    });
+  }
+
+  async getAllProductSubCategories(): Promise<ProductSubCategory[]> {
+    await this.getProductCategory();
+    this.throwErrorIfNoProductCategoryHasBeenFound();
+    this.productSubCategories = await this.findAllProductSubCategories();
+    return this.productSubCategories;
+  }
+
+  async getOneProductSubCategory(): Promise<ProductSubCategory> {
+    await this.getProductCategory();
+    this.throwErrorIfNoProductCategoryHasBeenFound();
+
+    this.productSubCategory = await this.findOneProductSubCategory();
+    if (!this.productSubCategory) {
+      UserErrors.noProductSubCategoryHasBeenFound();
+    }
+    return this.productSubCategory;
+  }
+
+  async removeOneProductSubCategory(): Promise<ProductSubCategory> {
+    await this.getProductCategory();
+    this.throwErrorIfNoProductCategoryHasBeenFound();
+
+    const productSubCategory = await this.getOneProductSubCategory();
+    return await Repositories.productSubCategory().remove(productSubCategory);
+  }
+}
 
 export default class ProductsCategoriesController {
   async store(
@@ -17,88 +270,21 @@ export default class ProductsCategoriesController {
     res: Response,
     next: NextFunction,
   ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    const { productCategoryUniqueName } = req.params;
+    const { name, keywords } = req.body;
+    const image = req.file;
+    const store = new StoreAndUpdate(
+      productCategoryUniqueName,
+      name,
+      keywords,
+      image,
+    );
+
     try {
-      const productCategoryRepository = getCustomRepository(
-        ProductCategoryRepository,
-      );
-      const productSubCategoryRepository = getCustomRepository(
-        ProductSubCategoryRepository,
-      );
-      const productSubCategoryKeywordRepository = getCustomRepository(
-        ProductSubCategoryKeywordRepository,
-      );
-
-      // Checking product category
-      const { productCategoryUniqueName } = req.params;
-      const productCategory = await productCategoryRepository.findOne({
-        where: { unique_name: productCategoryUniqueName },
-      });
-      if (!productCategory) {
-        throw new AppError('No product category has been found', 400);
-      }
-
-      const { name, keywords } = req.body;
-      const image = req.file as Express.Multer.File;
-
-      if (!image) {
-        throw new AppError('No files uploaded!', 400);
-      }
-
-      // keywords = undefined | any or any[] ==> convert all to array
-      const arrKeywords: string[] = keywords
-        ? Array.isArray(keywords)
-          ? (keywords as string[]).map((keyword) => simplifyString(keyword))
-          : [simplifyString(keywords)]
-        : [];
-
-      // Make product-category data
-      const data = {
-        name: name as string,
-        unique_name: simplifyString(name),
-        keywords: arrKeywords,
-        image: image.path,
-      };
-
-      // Validating data
-      const keywordsSchema = yup.array().of(yup.string().max(20)).max(20);
-      const productCategorySchema = yup.object().shape({
-        name: yup.string().required().max(20),
-        unique_name: yup.string().required().max(20),
-        keywords: keywordsSchema,
-      });
-      await productCategorySchema.validate(data, { abortEarly: false });
-
-      // Checking unique_name of the Product Sub Category
-      const productSubCategory = await productSubCategoryRepository.findOne({
-        unique_name: data.unique_name,
-      });
-      if (productSubCategory) {
-        throw new AppError('Product Sub Category already exist!', 400);
-      }
-
-      // Creating instances of product category keywords
-      const createdKeywords = data.keywords.map((keyword) => {
-        return productSubCategoryKeywordRepository.createKeyword(keyword);
-      });
-
-      // Saving product-categorie data on database
-      const createdSubProductCategory = await productSubCategoryRepository.createAndSaveProductCategory(
-        {
-          name: data.name,
-          unique_name: data.unique_name,
-          image: data.image,
-          product_category: productCategory,
-          keywords: createdKeywords,
-        },
-      );
-
-      // Response with success and the createdSubProductCategory
-      return res.status(201).json(createdSubProductCategory);
+      const createdProductCategory = await store.storeAndGetCreatedProductSubCategory();
+      return res.status(201).json(createdProductCategory);
     } catch (err) {
-      const image = req.file as Express.Multer.File;
-      if (image) {
-        unlinkSync(image.path);
-      }
+      store.removeImageFromUploads();
       next(err);
     }
   }
@@ -108,27 +294,11 @@ export default class ProductsCategoriesController {
     res: Response,
     next: NextFunction,
   ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    const { productCategoryUniqueName } = req.params;
+    const index = new IndexAndShowAndDelete(productCategoryUniqueName);
     try {
-      const productCategoryRepository = getCustomRepository(
-        ProductCategoryRepository,
-      );
-      const productSubCategoryRepository = getCustomRepository(
-        ProductSubCategoryRepository,
-      );
-
-      // Checking product category
-      const { productCategoryUniqueName } = req.params;
-      const productCategory = await productCategoryRepository.findOne({
-        where: { unique_name: productCategoryUniqueName },
-      });
-      if (!productCategory) {
-        throw new AppError('No product category has been found', 400);
-      }
-      const productCaterories = await productSubCategoryRepository.find({
-        where: { product_category: productCategory },
-        relations: ['keywords'],
-      });
-      return res.status(200).json(productCaterories);
+      const productSubCategories = await index.getAllProductSubCategories();
+      return res.status(200).json(productSubCategories);
     } catch (err) {
       next(err);
     }
@@ -139,31 +309,14 @@ export default class ProductsCategoriesController {
     res: Response,
     next: NextFunction,
   ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    const { productCategoryUniqueName, uniqueName } = req.params;
+    const show = new IndexAndShowAndDelete(
+      productCategoryUniqueName,
+      uniqueName,
+    );
+
     try {
-      const productCategoryRepository = getCustomRepository(
-        ProductCategoryRepository,
-      );
-      const productSubCategoryRepository = getCustomRepository(
-        ProductSubCategoryRepository,
-      );
-
-      // Checking product category
-      const { productCategoryUniqueName, unique_name } = req.params;
-      const product_category = await productCategoryRepository.findOne({
-        where: { unique_name: productCategoryUniqueName },
-      });
-      if (!product_category) {
-        throw new AppError('No product category has been found', 400);
-      }
-
-      const productSubCategory = await productSubCategoryRepository.findOne({
-        where: { unique_name, product_category },
-        relations: ['keywords'],
-      });
-      if (!productSubCategory) {
-        throw new AppError('No product sub category has been found', 400);
-      }
-
+      const productSubCategory = await show.getOneProductSubCategory();
       return res.status(200).json(productSubCategory);
     } catch (err) {
       next(err);
@@ -175,34 +328,14 @@ export default class ProductsCategoriesController {
     res: Response,
     next: NextFunction,
   ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    const { productCategoryUniqueName, uniqueName } = req.params;
+    const _delete = new IndexAndShowAndDelete(
+      productCategoryUniqueName,
+      uniqueName,
+    );
+
     try {
-      const productCategoryRepository = getCustomRepository(
-        ProductCategoryRepository,
-      );
-      const productSubCategoryRepository = getCustomRepository(
-        ProductSubCategoryRepository,
-      );
-
-      // Checking product category
-      const { productCategoryUniqueName, unique_name } = req.params;
-      const product_category = await productCategoryRepository.findOne({
-        where: { unique_name: productCategoryUniqueName },
-      });
-      if (!product_category) {
-        throw new AppError('No product category has been found', 400);
-      }
-
-      const productSubCategory = await productSubCategoryRepository.findOne({
-        where: { unique_name, product_category },
-        relations: ['keywords'],
-      });
-      if (!productSubCategory) {
-        throw new AppError('No product sub category has been found', 400);
-      }
-      const deletedProductCategory = await productSubCategoryRepository.remove(
-        productSubCategory,
-      );
-
+      const deletedProductCategory = await _delete.removeOneProductSubCategory();
       return res.status(200).json(deletedProductCategory);
     } catch (err) {
       next(err);
@@ -214,98 +347,22 @@ export default class ProductsCategoriesController {
     res: Response,
     next: NextFunction,
   ): Promise<Response<unknown, Record<string, unknown>> | undefined> {
+    const { productCategoryUniqueName, uniqueName } = req.params;
+    const { name, keywords } = req.body;
+    const image = req.file;
+    const store = new StoreAndUpdate(
+      productCategoryUniqueName,
+      name,
+      keywords,
+      image,
+      uniqueName,
+    );
+
     try {
-      const productCategoryRepository = getCustomRepository(
-        ProductCategoryRepository,
-      );
-      const productSubCategoryRepository = getCustomRepository(
-        ProductSubCategoryRepository,
-      );
-      const productSubCategoryKeywordRepository = getCustomRepository(
-        ProductSubCategoryKeywordRepository,
-      );
-
-      // Checking product category
-      const { productCategoryUniqueName, unique_name } = req.params;
-      const product_category = await productCategoryRepository.findOne({
-        where: { unique_name: productCategoryUniqueName },
-      });
-      if (!product_category) {
-        throw new AppError('No product category has been found', 400);
-      }
-      // Checking product sub category
-      let productSubCategory = await productSubCategoryRepository.findOne({
-        where: { unique_name, product_category },
-      });
-      if (!productSubCategory) {
-        throw new AppError('No product sub category has been found', 400);
-      }
-
-      const { name, keywords } = req.body;
-      const image = req.file as Express.Multer.File;
-
-      if (!image) {
-        throw new AppError('No files uploaded!', 400);
-      }
-
-      // keywords = undefined | any or any[] ==> convert all to array
-      const arrKeywords: string[] = keywords
-        ? Array.isArray(keywords)
-          ? (keywords as string[]).map((keyword) => simplifyString(keyword))
-          : [simplifyString(keywords)]
-        : [];
-
-      // Make product-category data
-      const data = {
-        name: name as string,
-        unique_name: simplifyString(name),
-        keywords: arrKeywords,
-        image: image.path,
-      };
-
-      // Validating data
-      const keywordsSchema = yup
-        .array()
-        .of(yup.string().min(3).max(20))
-        .max(20);
-      const productCategorySchema = yup.object().shape({
-        name: yup.string().required().min(3).max(20),
-        unique_name: yup.string().required().min(3).max(20),
-        keywords: keywordsSchema,
-      });
-      await productCategorySchema.validate(data, { abortEarly: false });
-
-      // Checking unique_name of the Product Sub Category
-      productSubCategory = await productSubCategoryRepository.findOne({
-        unique_name: data.unique_name,
-      });
-      if (productSubCategory) {
-        throw new AppError('Product Sub Category already exist!', 400);
-      }
-
-      // Creating instances of product category keywords
-      const createdKeywords = data.keywords.map((keyword) => {
-        return productSubCategoryKeywordRepository.createKeyword(keyword);
-      });
-
-      // Saving product-categorie data on database
-      const updatedSubProductCategory = await productSubCategoryRepository.save(
-        {
-          name: data.name,
-          unique_name: data.unique_name,
-          image: data.image,
-          product_category,
-          keywords: createdKeywords,
-        },
-      );
-
-      // Response with success and the createdProductCategory
-      return res.status(200).json(updatedSubProductCategory);
+      const updatedProductCategory = await store.updateAndGetUpdatedProductSubCategory();
+      return res.status(200).json(updatedProductCategory);
     } catch (err) {
-      const image = req.file as Express.Multer.File;
-      if (image) {
-        unlinkSync(image.path);
-      }
+      store.removeImageFromUploads();
       next(err);
     }
   }
