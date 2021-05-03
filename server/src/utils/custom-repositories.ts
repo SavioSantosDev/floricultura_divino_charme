@@ -1,7 +1,7 @@
 import { getCustomRepository } from 'typeorm';
 
-import { ProductCategoryRepository } from './product-categories.repository';
-import { ProductSubCategoryRepository } from './product-sub-categories.repository';
+import { ProductCategoryRepository } from '../repositories/product-categories.repository';
+import { ProductSubCategoryRepository } from '../repositories/product-sub-categories.repository';
 
 export default class Repositories {
   static productCategory(): ProductCategoryRepository {

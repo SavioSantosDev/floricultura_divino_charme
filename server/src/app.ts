@@ -5,7 +5,7 @@ dotenv.config({
 
 import express from 'express';
 import { resolve } from 'path';
-import 'express-async-error';
+// import 'express-async-error';
 
 // import sendEmail from './routes/send-email.routes';
 import createConnection from './database/';
@@ -32,15 +32,11 @@ class App {
 
   private routes(): void {
     // this.app.use('/api/send-email', sendEmail);
-    this.app.use('/admin/produtos/categorias', productCategoriesRoutes);
-    this.app.use(
-      '/admin/produtos/categorias/sub-categorias',
-      productSubCategoriesRoutes,
-    );
+    this.app.use('/admin/categorias', productCategoriesRoutes);
+    this.app.use('/admin/sub-categorias', productSubCategoriesRoutes);
   }
 
   private errors(): void {
-    // this.app.use(handlingError.logErrors);
     this.app.use(handlingError.responseWithAnAppropriateError);
   }
 }

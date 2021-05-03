@@ -1,8 +1,8 @@
 import { EntityRepository, Repository } from 'typeorm';
-import ProductCategory from '../models/ProductCategory';
+import ProductCategoryModel from '../models/product-category.model';
 
 /**
  * Repository for Product Category
  */
-@EntityRepository(ProductCategory)
-export class ProductCategoryRepository extends Repository<ProductCategory> {}
+@EntityRepository(ProductCategoryModel)
+export class ProductCategoryRepository extends Repository<ProductCategoryModel> {}

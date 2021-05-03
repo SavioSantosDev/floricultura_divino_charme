@@ -4,11 +4,6 @@ import { ValidationError } from 'yup';
 import { AppError } from './app.error';
 
 class HandlingErrors {
-  logErrors(err: Error, req: Request, res: Response, next: NextFunction) {
-    err instanceof ValidationError ? console.log(err.errors) : console.log(err);
-    return next(err);
-  }
-
   responseWithAnAppropriateError(
     err: Error,
     req: Request,

@@ -1,31 +1,30 @@
 import { Router } from 'express';
 import multer from 'multer';
 
-import ProductSubCategoriesController from '../controllers/product-sub-categories.controller';
+import productSubCategoryController from '../controllers/product-sub-category.controller';
 import uploadConfig from '../configs/upload-product-sub-category.config';
 
 const routes = Router();
 const upload = multer(uploadConfig);
-const productSubCategoriesController = new ProductSubCategoriesController();
 
 routes.post(
-  '/:productCategoryUniqueName/adicionar',
+  '/:productCategoryUniqueName',
   upload.single('image'),
-  productSubCategoriesController.store,
+  productSubCategoryController.store,
 );
-routes.get('/:productCategoryUniqueName', productSubCategoriesController.index);
+routes.get('/:productCategoryUniqueName', productSubCategoryController.index);
 routes.get(
   '/:productCategoryUniqueName/:uniqueName',
-  productSubCategoriesController.show,
+  productSubCategoryController.show,
 );
 routes.delete(
   '/:productCategoryUniqueName/:uniqueName',
-  productSubCategoriesController.delete,
+  productSubCategoryController.delete,
 );
 routes.put(
   '/:productCategoryUniqueName/:uniqueName',
   upload.single('image'),
-  productSubCategoriesController.update,
+  productSubCategoryController.update,
 );
 
 export default routes;

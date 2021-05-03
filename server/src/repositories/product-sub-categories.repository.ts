@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm';
 
-import ProductSubCategory from '../models/ProductSubCategory';
+import ProductSubCategoryModel from '../models/product-sub-category.model';
 
-@EntityRepository(ProductSubCategory)
-export class ProductSubCategoryRepository extends Repository<ProductSubCategory> {}
+@EntityRepository(ProductSubCategoryModel)
+export class ProductSubCategoryRepository extends Repository<ProductSubCategoryModel> {}

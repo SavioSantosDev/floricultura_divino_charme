@@ -20,7 +20,16 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(
       null,
-      resolve(__dirname, '..', '..', 'uploads', 'images', 'sub-categories'),
+      process.env.NODE_ENV === 'test'
+        ? resolve(
+            __dirname,
+            '..',
+            '..',
+            'test-uploads',
+            'images',
+            'sub-categories',
+          )
+        : resolve(__dirname, '..', '..', 'uploads', 'images', 'sub-categories'),
     );
   },
   filename: (req, file, cb) => {

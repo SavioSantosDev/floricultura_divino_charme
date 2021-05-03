@@ -17,12 +17,10 @@ export class CreatingProductsCategoriesTable1617391339108
           {
             name: 'name',
             type: 'varchar',
-            length: '20',
           },
           {
             name: 'unique_name',
             type: 'varchar',
-            length: '20',
             isUnique: true,
           },
           {

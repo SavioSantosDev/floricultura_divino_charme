@@ -4,12 +4,10 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ProductSubCategoryKeyword } from './Keywords';
-import ProductCategory from './ProductCategory';
+import ProductCategoryModel from './product-category.model';
 
 export interface IProductSubCategory {
   id: string;
@@ -18,12 +16,11 @@ export interface IProductSubCategory {
   image: string;
   created_at: Date;
   updated_at: Date;
-  product_category: ProductCategory;
-  keywords: ProductSubCategoryKeyword[];
+  product_category: ProductCategoryModel;
 }
 
 @Entity('product_sub_categories')
-export default class ProductSubCategory implements IProductSubCategory {
+export default class ProductSubCategoryModel implements IProductSubCategory {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
@@ -50,20 +47,9 @@ export default class ProductSubCategory implements IProductSubCategory {
   updated_at!: Date;
 
   @ManyToOne(
-    () => ProductCategory,
+    () => ProductCategoryModel,
     (product_category) => product_category.product_sub_categories,
   )
   @JoinColumn({ name: 'product_category_id' })
-  product_category!: ProductCategory;
-
-  @OneToMany(
-    () => ProductSubCategoryKeyword,
-    (keyword) => keyword.product_sub_category,
-    {
-      onDelete: 'CASCADE',
-      onUpdate: 'CASCADE',
-    },
-  )
-  @JoinColumn({ name: 'product_sub_category_id' })
-  keywords!: ProductSubCategoryKeyword[];
+  product_category!: ProductCategoryModel;
 }
