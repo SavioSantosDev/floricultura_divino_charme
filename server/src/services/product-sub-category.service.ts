@@ -3,7 +3,7 @@ import ProductCategoryModel from '../models/product-category.model';
 import ProductSubCategoryModel from '../models/product-sub-category.model';
 import Repositories from '../utils/custom-repositories';
 import { removeOneFile } from '../utils/manage-files';
-import Schemas from '../utils/schemas';
+import { CategorySchema } from '../utils/schemas';
 import simplifyString from '../utils/simplify-string';
 
 class ClientErrors {
@@ -187,8 +187,8 @@ export default class ProductSubCategoryService {
     await this.findProductCategory();
 
     // Validating data
-    await Schemas.validateNameSchema(this.storeName);
-    await Schemas.validateNameSchema(this.storeUniqueName);
+    await CategorySchema.validateNameSchema(this.storeName);
+    await CategorySchema.validateNameSchema(this.storeUniqueName);
 
     await this.errorIfProductSubCategoryAlreadyExists();
 
@@ -224,8 +224,8 @@ export default class ProductSubCategoryService {
     const oldImage = this.productSubCategory?.image as string;
 
     // Validating data
-    await Schemas.validateNameSchema(this.storeName);
-    await Schemas.validateNameSchema(this.storeUniqueName);
+    await CategorySchema.validateNameSchema(this.storeName);
+    await CategorySchema.validateNameSchema(this.storeUniqueName);
 
     await this.errorIfProductSubCategoryAlreadyExists();
 

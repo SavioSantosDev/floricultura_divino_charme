@@ -7,7 +7,7 @@ import {
 import {
   dropTableAndCloseConnection,
   createConnectionAndRunMigrations,
-} from '../factories';
+} from '../utils';
 import {
   expectSutName,
   expectSutUniqueName,
@@ -19,9 +19,9 @@ import {
   storeSut,
   updateSut,
   makeSut,
-} from '../utils/product-categories.utils';
+} from '../factories/category.factory';
 
-const sutRoute = '/admin/categorias';
+const sutRoute = '/api/categorias';
 const uploadDir = resolve(
   __dirname,
   '..',

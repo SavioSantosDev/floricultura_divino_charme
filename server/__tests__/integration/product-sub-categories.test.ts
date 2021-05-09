@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import {
   dropTableAndCloseConnection,
   createConnectionAndRunMigrations,
-} from '../factories';
+} from '../utils';
 import {
   makeSut,
   storeSut,
@@ -15,18 +15,18 @@ import {
   expectSutUniqueName,
   expectSutImage,
   expectSutProductCategory,
-} from '../utils/product-sub-categories.utils';
+} from '../factories/sub-category.factory';
 
 import {
   makeSut as makeProductCategory,
   storeSut as storeProductCategory,
-} from '../utils/product-categories.utils';
+} from '../factories/category.factory';
 import {
   numberOfFiles,
   removeAllDirectoryFiles,
 } from '../../src/utils/manage-files';
 
-const routeIndex = '/admin/sub-categorias';
+const routeIndex = '/api/sub-categorias';
 const uploadDir = resolve(
   __dirname,
   '..',
@@ -79,7 +79,7 @@ beforeAll(async () => {
     image: imagePath,
   });
   const productCategoryUniqueName = (
-    await storeProductCategory('/admin/categorias', productCategory)
+    await storeProductCategory('/api/categorias', productCategory)
   ).body.unique_name;
   route = `${routeIndex}/${productCategoryUniqueName}`;
 });

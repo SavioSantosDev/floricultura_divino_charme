@@ -9,6 +9,7 @@ import { resolve } from 'path';
 
 // import sendEmail from './routes/send-email.routes';
 import createConnection from './database/';
+import productRoutes from './routes/product.routes';
 import productCategoriesRoutes from './routes/product-categories.routes';
 import productSubCategoriesRoutes from './routes/product-sub-categories.routes';
 import handlingError from './errors/handling.error';
@@ -32,8 +33,9 @@ class App {
 
   private routes(): void {
     // this.app.use('/api/send-email', sendEmail);
-    this.app.use('/admin/categorias', productCategoriesRoutes);
-    this.app.use('/admin/sub-categorias', productSubCategoriesRoutes);
+    this.app.use('/api/produtos', productRoutes);
+    this.app.use('/api/categorias', productCategoriesRoutes);
+    this.app.use('/api/sub-categorias', productSubCategoriesRoutes);
   }
 
   private errors(): void {
