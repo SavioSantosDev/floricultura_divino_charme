@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { join } from 'path';
+// import { join } from 'path';
 
 export function removeOneFile(
   path: string,
@@ -19,22 +19,22 @@ export function numberOfFiles(
   });
 }
 
-export function removeAllDirectoryFiles(
-  path: string,
-): Promise<true | NodeJS.ErrnoException[]> {
-  return new Promise<NodeJS.ErrnoException[] | true>((resolve, reject) => {
-    fs.readdir(path, (err, files) => {
-      if (err) reject(err);
+// export function removeAllDirectoryFiles(
+//   path: string,
+// ): Promise<true | NodeJS.ErrnoException[]> {
+//   return new Promise<NodeJS.ErrnoException[] | true>((resolve, reject) => {
+//     fs.readdir(path, (err, files) => {
+//       if (err) reject(err);
 
-      try {
-        for (const file of files) {
-          removeOneFile(join(path, file));
-        }
-      } catch (err) {
-        reject(err);
-      }
+//       try {
+//         for (const file of files) {
+//           removeOneFile(join(path, file));
+//         }
+//       } catch (err) {
+//         reject(err);
+//       }
 
-      resolve(true);
-    });
-  });
-}
+//       resolve(true);
+//     });
+//   });
+// }

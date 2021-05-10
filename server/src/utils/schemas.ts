@@ -9,7 +9,7 @@ type ProductFields = {
 };
 
 export class CategorySchema {
-  static nameSchema = yup.string().required().max(20);
+  static nameSchema = yup.string().required().max(255);
 
   static async validateNameSchema(name?: string): Promise<void> {
     await CategorySchema.nameSchema.validate(name, { abortEarly: false });

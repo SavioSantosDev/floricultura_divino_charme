@@ -1,6 +1,6 @@
 import { AppError } from '../errors/app.error';
-import ProductModel from '../models/product.model';
-import Repositories from '../utils/custom-repositories';
+import { Product } from '../models/Product';
+import { Repositories } from '../repositories/_custom-repositories';
 import simplifyString from '../utils/simplify-string';
 import { ProductSchema } from '../utils/schemas';
 
@@ -30,10 +30,10 @@ export class ProductService {
   private active?: boolean;
   private reqUniqueName?: string;
 
-  private product?: ProductModel; // All methods
-  private removedProduct?: ProductModel; // Delete
-  private updateProduct?: ProductModel; // Update
-  private products?: ProductModel[]; // Index
+  private product?: Product; // All methods
+  private removedProduct?: Product; // Delete
+  private updateProduct?: Product; // Update
+  private products?: Product[]; // Index
 
   constructor({
     name,
@@ -145,15 +145,15 @@ export class ProductService {
   /**
    * Get all producst
    */
-  async index(): Promise<ProductModel[]> {
+  async index(): Promise<Product[]> {
     await this.findAllProducts();
-    return this.products as ProductModel[];
+    return this.products as Product[];
   }
 
   /**
    * Get a single product
    */
-  async show(): Promise<ProductModel | undefined> {
+  async show(): Promise<Product | undefined> {
     await this.findOneByReqUniqueName();
     this.errorIfNoProductHasBeenFound();
     return this.product;
@@ -162,7 +162,7 @@ export class ProductService {
   /**
    * Store a product and get created product
    */
-  async store(): Promise<ProductModel | undefined> {
+  async store(): Promise<Product | undefined> {
     await this.validateProductData();
 
     await this.errorIfProductAlreadyExists();
@@ -172,7 +172,7 @@ export class ProductService {
     return this.product;
   }
 
-  async update(): Promise<ProductModel | undefined> {
+  async update(): Promise<Product | undefined> {
     // Checking if exist
     await this.findOneByReqUniqueName();
     this.errorIfNoProductHasBeenFound();
@@ -191,7 +191,7 @@ export class ProductService {
     return this.product;
   }
 
-  async delete(): Promise<ProductModel | undefined> {
+  async delete(): Promise<Product | undefined> {
     await this.findOneByReqUniqueName();
     this.errorIfNoProductHasBeenFound();
 

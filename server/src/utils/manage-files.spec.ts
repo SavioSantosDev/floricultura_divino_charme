@@ -26,9 +26,9 @@ function createNewFile(path: string) {
   });
 }
 
-function createFiles(paths: string[]) {
-  paths.forEach(async (path) => await createNewFile(path));
-}
+// function createFiles(paths: string[]) {
+//   paths.forEach(async (path) => await createNewFile(path));
+// }
 
 describe('Remove files of disk', () => {
   beforeAll(async () => {
@@ -39,8 +39,18 @@ describe('Remove files of disk', () => {
     await removeDirectory();
   });
 
-  it('should remove one file with the specified path', async () => {
+  it('Should remove one file with the specified path', async () => {
     const filePath = path.resolve(__dirname, 'test', 'hello.txt');
+
+    if ((await createNewFile(filePath)) === true) numberOfFilesCounter++;
+    if ((await removeOneFile(filePath)) === true) numberOfFilesCounter--;
+
+    const numberOfCreatedFiles = await numberOfFiles(testDirectory);
+    expect(numberOfCreatedFiles).toEqual(numberOfFilesCounter);
+  });
+
+  it('Should not remove one file with the invalid path', async () => {
+    const filePath = path.resolve(__dirname, 'test', 'invalid.txt');
 
     if ((await createNewFile(filePath)) === true) numberOfFilesCounter++;
     if ((await removeOneFile(filePath)) === true) numberOfFilesCounter--;

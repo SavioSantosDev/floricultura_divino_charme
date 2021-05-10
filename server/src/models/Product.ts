@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-export interface IProductCategory {
+export interface IProduct {
   id: string;
   name: string;
   unique_name: string;
@@ -18,7 +18,7 @@ export interface IProductCategory {
 }
 
 @Entity('products')
-export default class ProductModel implements IProductCategory {
+export class Product implements IProduct {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 

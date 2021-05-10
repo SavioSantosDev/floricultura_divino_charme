@@ -8,7 +8,7 @@ export async function createConnectionAndRunMigrations(): Promise<void> {
   await connection.runMigrations();
 }
 
-export async function dropTableAndCloseConnection(): Promise<void> {
+export async function dropDatabaseAndCloseConnection(): Promise<void> {
   const connection = getConnection();
   await connection.dropDatabase();
   await connection.close();

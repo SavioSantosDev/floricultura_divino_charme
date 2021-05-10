@@ -10,8 +10,8 @@ import { resolve } from 'path';
 // import sendEmail from './routes/send-email.routes';
 import createConnection from './database/';
 import productRoutes from './routes/product.routes';
-import productCategoriesRoutes from './routes/product-categories.routes';
-import productSubCategoriesRoutes from './routes/product-sub-categories.routes';
+import productCategoriesRoutes from './routes/category.routes';
+import productSubCategoriesRoutes from './routes/sub-category.routes';
 import handlingError from './errors/handling.error';
 
 class App {

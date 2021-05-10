@@ -49,6 +49,7 @@ export class CreatingProductsTable1620149405525 implements MigrationInterface {
     );
   }
 
+  /* istanbul ignore next */
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable('products');
   }

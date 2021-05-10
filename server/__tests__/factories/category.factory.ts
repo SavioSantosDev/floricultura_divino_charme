@@ -2,24 +2,6 @@ import request from 'supertest';
 
 import app from '../../src/app';
 
-// Mocks - Same for PRODUCT CATEGORY and PRODUCT SUB CATEGORY
-
-type ProductCategoryFields = {
-  name?: string;
-  image?: string;
-};
-
-export class MockProductCategory implements ProductCategoryFields {
-  constructor(public name?: string, public image?: string) {}
-}
-
-export function makeSut({
-  name,
-  image,
-}: ProductCategoryFields): MockProductCategory {
-  return new MockProductCategory(name, image);
-}
-
 // Requests
 
 export function reqStore(route: string): request.Test {
@@ -46,56 +28,26 @@ export function reqUpdate(route: string, uniqueName: string): request.Test {
 
 export async function storeSut(
   route: string,
-  { name, image }: MockProductCategory,
+  name?: string,
 ): Promise<request.Response> {
-  if (name && image) {
-    return await reqStore(route).field('name', name).attach('image', image);
-  }
+  const req = reqStore(route);
+
   if (name) {
-    return await reqStore(route).field('name', name);
+    return await req.field('name', name);
   }
-  if (image) {
-    return await reqStore(route).attach('image', image);
-  }
-  return await reqStore(route);
+
+  return await req;
 }
 
 export async function updateSut(
   route: string,
   uniqueName: string,
-  { name, image }: MockProductCategory,
+  name?: string,
 ): Promise<request.Response> {
-  if (name && image) {
-    return await reqUpdate(route, uniqueName)
-      .field('name', name)
-      .attach('image', image);
-  }
+  const req = reqUpdate(route, uniqueName);
+
   if (name) {
-    return await reqUpdate(route, uniqueName).field('name', name);
+    req.field('name', name);
   }
-  if (image) {
-    return await reqUpdate(route, uniqueName).attach('image', image);
-  }
-  return await reqUpdate(route, uniqueName);
-}
-
-// Expects data for Product Category
-
-export function expectSutName(res: request.Response, name: string): void {
-  expect(res.body).toHaveProperty('name', name);
-}
-
-export function expectSutUniqueName(
-  res: request.Response,
-  uniqueName: string,
-): void {
-  expect(res.body).toHaveProperty('unique_name', uniqueName);
-}
-
-export function expectSutImage(res: request.Response): void {
-  expect(res.body).toHaveProperty('image');
-}
-
-export function expectSutProductSubCategories(res: request.Response): void {
-  expect(res.body).toHaveProperty('product_sub_categories');
+  return await req;
 }

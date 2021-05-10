@@ -1,6 +1,6 @@
 import {
   createConnectionAndRunMigrations,
-  dropTableAndCloseConnection,
+  dropDatabaseAndCloseConnection,
 } from '../utils';
 import {
   makeSut,
@@ -99,6 +99,18 @@ function expectSutData(resData: any, expectData: ExpectSutData) {
   expect(resData).toHaveProperty('active', expectData.active);
 }
 
+async function getProductUniqueNameByIndex(i: number) {
+  return (await reqIndex(baseRoute)).body[i].unique_name;
+}
+
+/**
+ * Check the product data right after the update
+ */
+async function checkUpdateData(uniqueName: string, expectData: ExpectSutData) {
+  const res = await reqShow(baseRoute, uniqueName);
+  expectSutData(res.body, expectData);
+}
+
 // TESTS
 
 beforeAll(async () => {
@@ -106,7 +118,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await dropTableAndCloseConnection();
+  await dropDatabaseAndCloseConnection();
 });
 
 describe('Store Products', () => {
@@ -177,10 +189,6 @@ describe('List all products', () => {
   });
 });
 
-async function getProductUniqueNameByIndex(i: number) {
-  return (await reqIndex(baseRoute)).body[i].unique_name;
-}
-
 /**
  * Show
  */
@@ -200,14 +208,6 @@ describe('Show a single product', () => {
     expectSutData(res2.body, expectSuts[1]);
   });
 });
-
-/**
- * Check the product data right after the update
- */
-async function checkUpdateData(uniqueName: string, expectData: ExpectSutData) {
-  const res = await reqShow(baseRoute, uniqueName);
-  expectSutData(res.body, expectData);
-}
 
 /**
  * Update

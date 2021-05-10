@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { MulterError } from 'multer';
+// import { MulterError } from 'multer';
 import { ValidationError } from 'yup';
 import { AppError } from './app.error';
 
@@ -22,11 +22,11 @@ class HandlingErrors {
       });
     }
 
-    if (err instanceof MulterError) {
-      return res.status(400).json({
-        error: err.message,
-      });
-    }
+    // if (err instanceof MulterError) {
+    //   return res.status(400).json({
+    //     error: err.message,
+    //   });
+    // }
     console.error(err);
     return res.status(500).json({
       error: 'Internal server error!',

@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreatingProductSubCategoriesTable1618523927834
+export class CreatingSubCategoriesTable1620597710745
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'product_sub_categories',
+        name: 'sub_categories',
         columns: [
           {
             name: 'id',
@@ -24,10 +24,6 @@ export class CreatingProductSubCategoriesTable1618523927834
             isUnique: true,
           },
           {
-            name: 'image',
-            type: 'varchar',
-          },
-          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
@@ -38,15 +34,15 @@ export class CreatingProductSubCategoriesTable1618523927834
             default: 'now()',
           },
           {
-            name: 'product_category_id',
+            name: 'category_id',
             type: 'uuid',
           },
         ],
         foreignKeys: [
           {
-            name: 'product_sub_categories',
-            columnNames: ['product_category_id'],
-            referencedTableName: 'product_categories',
+            name: 'sub_categories',
+            columnNames: ['category_id'],
+            referencedTableName: 'categories',
             referencedColumnNames: ['id'],
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE',
@@ -56,7 +52,8 @@ export class CreatingProductSubCategoriesTable1618523927834
     );
   }
 
+  /* istanbul ignore next */
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('product_sub_categories');
+    await queryRunner.dropTable('sub_categories');
   }
 }
