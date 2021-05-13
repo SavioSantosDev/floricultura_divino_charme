@@ -1,18 +1,25 @@
-<section id="s-top" class="bg-light py-8 py-md-9">
+<section id="home-top" class="bg-light">
+  <!-- Imagem de fundo no arquivo de estilo -->
   <div class="container">
     <div class="row">
 
-      <!-- Conteúdo e um espaçamento a mais em baixo -->
-      <div class="col-12 col-md-10 col-lg-8 col-xl-6   content pb-md-8">
-        <div class="mb-5 mb-md-6">
-          <strong>{{ sBanner?.title }}</strong>
-          <p class="text-in-light">{{ sBanner?.content }}</p>
-        </div>
+      <section class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6   content">
+        <header class="mb-5 mb-md-6" *ngIf="homeBanner?.title && homeBanner?.content; else noHomeBanner">
+          <strong>{{ homeBanner?.title }}</strong>
+          <p class="text-in-light mt-3">{{ homeBanner?.content }}</p>
+        </header>
         <a routerLink="/produtos" class="btn btn-primary rounded-pill text-white  fs-4 fs-md-3 py-2 px-5  py-md-3 px-md-6">
           Produtos
         </a>
-      </div>
+      </section>
 
     </div>
   </div>
 </section>
+
+<ng-template #noHomeBanner>
+  <header class="mb-5 mb-md-6">
+    <strong>Respire vida em um ambiente mais aconchegante.</strong>
+    <p class="text-in-light mt-3">Confira a seguir os benefícios de ser ter plantas em casa. Aproveite também para dar uma olhada em nossa loja. Temos várias plantas que vão desde plantas ornamentais para deixar seu lar um lugar mais harmonioso e agradável, até arbóreas para trazer uma visão mais bela em ambientes externos!</p>
+  </header>
+</ng-template>

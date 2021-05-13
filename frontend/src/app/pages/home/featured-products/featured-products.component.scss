@@ -1,0 +1,53 @@
+@import "../../../../styles/own-variables";
+
+#products-preview {
+
+  position: relative;
+
+  .plant-decoration {
+    position: absolute;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    display: none;
+
+    @media (min-width: $bp-sm) {
+      display: block;
+      width: 120px;
+      top: -100px; left: -40px;
+    }
+
+    @media (min-width: $bp-md) {
+      width: 140px;;
+    }
+
+    @media (min-width: $bp-lg) {
+      width: 180px;;
+    }
+
+    @media (min-width: $bp-xl) {
+      width: 200px;
+    }
+
+    @media (min-width: $bp-xxl) {
+      width: 260px;;
+      left: -60px;
+    }
+  }
+
+  .invisible-block {
+    // Don't need calculate grid gutter
+    width: 0px;
+    @media (min-width: $bp-xs) { width: calc((100vw - #{$container-mw-xs}) / 2); }
+    @media (min-width: $bp-sm) { width: calc((100vw - #{$container-mw-sm}) / 2); }
+    @media (min-width: $bp-md) { width: calc((100vw - #{$container-mw-md}) / 2); }
+    @media (min-width: $bp-lg) { width: calc((100vw - #{$container-mw-lg}) / 2); }
+    @media (min-width: $bp-xl) { width: calc((100vw - #{$container-mw-xl}) / 2); }
+    @media (min-width: $bp-xxl) { width: calc((100vw - #{$container-mw-xxl}) / 2); }
+  }
+
+  .product {
+    width: 280px;
+    @media (min-width: $bp-sm) { width: 304px; }
+    @media (min-width: $bp-lg) { width: 360px; }
+  }
+
+}

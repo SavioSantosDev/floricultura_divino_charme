@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { AboutPage } from 'src/models/Pages';
+import { IAboutPage } from 'src/models/pages/About.page';
 
 @Component({
   selector: 'app-about',
@@ -10,10 +10,10 @@ import { AboutPage } from 'src/models/Pages';
 })
 export class AboutComponent implements OnInit {
 
-  pageAbout: AboutPage;
+  aboutPage: IAboutPage;
 
   constructor(route: ActivatedRoute) {
-    this.pageAbout = route.snapshot.data.pageAbout;
+    this.aboutPage = route.snapshot.data.aboutPage;
   }
 
   ngOnInit(): void {

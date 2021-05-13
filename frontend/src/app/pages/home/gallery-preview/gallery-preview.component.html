@@ -1,18 +1,18 @@
 <section id="s-gallery-preview" class="py-6 py-md-7 py-lg-8">
 
-  <img class="plant-decoration-1" src="assets/svg/plant07.svg" alt="Planta Enfeite">
-  <img class="plant-decoration-2" src="assets/svg/plant01.svg" alt="Planta Enfeite">
+  <img class="plant-decoration-1" src="assets/svg/plant07.svg" alt="Planta de decoração">
+  <img class="plant-decoration-2" src="assets/svg/plant01.svg" alt="Planta de decoração">
 
-  <img class="plant-decoration-3" src="assets/svg/plant03.svg" alt="Planta Enfeite">
+  <img class="plant-decoration-3" src="assets/svg/plant03.svg" alt="Planta de decoração">
 
   <div class="container-fluid">
 
     <header class="section-header">
-      <div class="section-title">{{ sGallery?.subtitle }}</div>
-      <h1>{{ sGallery?.title }}</h1>
+      <div class="section-title">{{ homeGallery?.subtitle }}</div>
+      <h1>{{ homeGallery?.title }}</h1>
     </header>
 
-    <app-gallery-images [galleryImages]="sGallery?.images"></app-gallery-images>
+    <app-gallery-images [galleryImages]="homeGallery?.images"></app-gallery-images>
 
     <div class="d-flex justify-content-center mt-5">
       <a routerLink="/galeria" class="btn btn-primary rounded-pill">Galeria completa</a>

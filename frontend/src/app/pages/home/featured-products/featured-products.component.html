@@ -1,0 +1,40 @@
+<section id="products-preview" class="py-6 py-md-7 py-lg-8">
+
+  <img class="plant-decoration" src="assets/svg/plant02.svg" alt="Planta de decoração">
+
+  <div class="container">
+    <header class="section-header">
+      <div class="section-title">{{ homeFeaturedProducts?.subtitle }}</div>
+      <h1>{{ homeFeaturedProducts?.title }}</h1>
+    </header>
+  </div>
+
+  <!-- Visible XL > -->
+  <div class="d-none d-xl-block container">
+    <div class="row">
+      <div class="col-4" *ngFor="let product of homeFeaturedProducts?.products">
+        <app-product-card [product]="product"></app-product-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visible XXS - LG -->
+  <!-- Slider window -->
+  <div class="d-block d-xl-none overflow-auto w-100  pb-5">
+    <!-- Slider contents wrapper -->
+    <div class="row gx-3 gx-md-5 flex-nowrap">
+      <div class="invisible-block"></div><!-- width = (window - container) / 2 -->
+      <div class="product" *ngFor="let product of homeFeaturedProducts?.products">
+        <app-product-card [product]="product"></app-product-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex justify-content-center mt-5">
+      <a routerLink="/produtos" class="btn btn-primary rounded-pill d-flex aling-items-center">
+        Produtos mais vendidos <span class="material-icons ms-3">arrow_right_alt</span>
+      </a>
+    </div>
+  </div>
+</section>

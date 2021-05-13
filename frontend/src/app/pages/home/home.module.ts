@@ -7,8 +7,9 @@ import { HomeComponent } from './home.component';
 import { TopComponent } from './top/top.component';
 import { BenefitsComponent } from './benefits/benefits.component';
 import { GalleryPreviewComponent } from './gallery-preview/gallery-preview.component';
-import { ProductsPreviewComponent } from './products-preview/products-preview.component';
-import { ProductsLinksComponent } from './products-links/products-links.component';
+import { FeaturedProductsComponent } from './featured-products/featured-products.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { ProductCardModule } from 'src/app/components/product-card/product-card.module';
 
 
 @NgModule({
@@ -17,13 +18,14 @@ import { ProductsLinksComponent } from './products-links/products-links.componen
     TopComponent,
     BenefitsComponent,
     GalleryPreviewComponent,
-    ProductsPreviewComponent,
-    ProductsLinksComponent
+    FeaturedProductsComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    ProductCardModule,
   ]
 })
 export class HomeModule { }

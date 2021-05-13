@@ -4,20 +4,20 @@ import { RouterModule } from '@angular/router';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarModule } from '../components/navbar/navbar.module';
+import { FooterModule } from '../components/footer/footer.module';
 
 
 @NgModule({
   declarations: [
     PagesComponent,
-    FooterComponent,
-    NavbarComponent,
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
-    RouterModule
+    RouterModule,
+    NavbarModule,
+    FooterModule,
   ],
 })
 export class PagesModule { }

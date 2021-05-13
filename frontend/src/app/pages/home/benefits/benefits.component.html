@@ -1,28 +1,32 @@
-<section id="s-benefits" class="py-6 py-md-7 py-lg-8">
+<section id="home-benefits" class="py-5 py-md-7 py-lg-8">
 
-  <img class="plant-decoration" src="assets/svg/plant04.svg" alt="Planta Enfeite">
+  <img class="plant-decoration" src="assets/svg/plant04.svg" alt="Planta de decoração">
 
   <div class="container">
-    <div class="row justify-content-center gy-5 gy-xl-0">
 
-      <header class="section-header">
-        <div class="section-title">{{ sBenefits?.subtitle }}</div>
-        <h1>{{ sBenefits?.title }}</h1>
-      </header>
+    <header class="section-header" *ngIf="homeBenefits?.subtitle && homeBenefits?.title; else noHomeBenefits">
+      <div class="section-title">{{ homeBenefits?.subtitle }}</div>
+      <h1>{{ homeBenefits?.title }}</h1>
+    </header>
+
+    <div class="row justify-content-center gy-5">
 
       <!-- Os 3 cards de benefícios -->
-      <div *ngFor="let card of sBenefits?.cards" class="col-12 col-sm-8 col-md-6 col-xl-4   benefit-card">
-        <div class="p-4 p-md-5 rounded border bg-light h-100">
-
+      <div *ngFor="let card of homeBenefits?.cards" class="col-12 col-sm-6 col-xl-4   benefit-card">
+        <article class="p-4 p-sm-3 p-md-5 rounded border bg-light h-100   hover-effect">
           <img [src]="card.image" [alt]="card.title" class="card-img">
-
-          <div class="mt-5">
-            <h2 class="text-center">{{ card.title }}</h2>
-            <p class="text-in-light">{{ card.content }}</p>
-          </div>
-        </div>
+          <h2 class="text-center mt-4 mt-md-5 mb-2">{{ card.title }}</h2>
+          <p class="text-in-light">{{ card.content }}</p>
+        </article>
       </div>
 
     </div>
   </div>
 </section>
+
+<ng-template #noHomeBenefits>
+  <header class="section-header">
+    <div class="section-title">Benefícios</div>
+    <h1>Por que ter plantas em casa?</h1>
+  </header>
+</ng-template>

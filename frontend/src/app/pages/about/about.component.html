@@ -1,7 +1,4 @@
-<!-- Os objetos passados deverão conter as mesma propriedades -->
-<app-breadcrumb [links]="[{label: 'Sobre'}]"></app-breadcrumb>
-
-<section id="s-about" class="section">
+<section id="aboutPage" class="section">
 
   <img class="plant-decoration-1" src="assets/svg/plant04.svg" alt="Planta Enfeite">
   <img class="plant-decoration-2" src="assets/svg/plant03.svg" alt="Planta Enfeite">
@@ -11,13 +8,13 @@
 
       <div class="col-12 col-md-10 col-lg-8">
         <header class="mb-3 mb-md-4">
-          <h1>{{ pageAbout.title }}</h1>
+          <h1>{{ aboutPage.title }}</h1>
         </header>
-        <p class="text-in-light">{{ pageAbout.content }}</p>
+        <p class="text-in-light">{{ aboutPage.content }}</p>
       </div>
 
       <div class="col-12 col-md-10">
-        <img [src]="pageAbout.image" [alt]="pageAbout.title" class="w-100">
+        <img [src]="aboutPage.image" [alt]="aboutPage.title" class="w-100">
       </div>
 
     </div>

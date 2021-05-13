@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { HomePageBanner } from 'src/models/Pages';
+import { IBanner } from 'src/models/pages/Home.page';
 
 @Component({
   selector: 'app-top',
@@ -9,7 +9,7 @@ import { HomePageBanner } from 'src/models/Pages';
 })
 export class TopComponent implements OnInit {
 
-  @Input() sBanner?: HomePageBanner;
+  @Input() homeBanner?: IBanner;
 
   constructor() { }
 

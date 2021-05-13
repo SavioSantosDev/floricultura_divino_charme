@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { StoreInformation } from 'src/models/StoreInformation';
-import { ContactPage } from 'src/models/Pages';
+import { IContactPage } from 'src/models/pages/Contact.page';
 
 @Component({
   selector: 'app-contact',
@@ -12,13 +12,13 @@ import { ContactPage } from 'src/models/Pages';
 export class ContactComponent implements OnInit {
 
   storeInformation: StoreInformation;
-  pageContact: ContactPage;
+  contactPage: IContactPage;
 
   constructor(
     private route: ActivatedRoute
   ) {
     this.storeInformation = this.route.snapshot.data.storeInformation;
-    this.pageContact = this.route.snapshot.data.pageContact;
+    this.contactPage = this.route.snapshot.data.contactPage;
   }
 
   ngOnInit(): void {

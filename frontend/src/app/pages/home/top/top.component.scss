@@ -1,16 +1,36 @@
 @import "../../../../styles/own-variables";
 
-#s-top {
+#home-top {
+  padding-top: 48px;
+  padding-bottom: 144px;
 
-  @media (min-width: $bp-md) {
-    background-image: url('../../../../assets/images/bg-top.png');
-    background-repeat: no-repeat;
-    background-size: 50%;
-    background-position: right bottom;
+  .content {
+    strong {
+      font-size: clamp(28px, 5.2vw, 44px);
+      line-height: 1.2;
+    }
   }
 
-  .content strong {
-    font-size: clamp(32px, 5.2vw, 48px);
-    line-height: 1.2;
+  background-image: url('../../../../assets/images/bg-top.png');
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: 110% 105%;
+
+  @media (min-width: $bp-xs) {
+    padding-top: 96px;
+    padding-bottom: 192px;
+  }
+
+  @media (min-width: $bp-sm) {
+    background-size: 50%;
+  }
+
+  @media (min-width: $bp-md) {
+    padding-top: 192px;
+  }
+
+  @media (min-width: $bp-xxl) {
+    background-position: 100% 100%;
+    background-size: 40%;
   }
 }

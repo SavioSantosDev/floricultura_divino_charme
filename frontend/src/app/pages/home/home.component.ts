@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { HomePage } from 'src/models/Pages';
+import { IHomePage } from 'src/models/pages/Home.page';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +10,11 @@ import { HomePage } from 'src/models/Pages';
 })
 export class HomeComponent implements OnInit {
 
-  pageHome: HomePage;   // Conteúdo da página home
+  homePage: IHomePage;   // Conteúdo da página home
 
   constructor(route: ActivatedRoute) {
-    this.pageHome = route.snapshot.data.pageHome;
-    console.log(this.pageHome)
+    this.homePage = route.snapshot.data.homePage;
+    console.log(this.homePage)
   }
 
   ngOnInit(): void {

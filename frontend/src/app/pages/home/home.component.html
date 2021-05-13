@@ -1,10 +1,10 @@
 
 <!-- A página inicial será divida nas sessões abaixo -->
 
-<app-top [sBanner]="pageHome.banner"></app-top>
-<app-benefits [sBenefits]="pageHome.benefits"></app-benefits>
-<app-products-links [sProducts]="pageHome.products"></app-products-links>
-<app-products-preview [sFeaturedProducts]="pageHome.featuredProducts"></app-products-preview>
-<app-gallery-preview [sGallery]="pageHome.gallery"></app-gallery-preview>
+<app-top [homeBanner]="homePage.banner"></app-top>
+<app-benefits [homeBenefits]="homePage.benefits"></app-benefits>
+<app-categories [homeCategories]="homePage.categories"></app-categories>
+<app-featured-products [homeFeaturedProducts]="homePage.featuredProducts"></app-featured-products>
+<app-gallery-preview [homeGallery]="homePage.gallery"></app-gallery-preview>
 
 <app-scroll-top></app-scroll-top>

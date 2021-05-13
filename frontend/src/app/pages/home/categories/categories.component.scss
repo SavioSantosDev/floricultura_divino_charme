@@ -1,0 +1,75 @@
+@import "../../../../styles/own-variables";
+
+#homeCategories {
+
+  position: relative;
+
+  .plant-decoration {
+    position: absolute;
+    transform: matrix(-0.73, 0.69, 0.69, 0.73, 0, 0);
+    display: none;
+
+    @media (min-width: $bp-sm) {
+      display: block;
+      width: 140px;
+      top: -100px; right: -70px;
+    }
+
+    @media (min-width: $bp-md) {
+      width: 200px;
+      right: -100px;
+    }
+
+    @media (min-width: $bp-lg) {
+      width: 260px;
+      right: -130px;
+      top: -160px;
+    }
+
+    @media (min-width: $bp-xxl) {
+      width: 290px;
+    }
+  }
+
+  .invisible-block {
+    // Don't need calculate grid gutter
+    width: 0px;
+    @media (min-width: $bp-xs) { width: calc((100vw - #{$container-mw-xs}) / 2); }
+    @media (min-width: $bp-sm) { width: calc((100vw - #{$container-mw-sm}) / 2); }
+    @media (min-width: $bp-md) { width: calc((100vw - #{$container-mw-md}) / 2); }
+    @media (min-width: $bp-lg) { width: calc((100vw - #{$container-mw-lg}) / 2); }
+    @media (min-width: $bp-xl) { width: calc((100vw - #{$container-mw-xl}) / 2); }
+    @media (min-width: $bp-xxl) { width: calc((100vw - #{$container-mw-xxl}) / 2); }
+  }
+
+  .category {
+    width: 128px;
+    text-decoration: none;
+    transition: .2s;
+    box-sizing: content-box;
+
+    .category-image {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+
+      img {
+        position: absolute;
+        top: 0; left: 0;
+        border-radius: 20rem;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    &:hover {
+      opacity: .8;
+    }
+
+    @media (min-width: $bp-xs) { width: 144px; }
+    @media (min-width: $bp-md) { width: 192px; }
+    @media (min-width: $bp-xl) { width: 240px; }
+  }
+}
