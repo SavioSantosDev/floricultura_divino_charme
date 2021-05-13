@@ -1,122 +1,132 @@
 [
   {
-    "name": "anturio",
-    "category": "planta",
+    "name": "Antúrio",
+    "unique_name": "anturio",
+    "value": 58.90,
+    "category": "plantas",
+    "code": "78293857829302",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
     "images": [
-      "assets/images/product1.png",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
+      "assets/images/products/anturio.png",
+      "assets/images/products/vaso1.png",
+      "assets/images/products/vaso2.png"
     ]
   },
   {
-    "name": "rosa-do-deserto",
-    "category": "planta",
+    "name": "Caqueiro branco",
+    "unique_name": "caqueiro-branco",
+    "value": 75.90,
+    "category": "caqueiros",
+    "code": "78293857829302",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
     "images": [
-      "assets/images/img1.jpg",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
+      "assets/images/products/vaso3.png",
+      "assets/images/products/vaso1.png",
+      "assets/images/products/vaso2.png"
     ]
   },
   {
-    "name": "caqueiro-verde",
-    "category": "vasos",
+    "name": "Pata de elefante",
+    "unique_name": "pata-de-elefante",
+    "value": 98.90,
+    "category": "plantas",
+    "code": "78293857829302",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
     "images": [
-      "assets/images/product1.png",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
+      "assets/images/products/pata-de-elefante.png",
+      "assets/images/products/vaso1.png",
+      "assets/images/products/vaso2.png"
     ]
   },
   {
-    "name": "humus-flor",
+    "name": "Adubo",
+    "unique_name": "adubo",
+    "value": 5.90,
     "category": "adubos",
+    "code": "78293857829302",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
     "images": [
-      "assets/images/img2.jpg",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
+      "assets/images/products/adubo.png",
+      "assets/images/products/vaso1.png",
+      "assets/images/products/vaso2.png"
     ]
   },
   {
-    "name": "lirios",
-    "category": "planta",
+    "name": "Crot",
+    "unique_name": "crot",
+    "value": 38,
+    "category": "plantas",
+    "code": "78293857829302",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
     "images": [
-      "assets/images/product1.png",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
+      "assets/images/products/crot.png",
+      "assets/images/products/vaso1.png",
+      "assets/images/products/vaso2.png"
     ]
   },
   {
-    "name": "umbu",
-    "category": "planta",
+    "name": "Espada de São Jorge",
+    "unique_name": "espada-de-sao-jorge",
+    "value": 58.90,
+    "category": "plantas",
+    "code": "78293857829302",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
     "images": [
-      "assets/images/img6.jpg",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
+      "assets/images/products/espada-sao-jorge.png",
+      "assets/images/products/vaso1.png",
+      "assets/images/products/vaso2.png"
     ]
   },
   {
-    "name": "lirios",
-    "category": "artesanato",
+    "name": "Lírio da paz",
+    "unique_name": "lirio-da-paz",
+    "value": 35.00,
+    "category": "plantas",
+    "code": "78293857829302",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
     "images": [
-      "assets/images/img7.jpg",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
+      "assets/images/products/lirio-da-paz.png",
+      "assets/images/products/vaso1.png",
+      "assets/images/products/vaso2.png"
     ]
   },
   {
-    "name": "lembrancinhas",
-    "category": "artesanato",
+    "name": "Lírio da paz",
+    "unique_name": "lirio-da-paz-2",
+    "value": 55.90,
+    "category": "plantas",
+    "code": "78293857829302",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
     "images": [
-      "assets/images/product1.png",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
+      "assets/images/products/lirio-da-paz-2.png",
+      "assets/images/products/vaso1.png",
+      "assets/images/products/vaso2.png"
     ]
   },
   {
-    "name": "anturio",
-    "category": "planta",
+    "name": "Rosa do deserto",
+    "unique_name": "rosa-do-deserto",
+    "value": 92.90,
+    "category": "plantas",
+    "code": "78293857829302",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
     "images": [
-      "assets/images/img1.jpg",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
+      "assets/images/products/rosa-do-deserto.png",
+      "assets/images/products/vaso1.png",
+      "assets/images/products/vaso2.png"
     ]
   },
   {
-    "name": "laranjeira",
-    "category": "planta",
+    "name": "Caqueiro branco grande",
+    "unique_name": "caqueiro-branco-grande",
+    "value": 150,
+    "category": "caqueiros",
+    "code": "78293857829302",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
     "images": [
-      "assets/images/product1.png",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
-    ]
-  },
-  {
-    "name": "caqueiro-grande",
-    "category": "vasos",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
-    "images": [
-      "assets/images/img7.jpg",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
-    ]
-  },
-  {
-    "name": "rosas",
-    "category": "planta",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
-    "images": [
-      "assets/images/product1.png",
-      "assets/images/product2.png",
-      "assets/images/product3.png"
+      "assets/images/products/vaso3.png",
+      "assets/images/products/vaso1.png",
+      "assets/images/products/vaso2.png"
     ]
   }
 ]

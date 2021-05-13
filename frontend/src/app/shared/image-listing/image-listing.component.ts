@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Photo } from 'src/models/Photo';
+import { IImage } from 'src/models/Image';
 
 @Component({
   selector: 'app-image-listing',
@@ -8,7 +8,7 @@ import { Photo } from 'src/models/Photo';
 })
 export class ImageListingComponent implements OnInit {
 
-  @Input() images?: Photo[];
+  @Input() images?: IImage[];
   /**
    * Imagens que serão exibidas por linha
    * images-per-row-<1,2,3,4,5,6>

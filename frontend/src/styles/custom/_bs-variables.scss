@@ -16,7 +16,6 @@ $black:    #000 !default;
 
 
 $primary:       $color-primary;
-$secondary:     $color-secondary;
 $success:       $color-success;
 $info:          $color-info;
 $warning:       $color-warning;
@@ -25,13 +24,9 @@ $light:         $gray-1;
 $dark1:         $gray-8;
 $dark2:         $gray-9;
 
-$in-dark:     $color-in-dark;
-$in-light:    $color-in-light;
-
 // scss-docs-start theme-colors-map
 $theme-colors: (
   "primary":    $primary,
-  "secondary":  $secondary,
   "success":    $success,
   "info":       $info,
   "warning":    $warning,
@@ -39,8 +34,8 @@ $theme-colors: (
   "light":      $light,
   "dark-1":     $dark1,
   "dark-2":     $dark2,
-  "in-light":   $in-light,
-  "in-dark":    $in-dark
+  "in-light":   $color-secondary-in-light,
+  "in-dark":    $color-secondary-in-dark
 );
 
 $min-contrast-ratio:   3;
@@ -72,7 +67,7 @@ $spacers: (
   1: $spacer / 4,
   2: $spacer / 2,
   3: $spacer,
-  4: $spacer * 1.5,
+  4: $spacer * 1.5,   // 24px
   5: $spacer * 2,     // 32px
   6: $spacer * 3,     // 48px
   7: $spacer * 4,     // 64px
@@ -96,6 +91,7 @@ $link-color:                              $body-color;
 
 // Grid breakpoints / Grid containers
 $grid-breakpoints: (
+  xxs: $bp-xxs,
   xs: $bp-xs,
   sm: $bp-sm,
   md: $bp-md,
@@ -105,11 +101,12 @@ $grid-breakpoints: (
 );
 
 $container-max-widths: (
-  sm: 576px,
-  md: 720px,
-  lg: 960px,
-  xl: 1152px,
-  xxl: 1320px
+  xs: $container-mw-xs,
+  sm: $container-mw-sm,
+  md: $container-mw-md,
+  lg: $container-mw-lg,
+  xl: $container-mw-xl,
+  xxl: $container-mw-xxl
 );
 
 
@@ -118,7 +115,7 @@ $container-max-widths: (
 // Set the number of columns and specify the width of the gutters.
 
 // $grid-columns:                12 !default;
-$grid-gutter-width:           2rem;
+$grid-gutter-width:              $grid-gutter;
 // $grid-row-columns:            6 !default;
 
 // $gutters: $spacers !default;
@@ -134,25 +131,6 @@ $border-color:                $gray-2;
 $border-radius:               .5rem;
 $border-radius-sm:            .25rem;
 $border-radius-lg:            1rem;
-// $border-radius-pill:          50rem !default;
-
-// $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
-// $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
-// $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
-// $box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
-
-// $component-active-color:      $white !default;
-// $component-active-bg:         $primary !default;
-
-// $caret-width:                 .3em !default;
-// $caret-vertical-align:        $caret-width * .85 !default;
-// $caret-spacing:               $caret-width * .85 !default;
-
-// $transition-base:             all .2s ease-in-out !default;
-// $transition-fade:             opacity .15s linear !default;
-// $transition-collapse:         height .35s ease !default;
-
-
 
 $font-family-sans-serif:      "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 
@@ -165,32 +143,27 @@ $h4-font-size:                clamp(12px, 1.9vw, 16px);
 
 $headings-margin-bottom:      1rem;
 $headings-font-family:        "Petrona";
-// $headings-font-style:         null !default;
 $headings-font-weight:        700;
-// $headings-line-height:        1.2 !default;
-// $headings-color:              null !default;
 
-$small-font-size:             clamp(10px, 1.4vw, 12px);
+$small-font-size:             $small-font-size;
 
 
-
+// Input + Forms
 
 $input-btn-padding-y:         .75rem;
 $input-btn-padding-x:         2rem;
-// $input-btn-font-family:       null !default;
 $input-btn-font-size:         $body-font-size;
-// $input-btn-line-height:       $line-height-base !default;
 
+$input-btn-padding-y-sm:      .5rem !default;
+$input-btn-padding-x-sm:      1.5rem !default;
+$input-btn-font-size-sm:      $small-font-size;
 
 $btn-disabled-opacity:        .3;
 $btn-font-weight:             700;
 
 
-// $form-label-margin-bottom:              .5rem !default;
 $form-label-font-size:                  $body-font-size;
-// $form-label-font-style:                 null !default;
 $form-label-font-weight:                700;
-// $form-label-color:                      null !default;
 
 
 $input-padding-x:   1rem;
@@ -208,27 +181,9 @@ $input-focus-border-color:              $gray-2;
 $input-focus-color:                     $body-color;
 
 
-
 // Navbar
 
 $navbar-padding-y:                  1rem;
-// $navbar-padding-x:                  null !default;
-
-// $navbar-nav-link-padding-x:         .5rem !default;
-
-// $navbar-toggler-padding-y:          .25rem !default;
-// $navbar-toggler-padding-x:          .75rem !default;
-// $navbar-toggler-font-size:          $font-size-lg !default;
-// $navbar-toggler-border-radius:      $btn-border-radius !default;
-// $navbar-toggler-focus-width:        $btn-focus-width !default;
-// $navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
-
-// $navbar-dark-color:                 rgba($white, .55) !default;
-// $navbar-dark-hover-color:           rgba($white, .75) !default;
-// $navbar-dark-active-color:          $white !default;
-// $navbar-dark-disabled-color:        rgba($white, .25) !default;
-// $navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-// $navbar-dark-toggler-border-color:  rgba($white, .1) !default;
 
 $navbar-light-color:                $body-color;
 $navbar-light-hover-color:          $body-color;

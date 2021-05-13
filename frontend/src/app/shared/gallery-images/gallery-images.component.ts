@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Photo } from 'src/models/Photo';
+import { IImage } from 'src/models/Image';
 
 @Component({
   selector: 'app-gallery-images',
@@ -9,7 +9,7 @@ import { Photo } from 'src/models/Photo';
 })
 export class GalleryImagesComponent implements OnInit {
 
-  @Input() galleryImages?: Photo[]; // As imagens da galeria
+  @Input() galleryImages?: IImage[]; // As imagens da galeria
 
   modalImagePath = '';
   modalImageName = '';

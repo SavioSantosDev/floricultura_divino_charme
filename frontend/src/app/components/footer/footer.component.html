@@ -1,0 +1,80 @@
+<footer id="main-footer" class="text-white position-relative">
+  <div class="bg-dark-1 py-5 py-lg-6">
+    <div class="container">
+      <div class="row">
+
+        <!-- LINKS DE NAVEGAÇÃO -->
+        <nav class="col d-none d-lg-block">
+          <h4 class="mb-4 mb-sm-5 text-uppercase">Navegação</h4>
+          <ul class="p-0 d-flex flex-column">
+            <li class="mb-3">
+              <a routerLinkActive="fw-bold text-white" routerLink="/" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+            </li>
+            <li class="mb-3 ">
+              <a routerLinkActive="fw-bold text-white" routerLink="/produtos">Produtos</a>
+            </li>
+            <li class="mb-3 ">
+              <a routerLinkActive="fw-bold text-white" routerLink="/galeria">Galeria</a>
+            </li>
+            <li class="mb-3 ">
+              <a routerLinkActive="fw-bold text-white" routerLink="/sobre">Sobre</a>
+            </li>
+            <!-- O ultimo link não precisa de espaçamento -->
+            <li>
+              <a routerLinkActive="fw-bold text-white" routerLink="/contato">Contato</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- CONTATOS -->
+        <address class="col-12 col-md  mb-5 mb-md-0">
+          <h4 class="mb-4 mb-md-5 text-center text-md-start text-uppercase">Contato</h4>
+          <div class="d-flex flex-column align-items-center align-items-md-start">
+            <!-- E-mail -->
+            <div class="mb-4 mb-md-5 d-flex">
+              <span class="material-icons me-3">mail</span><span>contato@floriculturadc.com</span>
+            </div>
+
+            <!-- Whatsapp -->
+            <div class="mb-4 mb-md-5 d-flex">
+              <svg class="symbol me-3"><use xlink:href="#i-whatsapp"/></svg>
+              <div class="d-flex flex-column">
+                <span class="mb-1">(77) 99165-4556</span>
+                <span>(77) 99122-6429</span>
+              </div>
+            </div>
+
+            <!-- Instagram -->
+            <div class="mb-4 mb-md-5 d-flex">
+              <svg class="symbol me-3"><use xlink:href="#i-instagram"/></svg><span>divino._charme</span>
+            </div>
+          </div>
+        </address>
+
+        <!-- ENDEREÇOS -->
+        <address class="col-12 col-md">
+          <h4 class="mb-4 mb-md-5 text-center text-md-start text-uppercase">Endereço</h4>
+          <div class="d-flex flex-column align-items-center align-items-md-start">
+            <!-- Endereço 1 -->
+            <div class="d-flex">
+              <span class="material-icons me-3">room</span><span>Botuporã - Ba <br> Av. Paramirim - 141</span>
+            </div>
+
+            <div class="divider-in-dark my-4 my-md-5"></div>
+
+            <!-- Endereço 2 -->
+            <div class="d-flex">
+              <span class="material-icons me-3">room</span><span>Tanque Novo - Ba <br> Rua Alfredo Marquer - 220</span>
+            </div>
+          </div>
+        </address>
+
+      </div>
+    </div>
+  </div>
+  <div class="bg-dark-2 py-4 py-lg-5 text-center">
+    <small>
+      &copy; Floricultura Divino Charme todos os direitos reservados.
+    </small>
+  </div>
+</footer>

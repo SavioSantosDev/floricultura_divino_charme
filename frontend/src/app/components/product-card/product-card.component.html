@@ -1,0 +1,23 @@
+<article class="product-card bg-light rounded border p-3 p-lg-5" *ngIf="product">
+  <img [src]="product ? product.images[0] : 'teste'" alt="">
+
+  <!-- Value and name -->
+  <section class="py-3 py-xl-5 text-center">
+    <h4 class="m-0 text-in-light">{{ product?.value | currency:'BRL':true }}</h4>
+    <h2 class="m-0">{{ product?.name }}</h2>
+  </section>
+
+  <!-- Buttons -->
+  <div class="row justify-content-center g-3 g-lg-5">
+    <div class="col-auto">
+      <a class="btn btn-sm btn-outline-primary rounded-pill">
+        Mais detalhes
+      </a>
+    </div>
+    <div class="col-auto">
+      <a class="btn btn-sm btn-primary rounded-pill">
+        Comprar
+      </a>
+    </div>
+  </div>
+</article>

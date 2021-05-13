@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Product } from 'src/models/Product';
+import { IProduct } from 'src/models/Product';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -11,22 +11,21 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductsService {
 
-  private readonly PATH = `${environment.API}products.json`;
+  private readonly PATH = `${environment.API}/products.json`;
 
   constructor(
     private http: HttpClient
   ) { }
 
 
-  list(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.PATH);
+  list(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(this.PATH);
   }
 
 
-  show(name: string): Observable<Product> {
-    return this.http.get<Product[]>(this.PATH).pipe(
-      map((products: Product[]) => products.filter(  (product: Product) => product.name === name  )[0]),
+  show(name: string): Observable<IProduct> {
+    return this.http.get<IProduct[]>(this.PATH).pipe(
+      map((products: IProduct[]) => products.filter(  (product: IProduct) => product.name === name  )[0]),
     );
   }
-
 }

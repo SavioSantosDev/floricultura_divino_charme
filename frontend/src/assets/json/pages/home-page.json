@@ -1,0 +1,152 @@
+{
+  "banner": {
+    "title": "Respire vida em um ambiente mais aconchegante.",
+    "content": "Confira a seguir os benefícios de ser ter plantas em casa. Aproveite também para dar uma olhada em nossa loja. Temos várias plantas que vão desde plantas ornamentais para deixar seu lar um lugar mais harmonioso e agradável, até arbóreas para trazer uma visão mais bela em ambientes externos!"
+  },
+  "benefits": {
+    "title": "Por que ter plantas em casa?",
+    "subtitle": "Benefícios",
+    "cards": [
+      {
+        "image": "assets/svg/health.svg",
+        "title": "Saúde",
+        "content": "Plantas trazem alguns benefícios como alívio de estresse, purificação do ar e estímulo da criatividade além de que a prática da jardinagem pode resultar em ganho de vitalidade e na recuperação de traumas físicos ou psicológicos."
+      },
+      {
+        "image": "assets/svg/decoration.svg",
+        "title": "Decoração",
+        "content": "Plantas são tendência em decoração, é a melhor maneira de deixar os ambientes mais charmosos, aconchegantes e harmoniosos, trazendo tranquilidade, leveza e equilíbrio ao local."
+      },
+      {
+        "image": "assets/svg/medidation.svg",
+        "title": "Concentração",
+        "content": "Plantas próximas aos locais de estudo ou trabalho minimizam distrações e ajudam a reter mais informações, contribuindo para melhor produtividade de um profissional ou estudante."
+      }
+    ]
+  },
+  "categories": {
+    "title": "Dê uma olhada em nossos produtos",
+    "subtitle": "Produtos",
+    "categories": [
+      {
+        "image": "assets/images/categories/1.png",
+        "name": "Decoração",
+        "unique_name": "decoracao"
+      },
+      {
+        "image": "assets/images/categories/2.png",
+        "name": "Frutíferas",
+        "unique_name": "frutiferas"
+      },
+      {
+        "image": "assets/images/categories/3.png",
+        "name": "Ornamentais",
+        "unique_name": "ornamentais"
+      },
+      {
+        "image": "assets/images/categories/4.png",
+        "name": "Arbóreas",
+        "unique_name": "arboreas"
+      },
+      {
+        "image": "assets/images/categories/6.jpg",
+        "name": "Caqueiros",
+        "unique_name": "caqueiros"
+      },
+      {
+        "image": "assets/images/categories/7.jpg",
+        "name": "Adubos",
+        "unique_name": "adubos"
+      },
+      {
+        "image": "assets/images/categories/8.jpg",
+        "name": "Outros",
+        "unique_name": "outros"
+      }
+    ]
+  },
+  "featuredProducts": {
+    "title": "Veja os ítens mais vendidos da loja",
+    "subtitle": "Destaques",
+    "products": [
+      {
+        "name": "Antúrio",
+        "unique_name": "anturio",
+        "value": 18,
+        "category": {
+          "image": "assets/images/categories/3.jpg",
+          "name": "Ornamentais",
+          "unique_name": "ornamentais"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+        "images": [
+          "assets/images/products/anturio.png",
+          "assets/images/products/vaso1.png",
+          "assets/images/products/vaso2.png"
+        ]
+      },
+      {
+        "name": "Caqueiro branco",
+        "unique_name": "caqueiro-branco",
+        "value": 150.90,
+        "category": {
+          "image": "assets/images/categories/6.jpg",
+          "name": "Caqueiros",
+          "unique_name": "caqueiros"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+        "images": [
+          "assets/images/products/vaso3.png",
+          "assets/images/products/vaso1.png",
+          "assets/images/products/vaso2.png"
+        ]
+      },
+      {
+        "name": "Pata de elefante",
+        "unique_name": "pata-de-elefante",
+        "value": 93.50,
+        "category": {
+          "image": "assets/images/categories/3.jpg",
+          "name": "Ornamentais",
+          "unique_name": "ornamentais"
+        },
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+        "images": [
+          "assets/images/products/pata-de-elefante.png",
+          "assets/images/products/vaso1.png",
+          "assets/images/products/vaso2.png"
+        ]
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Visite a nossa galeria de fotos",
+    "subtitle": "Galeria",
+    "images": [
+      {
+        "path": "assets/images/gallery/1.jpg",
+        "name": "Festa"
+      },
+      {
+        "path": "assets/images/gallery/2.jpg",
+        "name": "Nossa loja"
+      },
+      {
+        "path": "assets/images/gallery/3.jpg",
+        "name": "Imagem"
+      },
+      {
+        "path": "assets/images/gallery/4.jpg",
+        "name": "Plantas"
+      },
+      {
+        "path": "assets/images/gallery/5.jpg",
+        "name": "Viveiro"
+      },
+      {
+        "path": "assets/images/gallery/6.jpg",
+        "name": "Cultivação"
+      }
+    ]
+  }
+}

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 import { CamelCasePipe } from './pipes/camel-case.pipe';
 import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
@@ -16,7 +15,6 @@ import { ConfirmModalComponent } from './formularios/confirm-modal/confirm-modal
 
 @NgModule({
   declarations: [
-    BreadcrumbComponent,
     ScrollTopComponent,
     CamelCasePipe,
     InfiniteScrollComponent,
@@ -33,7 +31,6 @@ import { ConfirmModalComponent } from './formularios/confirm-modal/confirm-modal
     LeafletModule,
   ],
   exports: [
-    BreadcrumbComponent,
     ScrollTopComponent,
     CamelCasePipe,
     InfiniteScrollComponent,

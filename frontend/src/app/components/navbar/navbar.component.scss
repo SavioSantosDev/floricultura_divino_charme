@@ -1,0 +1,36 @@
+@import "../../../styles/own-variables";
+
+.navbar {
+
+  .navbar-brand img{
+    width: 32px;
+    height: 32px;
+
+    @media (min-width: $bp-sm) { width: 48px; height: 48px; }
+  }
+
+  .nav-link {
+    padding: 1rem .5rem;
+    position: relative;
+
+    &.active {
+      font-weight: bold;
+      color: $color-primary;
+    }
+
+    &::after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background-color: $color-primary;
+      transition: .2s;
+    }
+
+    // Hover nos links não ativos a borda de baixo fica metade. Em links ativos a borda tem 100% de largura
+    &:not(.active):hover::after { width: 50%; }
+    &.active::after { width: 100%; }
+  }
+}
