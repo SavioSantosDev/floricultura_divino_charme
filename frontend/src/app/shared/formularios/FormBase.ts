@@ -28,15 +28,15 @@ export abstract class FormBase {
    * Mark all fields as touched (for css stylization) for user to identify the invalid fields
    */
   markAllFieldsAsTouched(  controlsGroup: FormGroup | FormArray  ): void {
-    Object.keys(  controlsGroup.controls  ).forEach(  campo => {
-      const control = controlsGroup.get(campo);
-      if (control) {
-        control.markAsTouched();
+    Object.keys(  controlsGroup.controls  ).forEach(  control => {
+      const formControl = controlsGroup.get(control);
+      if (formControl) {
+        formControl.markAsTouched();
       }
 
       // Recussivity for to call the method agin if there are more fields grouped
-      if (  control instanceof FormGroup || control instanceof FormArray  ) {
-        this.markAllFieldsAsTouched(  control  );
+      if (  formControl instanceof FormGroup || formControl instanceof FormArray  ) {
+        this.markAllFieldsAsTouched(  formControl  );
       }
     });
   }

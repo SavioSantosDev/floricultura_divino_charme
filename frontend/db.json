@@ -1,0 +1,427 @@
+{
+  "admins": [
+    {
+      "name": "admin",
+      "email": "admin@email.com",
+      "password": "12345678"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Antúrio",
+      "code": "123456789",
+      "price": 18,
+      "sub_category": {
+        "id": 1,
+        "name": "Ornamentais",
+        "image": {
+          "id": 5,
+          "path": "assets/images/categories/ornamentais.png"
+        },
+        "category": {
+          "id": 1,
+          "name": "Plantas",
+          "image": {
+            "id": 4,
+            "path": "assets/images/categories/plantas.png"
+          }
+        }
+      },
+      "description": "O antúrio é uma planta muito bonita que não gosta de contato direto com o sol. Possui folhas verdes e uma flor muito bonita vermelha. Quem não conhece, muitas vezes pode confundir o Antúrio como uma planta 'falsa' de plástico.",
+      "images": [
+        {
+          "id": 1,
+          "path": "assets/images/products/anturio.png"
+        },
+        {
+          "id": 2,
+          "path": "assets/images/products/vaso1.png"
+        },
+        {
+          "id": 3,
+          "path": "assets/images/products/vaso2.png"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Crot",
+      "code": "123456789",
+      "price": 35,
+      "sub_category": {
+        "id": 1,
+        "name": "Ornamentais",
+        "image": {
+          "id": 5,
+          "path": "assets/images/categories/ornamentais.png"
+        },
+        "category": {
+          "id": 1,
+          "name": "Plantas",
+          "image": {
+            "id": 4,
+            "path": "assets/images/categories/plantas.png"
+          }
+        }
+      },
+      "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+      "images": [
+        {
+          "id": 1,
+          "path": "assets/images/products/crot.png"
+        },
+        {
+          "id": 2,
+          "path": "assets/images/products/vaso1.png"
+        },
+        {
+          "id": 3,
+          "path": "assets/images/products/vaso2.png"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Espada de São Jorge",
+      "code": "123456789",
+      "price": 49.9,
+      "sub_category": {
+        "id": 1,
+        "name": "Ornamentais",
+        "image": {
+          "id": 5,
+          "path": "assets/images/categories/ornamentais.png"
+        },
+        "category": {
+          "id": 1,
+          "name": "Plantas",
+          "image": {
+            "id": 4,
+            "path": "assets/images/categories/plantas.png"
+          }
+        }
+      },
+      "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+      "images": [
+        {
+          "id": 1,
+          "path": "assets/images/products/espada-sao-jorge.png"
+        },
+        {
+          "id": 2,
+          "path": "assets/images/products/vaso1.png"
+        },
+        {
+          "id": 3,
+          "path": "assets/images/products/vaso2.png"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Lírio da paz",
+      "code": "123456789",
+      "price": 49.9,
+      "sub_category": {
+        "id": 1,
+        "name": "Ornamentais",
+        "image": {
+          "id": 5,
+          "path": "assets/images/categories/ornamentais.png"
+        },
+        "category": {
+          "id": 1,
+          "name": "Plantas",
+          "image": {
+            "id": 4,
+            "path": "assets/images/categories/plantas.png"
+          }
+        }
+      },
+      "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+      "images": [
+        {
+          "id": 1,
+          "path": "assets/images/products/lirio-da-paz.png"
+        },
+        {
+          "id": 2,
+          "path": "assets/images/products/vaso1.png"
+        },
+        {
+          "id": 3,
+          "path": "assets/images/products/vaso2.png"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Pata de elefante",
+      "code": "123456789",
+      "price": 74.9,
+      "sub_category": {
+        "id": 1,
+        "name": "Ornamentais",
+        "image": {
+          "id": 5,
+          "path": "assets/images/categories/ornamentais.png"
+        },
+        "category": {
+          "id": 1,
+          "name": "Plantas",
+          "image": {
+            "id": 4,
+            "path": "assets/images/categories/plantas.png"
+          }
+        }
+      },
+      "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+      "images": [
+        {
+          "id": 1,
+          "path": "assets/images/products/pata-de-elefante.png"
+        },
+        {
+          "id": 2,
+          "path": "assets/images/products/vaso1.png"
+        },
+        {
+          "id": 3,
+          "path": "assets/images/products/vaso2.png"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "Rosa do deserto",
+      "code": "123456789",
+      "price": 24.9,
+      "sub_category": {
+        "id": 1,
+        "name": "Ornamentais",
+        "image": {
+          "id": 5,
+          "path": "assets/images/categories/ornamentais.png"
+        },
+        "category": {
+          "id": 1,
+          "name": "Plantas",
+          "image": {
+            "id": 4,
+            "path": "assets/images/categories/plantas.png"
+          }
+        }
+      },
+      "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+      "images": [
+        {
+          "id": 1,
+          "path": "assets/images/products/rosa-do-deserto.png"
+        },
+        {
+          "id": 2,
+          "path": "assets/images/products/vaso1.png"
+        },
+        {
+          "id": 3,
+          "path": "assets/images/products/vaso2.png"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "Vaso branco de porcelanato - Grande",
+      "code": "123456789",
+      "price": 72,
+      "category": {
+        "id": 3,
+        "name": "Caqueiros",
+        "image": {
+          "id": 6,
+          "path": "assets/images/categories/caqueiros.jpg"
+        }
+      },
+      "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+      "images": [
+        {
+          "id": 1,
+          "path": "assets/images/products/vaso3.png"
+        },
+        {
+          "id": 2,
+          "path": "assets/images/products/vaso1.png"
+        },
+        {
+          "id": 3,
+          "path": "assets/images/products/vaso2.png"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": 8,
+      "name": "Vaso branco de porcelanato - Médio",
+      "code": "123456789",
+      "price": 50,
+      "category": {
+        "id": 3,
+        "name": "Caqueiros",
+        "image": {
+          "id": 6,
+          "path": "assets/images/categories/caqueiros.jpg"
+        }
+      },
+      "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+      "images": [
+        {
+          "id": 1,
+          "path": "assets/images/products/vaso2.png"
+        },
+        {
+          "id": 2,
+          "path": "assets/images/products/vaso3.png"
+        },
+        {
+          "id": 3,
+          "path": "assets/images/products/vaso2.png"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": 9,
+      "name": "Vaso branco de porcelanato - Pequeno",
+      "code": "123456789",
+      "price": 28.9,
+      "category": {
+        "id": 3,
+        "name": "Caqueiros",
+        "image": {
+          "id": 6,
+          "path": "assets/images/categories/caqueiros.jpg"
+        }
+      },
+      "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+      "images": [
+        {
+          "id": 1,
+          "path": "assets/images/products/vaso2.png"
+        },
+        {
+          "id": 2,
+          "path": "assets/images/products/vaso3.png"
+        },
+        {
+          "id": 3,
+          "path": "assets/images/products/vaso2.png"
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": 10,
+      "name": "Adubo rosa do deserto - 18Kg",
+      "code": "123456789",
+      "price": 34.9,
+      "category": {
+        "id": 2,
+        "name": "Adubos",
+        "image": {
+          "id": 5,
+          "path": "assets/images/categories/adubos.jpg"
+        }
+      },
+      "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+      "images": [
+        {
+          "id": 1,
+          "path": "assets/images/products/adubo.png"
+        },
+        {
+          "id": 2,
+          "path": "assets/images/products/vaso3.png"
+        },
+        {
+          "id": 3,
+          "path": "assets/images/products/vaso2.png"
+        }
+      ],
+      "active": true
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Plantas",
+      "image": {
+        "id": 4,
+        "path": "assets/images/categories/plantas.png"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Adubos",
+      "image": {
+        "id": 5,
+        "path": "assets/images/categories/adubos.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Caqueiros",
+      "image": {
+        "id": 6,
+        "path": "assets/images/categories/caqueiros.jpg"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Outros",
+      "image": {
+        "id": 7,
+        "path": "assets/images/categories/outros.jpg"
+      }
+    }
+  ],
+  "sub_categories": [
+    {
+      "id": 1,
+      "name": "Ornamentais",
+      "image": {
+        "id": 8,
+        "path": "assets/images/categories/ornamentais.png"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Frutíferas",
+      "image": {
+        "id": 9,
+        "path": "assets/images/categories/frutiferas.png"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Arbóeras",
+      "image": {
+        "id": 10,
+        "path": "assets/images/categories/arboreas.png"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Caqueiros de plastico",
+      "image": {
+        "id": 11,
+        "path": "assets/images/categories/caqueiros_de_plastico.png"
+      }
+    }
+  ]
+}

@@ -8,10 +8,7 @@ import { CamelCasePipe } from './pipes/camel-case.pipe';
 import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
 import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 import { MapComponent } from './map/map.component';
-import { ControlErrorMsgComponent } from './formularios/control-error-msg/control-error-msg.component';
 import { ImageListingComponent } from './image-listing/image-listing.component';
-import { AlertToastComponent } from './formularios/alert-toast/alert-toast.component';
-import { ConfirmModalComponent } from './formularios/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +17,7 @@ import { ConfirmModalComponent } from './formularios/confirm-modal/confirm-modal
     InfiniteScrollComponent,
     GalleryImagesComponent,
     MapComponent,
-    ControlErrorMsgComponent,
     ImageListingComponent,
-    AlertToastComponent,
-    ConfirmModalComponent
   ],
   imports: [
     CommonModule,
@@ -36,11 +30,7 @@ import { ConfirmModalComponent } from './formularios/confirm-modal/confirm-modal
     InfiniteScrollComponent,
     GalleryImagesComponent,
     MapComponent,
-    ControlErrorMsgComponent,
     ImageListingComponent,
-    AlertToastComponent,
-    ConfirmModalComponent
   ],
-  entryComponents: [ AlertToastComponent ]
 })
 export class SharedModule { }
