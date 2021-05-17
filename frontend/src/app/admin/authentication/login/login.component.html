@@ -1,0 +1,35 @@
+<section class="bg-light min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="container py-6">
+    <div class="row justify-content-center">
+      <div class="col-6">
+
+        <form class="bg-white rounded border p-5" [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+          <header class="mb-3 d-flex flex-column align-items-center">
+            <img
+              height="96px"
+              src="../../../../assets/svg/brand-in-white.svg"
+              alt="Logo Floricultura Divino Charme"
+              routerLink="../../../"
+              class="cursor-pointer"
+            >
+            <strong class="text-info">Acesso restrito apenas aos administradores do site!</strong>
+          </header>
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label">E-mail:</label>
+            <input class="form-control" type="text" name="" id="email" autofocus formControlName="email">
+            <app-control-error-msg [control]="controlEmail" [controlLabel]="'E-mail'"></app-control-error-msg>
+          </div>
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Senha:</label>
+            <input class="form-control" type="password" name="" id="password" formControlName="password">
+            <app-control-error-msg [control]="controlPassword" [controlLabel]="'Senha'"></app-control-error-msg>
+          </div>
+          <button type="submit" class="btn btn-primary rounded-pill">Entrar</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>

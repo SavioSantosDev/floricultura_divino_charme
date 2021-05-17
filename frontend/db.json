@@ -1,11 +1,8 @@
 {
-  "admins": [
-    {
-      "name": "admin",
-      "email": "admin@email.com",
-      "password": "12345678"
-    }
-  ],
+  "admin": {
+    "email": "admin@email.com",
+    "password": "12345678"
+  },
   "products": [
     {
       "id": 1,

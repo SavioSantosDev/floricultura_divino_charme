@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import * as Bootstrap from 'bootstrap';
 
 @Component({
@@ -6,34 +6,30 @@ import * as Bootstrap from 'bootstrap';
   templateUrl: './alert-toast.component.html',
   styleUrls: ['./alert-toast.component.scss']
 })
-export class AlertToastComponent implements OnInit, AfterViewInit {
+export class AlertToastComponent implements  AfterViewInit {
 
-  @Input() statusColor = 'success';
-  @Input() headerContent?: string;
-  @Input() bodyContent?: string;
   @ViewChild('toast') private toastRef?: ElementRef;
   private toast?: Bootstrap.Toast;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  @Input() headerContent!: string;
+  @Input() bodyContent!: string;
+  @Input() statusColor!: string; // Bootstrap colors variables
+  @Input() animation = true;
+  @Input() autohide = true;
+  @Input() delay = 5000;
 
   ngAfterViewInit(): void {
-    this.createToast();
+    this.createAndShowToast();
   }
 
-  private createToast(): void {
+  private createAndShowToast(): void {
     if (this.toastRef) {
-      this.toast = new Bootstrap.Toast(this.toastRef.nativeElement);
+      this.toast = new Bootstrap.Toast(this.toastRef.nativeElement, {
+        animation: this.animation,
+        autohide: this.autohide,
+        delay: this.delay,
+      });
       this.toast.show();
     }
   }
-
-  // showToast(): void {
-  //   if (this.toast) {
-  //     this.toast.show();
-  //   }
-  // }
-
 }

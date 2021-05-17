@@ -9,14 +9,13 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
   declarations: [
     ControlErrorMsgComponent,
     AlertToastComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
   ],
   imports: [
     CommonModule
   ],
   exports: [
     ControlErrorMsgComponent,
-    AlertToastComponent,
     ConfirmModalComponent
   ],
   entryComponents: [ AlertToastComponent ]
