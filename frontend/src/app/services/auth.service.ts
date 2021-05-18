@@ -34,7 +34,7 @@ export class AuthService {
       console.log(admin);
 
       if (response.email === admin.email && response.password === admin.password) {
-        // localStorage.setValue('token', this.token);
+        localStorage.setItem('token', this.token);
         this.adminIsAuthenticated$.next(true);
       } else {
         this.adminIsAuthenticated$.next(false);
@@ -51,7 +51,6 @@ export class AuthService {
   }
 
   adminIsAuthenticated(): boolean {
-    if (localStorage.getValue('token')) return true
-    else return false
+    return localStorage.getItem('token') ? true : false;
   }
 }
