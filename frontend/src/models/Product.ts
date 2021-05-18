@@ -1,13 +1,16 @@
 import { ICategory } from './Category';
+import { IImage } from './Image';
+import { ISubCategory } from './SubCategory';
 
 export interface IProduct {
   // id: string;
   name: string;
   unique_name: string;
-  value: number;
+  price: number;
   code: string;
   description: string;
   // active: boolean;
   category: ICategory;
-  images: string[];
+  subCategory: ISubCategory;
+  images: IImage[];
 }

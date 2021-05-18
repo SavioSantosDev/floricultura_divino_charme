@@ -1,1 +1,23 @@
-<p>catalog-navbar works!</p>
+<nav class="py-5">
+  <div class="container">
+    <div class="position-relative">
+      <ul class="d-flex p-0 position-relative z-index-1">
+        <li class="me-5">
+          <a
+            class="nav-link p-2 transition-2 opacity-75-hover"
+            [routerLink]="['produtos']"
+            routerLinkActive="border-bottom border-primary border-2 fw-bold text-primary"
+          >Produtos</a>
+        </li>
+        <li class="me-5">
+          <a
+            class="nav-link p-2 transition-2 opacity-75-hover"
+            [routerLink]="['categorias']"
+            routerLinkActive="border-bottom border-primary border-2 fw-bold text-primary"
+          >Categorias</a>
+        </li>
+      </ul>
+      <div class="border-bottom position-absolute bottom-0 w-100 z-index-0"></div>
+    </div>
+  </div>
+</nav>

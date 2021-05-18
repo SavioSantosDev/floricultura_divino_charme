@@ -1,1 +1,27 @@
-<p>products works!</p>
+<section>
+  <div class="container">
+
+    <header class="border-bottom pb-6 mb-5">
+      <div class="row">
+        <div class="col">
+          <h1>Produtos</h1>
+          <p class="m-0">
+            Os produtos da loja são agrupados por categoria e por status de atividade. ATIVO para os produtos que serão exibidos na págia de produtos do site, e INATIVO para os produtos que permanecem cadastrados no banco de dados mas não serão exibidos para o usuário.
+          </p>
+        </div>
+        <div class="col d-flex align-items-end justify-content-end">
+          <app-button [icon]="'add'" [content]="'Adicionar produto'"></app-button>
+        </div>
+      </div>
+    </header>
+
+    <div class="row gy-5">
+      <div class="col-3" *ngFor="let product of products">
+        <app-admin-product-card
+          [product]="product"
+        ></app-admin-product-card>
+      </div>
+    </div>
+
+  </div>
+</section>

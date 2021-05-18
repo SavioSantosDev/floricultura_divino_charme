@@ -1,0 +1,7 @@
+@import '../../../../styles/own-variables';
+
+img {
+  height: 128px;
+  @media (min-width: $bp-md) { height: 150px; }
+  @media (min-width: $bp-lg) { height: 192px; }
+}

@@ -13,7 +13,7 @@
   <div class="d-none d-xl-block container">
     <div class="row">
       <div class="col-4" *ngFor="let product of homeFeaturedProducts?.products">
-        <app-product-card [product]="product"></app-product-card>
+        <app-public-product-card [product]="product"></app-public-product-card>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
     <div class="row gx-3 gx-md-5 flex-nowrap">
       <div class="invisible-block"></div><!-- width = (window - container) / 2 -->
       <div class="product" *ngFor="let product of homeFeaturedProducts?.products">
-        <app-product-card [product]="product"></app-product-card>
+        <app-public-product-card [product]="product"></app-public-product-card>
       </div>
     </div>
   </div>

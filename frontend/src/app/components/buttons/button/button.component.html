@@ -1,0 +1,12 @@
+<button
+  [type]="type"
+  [disabled]="disabled"
+  class="btn btn{{ outline ? '-outline' : '' }}-{{ color }}"
+  [ngClass]="{
+    'btn-sm': size === 'sm',
+    'btn-lg': size === 'lg',
+    'rounded-pill': rounded
+  }"
+>
+  <app-button-content [content]="content" [icon]="icon"></app-button-content>
+</button>

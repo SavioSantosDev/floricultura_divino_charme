@@ -3,9 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 import { CatalogComponent } from './catalog.component';
 
 const routes: Routes = [
-  { path: '', component: CatalogComponent },
-  { path: 'produtos', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
-  { path: 'categorias', loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule) }
+  {
+    // /admin/catalogo
+    path: '', component: CatalogComponent,
+    children: [
+      {
+        path: 'produtos',
+        loadChildren: () => import('./products/products.module').then(mod => mod.ProductsModule)
+      },
+      {
+        path: 'categorias',
+        loadChildren: () => import('./categories/categories.module').then(mod => mod.CategoriesModule)
+      },
+      { path: '', redirectTo: 'produtos' }
+    ]
+  },
 ];
 
 @NgModule({

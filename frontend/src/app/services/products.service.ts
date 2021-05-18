@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductsService {
 
-  private readonly PATH = `${environment.API}/products.json`;
+  private readonly URL = `${environment.API}/products`;
 
   constructor(
     private http: HttpClient
@@ -19,12 +19,12 @@ export class ProductsService {
 
 
   list(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.PATH);
+    return this.http.get<IProduct[]>(this.URL);
   }
 
 
   show(name: string): Observable<IProduct> {
-    return this.http.get<IProduct[]>(this.PATH).pipe(
+    return this.http.get<IProduct[]>(this.URL).pipe(
       map((products: IProduct[]) => products.filter(  (product: IProduct) => product.name === name  )[0]),
     );
   }

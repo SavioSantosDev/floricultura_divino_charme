@@ -3,24 +3,28 @@ import { RouterModule } from '@angular/router';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
-import { ProductCardComponent } from './product-card.component';
+import { ButtonsModule } from '../buttons/buttons.module';
+import { AdminProductCardComponent } from './admin-product-card/admin-product-card.component';
+import { PublicProductCardComponent } from './public-product-card/public-product-card.component';
 
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
-  declarations: [ProductCardComponent],
+  declarations: [AdminProductCardComponent, PublicProductCardComponent],
   imports: [
     CommonModule,
     RouterModule,
+    ButtonsModule
   ],
   exports: [
-    ProductCardComponent,
+    AdminProductCardComponent,
+    PublicProductCardComponent,
   ],
   providers: [
-     {
-       provide: LOCALE_ID,
-       useValue: 'pt-BR',
-     },
-   ]
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR',
+    },
+  ]
 })
 export class ProductCardModule { }

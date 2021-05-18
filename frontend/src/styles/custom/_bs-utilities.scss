@@ -21,6 +21,34 @@ $utilities: map-merge(
       property: cursor,
       class: cursor,
       values: auto pointer,
+    ),
+    "z-index": (
+      property: z-index,
+      class: z-index,
+      values: (
+        0: 0,
+        1: 10,
+        2: 20,
+      )
+    ),
+    "transition": (
+      property: transition,
+      class: transition,
+      values: (
+        2: .2s,
+      )
+    ),
+    "opacity": (
+      property: opacity,
+      class: opacity,
+      state: hover,
+      values: (
+        0: 0,
+        25: .25,
+        50: .5,
+        75: .75,
+        100: 1,
+      )
     )
   ),
 );

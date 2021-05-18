@@ -7,14 +7,10 @@
   &:hover {
     box-shadow: none;
   }
-}
 
-img {
-  width: 100%;
-  height: 128px;
-  object-fit: contain;
-  object-position: center;
-
-  @media (min-width: $bp-md) { height: 150px; }
-  @media (min-width: $bp-lg) { height: 192px; }
+  img {
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
 }
