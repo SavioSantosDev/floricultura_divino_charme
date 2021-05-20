@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
-import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 import { CamelCasePipe } from './pipes/camel-case.pipe';
 import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
 import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
@@ -12,7 +11,6 @@ import { ImageListingComponent } from './image-listing/image-listing.component';
 
 @NgModule({
   declarations: [
-    ScrollTopComponent,
     CamelCasePipe,
     InfiniteScrollComponent,
     GalleryImagesComponent,
@@ -25,7 +23,6 @@ import { ImageListingComponent } from './image-listing/image-listing.component';
     LeafletModule,
   ],
   exports: [
-    ScrollTopComponent,
     CamelCasePipe,
     InfiniteScrollComponent,
     GalleryImagesComponent,

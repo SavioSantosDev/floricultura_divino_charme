@@ -10,11 +10,11 @@ import { IContactPage } from 'src/models/pages/Contact.page';
 })
 export class ContactPageService {
 
-  private readonly PATH = `${environment.API}/pages/contact-page.json`;
+  private readonly URL = `${environment.API}/contact`;
 
   constructor(private http: HttpClient) { }
 
   index(): Observable<IContactPage> {
-    return this.http.get<IContactPage>(this.PATH);
+    return this.http.get<IContactPage>(this.URL);
   }
 }

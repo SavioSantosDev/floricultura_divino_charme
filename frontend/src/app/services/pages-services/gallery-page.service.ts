@@ -10,11 +10,11 @@ import { IGalleryPage } from 'src/models/pages/Gallery.page';
 })
 export class GalleryPageService {
 
-  private readonly PATH = `${environment.API}/pages/gallery-page.json`;
+  private readonly URL = `${environment.API}/gallery`;
 
   constructor(private http: HttpClient) { }
 
   index(): Observable<IGalleryPage> {
-    return this.http.get<IGalleryPage>(this.PATH);
+    return this.http.get<IGalleryPage>(this.URL);
   }
 }

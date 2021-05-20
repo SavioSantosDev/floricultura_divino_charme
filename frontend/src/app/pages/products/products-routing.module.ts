@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ProductsListComponent } from './products-list/products-list.component';
-import { ProductSingleComponent } from './product-single/product-single.component';
-import { ProductsResolver } from 'src/app/guards/resolvers/products.resolver';
+import { ProductsComponent } from './products.component';
 
 const routes: Routes = [
-  // /produtos/id   (O identificador será o nome do produto para procurar na lista de produtos)
+  // /produtos
   {
-    path: ':id', component: ProductSingleComponent,
-    resolve: {
-      product: ProductsResolver
-    }
+    path: '', component: ProductsComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./product-list/product-list.module').then(mod => mod.ProductListModule)
+      },
+      {
+        path: ':id',
+        loadChildren: () => import('./product-preview/product-preview.module').then(mod => mod.ProductPreviewModule)
+      }
+    ]
   },
-  // /produtos - Listagem de produtos
-  {
-    path: '', component: ProductsListComponent,
-    resolve: {
-      products: ProductsResolver
-    }
-  }
 ];
 
 @NgModule({

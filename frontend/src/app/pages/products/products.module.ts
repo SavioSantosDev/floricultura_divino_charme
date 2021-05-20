@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { ProductsRoutingModule } from './products-routing.module';
-import { ProductSingleComponent } from './product-single/product-single.component';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { ProductsComponent } from './products.component';
+import { ProductsNavbarComponent } from './products-navbar/products-navbar.component';
+import { ScrollTopModule } from 'src/app/shared/scroll-top/scroll-top.module';
 
 
 @NgModule({
   declarations: [
-    ProductSingleComponent,
-    ProductsListComponent
+    ProductsComponent,
+    ProductsNavbarComponent
   ],
   imports: [
     CommonModule,
+    RouterModule,
     ProductsRoutingModule,
-    SharedModule
+    ScrollTopModule,
   ]
 })
 export class ProductsModule { }

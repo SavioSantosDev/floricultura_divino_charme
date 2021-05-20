@@ -81,3 +81,30 @@ svg { fill: currentColor; }
 // Validações
 input.ng-invalid.ng-touched:not(form):not(fieldset){ border-color: $color-danger !important; }
 input.ng-valid.ng-touched:not(form):not(fieldset){ border-color: $color-success !important; }
+
+
+.custom-nav-link {
+  padding: 1rem .5rem;
+  position: relative;
+  text-decoration: none;
+
+  &.active {
+    font-weight: bold;
+    color: $color-primary;
+  }
+
+  &::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: $color-primary;
+    transition: .2s;
+  }
+
+  // Hover nos links não ativos a borda de baixo fica metade. Em links ativos a borda tem 100% de largura
+  &:not(.active):hover::after { width: 50%; }
+  &.active::after { width: 100%; }
+}

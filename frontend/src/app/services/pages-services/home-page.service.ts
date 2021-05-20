@@ -11,11 +11,11 @@ import { IHomePage } from 'src/models/pages/Home.page';
 })
 export class HomePageService {
 
-  private readonly PATH = `${environment.API}/pages/home-page.json`;
+  private readonly URL = `${environment.API}/home`;
 
   constructor(private http: HttpClient) { }
 
   index(): Observable<IHomePage> {
-    return this.http.get<IHomePage>(this.PATH);
+    return this.http.get<IHomePage>(this.URL);
   }
 }

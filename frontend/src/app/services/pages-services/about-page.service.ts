@@ -10,13 +10,13 @@ import { IAboutPage } from 'src/models/pages/About.page';
 })
 export class AboutPageService {
 
-  private readonly PATH = `${environment.API}/pages/about-page.json`;
+  private readonly URL = `${environment.API}/about`;
 
   constructor(
     private http: HttpClient,
   ) { }
 
   index(): Observable<IAboutPage> {
-    return this.http.get<IAboutPage>(this.PATH);
+    return this.http.get<IAboutPage>(this.URL);
   }
 }

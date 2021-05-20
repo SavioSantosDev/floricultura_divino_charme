@@ -18,26 +18,25 @@
 
     <div class="collapse navbar-collapse" id="navbarLinks">
       <ul class="navbar-nav ms-auto d-flex flex-column align-items-center flex-lg-row align-items-start">
+        <!-- Home -->
         <li class="nav-item mb-3 mb-md-4 mb-lg-0 me-lg-6">
-          <a class="nav-link" routerLinkActive="active" routerLink="/" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+          <a class="custom-nav-link" routerLinkActive="active" routerLink="/" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
         </li>
+        <!-- Produtos -->
         <li class="nav-item mb-3 mb-md-4 mb-lg-0 me-lg-6">
-          <a class="nav-link" routerLinkActive="active" routerLink="/galeria">Galeria</a>
+          <a class="custom-nav-link" routerLinkActive="active" routerLink="/produtos">Produtos</a>
         </li>
-        <!-- Espaçamento entre botões será diferente -->
-        <li class="nav-item mb-2 mb-md-3 mb-lg-0 me-lg-3">
-          <a class="nav-link" routerLinkActive="active" routerLink="/sobre">Sobre</a>
+        <!-- Galeria -->
+        <li class="nav-item mb-3 mb-md-4 mb-lg-0 me-lg-6">
+          <a class="custom-nav-link" routerLinkActive="active" routerLink="/galeria">Galeria</a>
         </li>
-        <li class="nav-item mb-2 mb-md-3 mb-lg-0 me-lg-3">
-          <a class="btn btn-outline-primary rounded-pill" routerLink="/contato">
-            Contato
-          </a>
+        <!-- Sobre -->
+        <li class="nav-item mb-3 mb-md-4 mb-lg-0 me-lg-6">
+          <a class="custom-nav-link" routerLinkActive="active" routerLink="/sobre">Sobre</a>
         </li>
-        <!-- O ultimo link não precisa de espaçamento -->
+        <!-- Contato -->
         <li class="nav-item">
-          <a class="btn btn-primary rounded-pill" routerLink="/produtos">
-            Produtos
-          </a>
+          <a class="custom-nav-link" routerLinkActive="active" routerLink="/contato">Contato</a>
         </li>
       </ul>
     </div>

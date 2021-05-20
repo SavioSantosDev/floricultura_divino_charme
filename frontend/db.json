@@ -3,28 +3,35 @@
     "email": "admin@email.com",
     "password": "12345678"
   },
+  "store_informations": {
+    "emails": [ "contato@floriculturadc.com" ],
+    "phones": [ "(77) 99165-4556", "(88) 95324-5432" ],
+    "social": {
+      "instagram": "@divino._charme"
+    },
+    "locations": [
+      {
+        "city": "Botuporã",
+        "uf": "BA",
+        "address": "Av. Paramirim, 141 - Centro",
+        "lat": -13.37814226233769,
+        "lng": -42.52245825526236
+      },
+      {
+        "city": "Tanque Novo",
+        "uf": "BA",
+        "address": "Rua. Francisco Borges, 200 - Centro",
+        "lat": -13.549116866407257,
+        "lng": -42.490874600328645
+      }
+    ]
+  },
   "products": [
     {
       "id": 1,
       "name": "Antúrio",
       "code": "123456789",
       "price": 18,
-      "sub_category": {
-        "id": 1,
-        "name": "Ornamentais",
-        "image": {
-          "id": 5,
-          "path": "assets/images/categories/ornamentais.png"
-        },
-        "category": {
-          "id": 1,
-          "name": "Plantas",
-          "image": {
-            "id": 4,
-            "path": "assets/images/categories/plantas.png"
-          }
-        }
-      },
       "description": "O antúrio é uma planta muito bonita que não gosta de contato direto com o sol. Possui folhas verdes e uma flor muito bonita vermelha. Quem não conhece, muitas vezes pode confundir o Antúrio como uma planta 'falsa' de plástico.",
       "images": [
         {
@@ -47,22 +54,6 @@
       "name": "Crot",
       "code": "123456789",
       "price": 35,
-      "sub_category": {
-        "id": 1,
-        "name": "Ornamentais",
-        "image": {
-          "id": 5,
-          "path": "assets/images/categories/ornamentais.png"
-        },
-        "category": {
-          "id": 1,
-          "name": "Plantas",
-          "image": {
-            "id": 4,
-            "path": "assets/images/categories/plantas.png"
-          }
-        }
-      },
       "description": "Lorem ipsum sillor somor sit amet sillun dar.",
       "images": [
         {
@@ -85,22 +76,6 @@
       "name": "Espada de São Jorge",
       "code": "123456789",
       "price": 49.9,
-      "sub_category": {
-        "id": 1,
-        "name": "Ornamentais",
-        "image": {
-          "id": 5,
-          "path": "assets/images/categories/ornamentais.png"
-        },
-        "category": {
-          "id": 1,
-          "name": "Plantas",
-          "image": {
-            "id": 4,
-            "path": "assets/images/categories/plantas.png"
-          }
-        }
-      },
       "description": "Lorem ipsum sillor somor sit amet sillun dar.",
       "images": [
         {
@@ -123,22 +98,6 @@
       "name": "Lírio da paz",
       "code": "123456789",
       "price": 49.9,
-      "sub_category": {
-        "id": 1,
-        "name": "Ornamentais",
-        "image": {
-          "id": 5,
-          "path": "assets/images/categories/ornamentais.png"
-        },
-        "category": {
-          "id": 1,
-          "name": "Plantas",
-          "image": {
-            "id": 4,
-            "path": "assets/images/categories/plantas.png"
-          }
-        }
-      },
       "description": "Lorem ipsum sillor somor sit amet sillun dar.",
       "images": [
         {
@@ -161,22 +120,6 @@
       "name": "Pata de elefante",
       "code": "123456789",
       "price": 74.9,
-      "sub_category": {
-        "id": 1,
-        "name": "Ornamentais",
-        "image": {
-          "id": 5,
-          "path": "assets/images/categories/ornamentais.png"
-        },
-        "category": {
-          "id": 1,
-          "name": "Plantas",
-          "image": {
-            "id": 4,
-            "path": "assets/images/categories/plantas.png"
-          }
-        }
-      },
       "description": "Lorem ipsum sillor somor sit amet sillun dar.",
       "images": [
         {
@@ -199,22 +142,6 @@
       "name": "Rosa do deserto",
       "code": "123456789",
       "price": 24.9,
-      "sub_category": {
-        "id": 1,
-        "name": "Ornamentais",
-        "image": {
-          "id": 5,
-          "path": "assets/images/categories/ornamentais.png"
-        },
-        "category": {
-          "id": 1,
-          "name": "Plantas",
-          "image": {
-            "id": 4,
-            "path": "assets/images/categories/plantas.png"
-          }
-        }
-      },
       "description": "Lorem ipsum sillor somor sit amet sillun dar.",
       "images": [
         {
@@ -237,14 +164,6 @@
       "name": "Vaso branco de porcelanato - Grande",
       "code": "123456789",
       "price": 72,
-      "category": {
-        "id": 3,
-        "name": "Caqueiros",
-        "image": {
-          "id": 6,
-          "path": "assets/images/categories/caqueiros.jpg"
-        }
-      },
       "description": "Lorem ipsum sillor somor sit amet sillun dar.",
       "images": [
         {
@@ -267,14 +186,6 @@
       "name": "Vaso branco de porcelanato - Médio",
       "code": "123456789",
       "price": 50,
-      "category": {
-        "id": 3,
-        "name": "Caqueiros",
-        "image": {
-          "id": 6,
-          "path": "assets/images/categories/caqueiros.jpg"
-        }
-      },
       "description": "Lorem ipsum sillor somor sit amet sillun dar.",
       "images": [
         {
@@ -297,14 +208,6 @@
       "name": "Vaso branco de porcelanato - Pequeno",
       "code": "123456789",
       "price": 28.9,
-      "category": {
-        "id": 3,
-        "name": "Caqueiros",
-        "image": {
-          "id": 6,
-          "path": "assets/images/categories/caqueiros.jpg"
-        }
-      },
       "description": "Lorem ipsum sillor somor sit amet sillun dar.",
       "images": [
         {
@@ -327,14 +230,6 @@
       "name": "Adubo rosa do deserto - 18Kg",
       "code": "123456789",
       "price": 34.9,
-      "category": {
-        "id": 2,
-        "name": "Adubos",
-        "image": {
-          "id": 5,
-          "path": "assets/images/categories/adubos.jpg"
-        }
-      },
       "description": "Lorem ipsum sillor somor sit amet sillun dar.",
       "images": [
         {
@@ -420,5 +315,206 @@
         "path": "assets/images/categories/caqueiros_de_plastico.png"
       }
     }
-  ]
+  ],
+  "about": {
+    "title": "Floricultura Divino Charme",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex. Fusce nisl leo, dignissim a scelerisque nec, commodo ac sem. Phasellus sit amet tempor metus, et auctor est. Praesent auctor nisl augue, sed tempus arcu dapibus at. Phasellus eu blandit risus. Pellentesque tincidunt libero sed sapien consequat blandit. Nullam ultricies tellus eget pellentesque congue.",
+    "image": "assets/images/about.png"
+  },
+  "contact": {
+    "title": "Galeria de imagens",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
+    "info": "Clique em uma imagem para vê-la em tela cheia. Orientação paisagem para ter uma melhor visualização."
+  },
+  "home": {
+    "banner": {
+      "title": "Respire vida em um ambiente mais aconchegante.",
+      "content": "Confira a seguir os benefícios de ser ter plantas em casa. Aproveite também para dar uma olhada em nossa loja. Temos várias plantas que vão desde plantas ornamentais para deixar seu lar um lugar mais harmonioso e agradável, até arbóreas para trazer uma visão mais bela em ambientes externos!"
+    },
+    "benefits": {
+      "title": "Por que ter plantas em casa?",
+      "subtitle": "Benefícios",
+      "cards": [
+        {
+          "image": "assets/svg/health.svg",
+          "title": "Saúde",
+          "content": "Plantas trazem alguns benefícios como alívio de estresse, purificação do ar e estímulo da criatividade além de que a prática da jardinagem pode resultar em ganho de vitalidade e na recuperação de traumas físicos ou psicológicos."
+        },
+        {
+          "image": "assets/svg/decoration.svg",
+          "title": "Decoração",
+          "content": "Plantas são tendência em decoração, é a melhor maneira de deixar os ambientes mais charmosos, aconchegantes e harmoniosos, trazendo tranquilidade, leveza e equilíbrio ao local."
+        },
+        {
+          "image": "assets/svg/medidation.svg",
+          "title": "Concentração",
+          "content": "Plantas próximas aos locais de estudo ou trabalho minimizam distrações e ajudam a reter mais informações, contribuindo para melhor produtividade de um profissional ou estudante."
+        }
+      ]
+    },
+    "categories": {
+      "title": "Dê uma olhada em nossos produtos",
+      "subtitle": "Produtos",
+      "categories": [
+        {
+          "id": 1,
+          "name": "Plantas",
+          "image": {
+            "id": 4,
+            "path": "assets/images/categories/plantas.png"
+          }
+        },
+        {
+          "id": 2,
+          "name": "Adubos",
+          "image": {
+            "id": 5,
+            "path": "assets/images/categories/adubos.jpg"
+          }
+        },
+        {
+          "id": 3,
+          "name": "Caqueiros",
+          "image": {
+            "id": 6,
+            "path": "assets/images/categories/caqueiros.jpg"
+          }
+        },
+        {
+          "id": 1,
+          "name": "Ornamentais",
+          "image": {
+            "id": 8,
+            "path": "assets/images/categories/ornamentais.png"
+          }
+        },
+        {
+          "id": 2,
+          "name": "Frutíferas",
+          "image": {
+            "id": 9,
+            "path": "assets/images/categories/frutiferas.png"
+          }
+        },
+        {
+          "id": 3,
+          "name": "Arbóeras",
+          "image": {
+            "id": 10,
+            "path": "assets/images/categories/arboreas.png"
+          }
+        },
+        {
+          "id": 4,
+          "name": "Outros",
+          "image": {
+            "id": 7,
+            "path": "assets/images/categories/outros.jpg"
+          }
+        }
+      ]
+    },
+    "featuredProducts": {
+      "title": "Veja os ítens mais vendidos da loja",
+      "subtitle": "Destaques",
+      "products": [
+        {
+          "id": 1,
+          "name": "Antúrio",
+          "code": "123456789",
+          "price": 18,
+          "description": "O antúrio é uma planta muito bonita que não gosta de contato direto com o sol. Possui folhas verdes e uma flor muito bonita vermelha. Quem não conhece, muitas vezes pode confundir o Antúrio como uma planta 'falsa' de plástico.",
+          "images": [
+            {
+              "id": 1,
+              "path": "assets/images/products/anturio.png"
+            },
+            {
+              "id": 2,
+              "path": "assets/images/products/vaso1.png"
+            },
+            {
+              "id": 3,
+              "path": "assets/images/products/vaso2.png"
+            }
+          ],
+          "active": true
+        },
+        {
+          "id": 2,
+          "name": "Crot",
+          "code": "123456789",
+          "price": 35,
+          "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+          "images": [
+            {
+              "id": 1,
+              "path": "assets/images/products/crot.png"
+            },
+            {
+              "id": 2,
+              "path": "assets/images/products/vaso1.png"
+            },
+            {
+              "id": 3,
+              "path": "assets/images/products/vaso2.png"
+            }
+          ],
+          "active": true
+        },
+        {
+          "id": 3,
+          "name": "Espada de São Jorge",
+          "code": "123456789",
+          "price": 49.9,
+          "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+          "images": [
+            {
+              "id": 1,
+              "path": "assets/images/products/espada-sao-jorge.png"
+            },
+            {
+              "id": 2,
+              "path": "assets/images/products/vaso1.png"
+            },
+            {
+              "id": 3,
+              "path": "assets/images/products/vaso2.png"
+            }
+          ],
+          "active": true
+        }
+      ]
+    },
+    "gallery": {
+      "title": "Visite a nossa galeria de fotos",
+      "subtitle": "Galeria",
+      "images": [
+        {
+          "path": "assets/images/gallery/1.jpg",
+          "name": "Festa"
+        },
+        {
+          "path": "assets/images/gallery/2.jpg",
+          "name": "Nossa loja"
+        },
+        {
+          "path": "assets/images/gallery/3.jpg",
+          "name": "Imagem"
+        },
+        {
+          "path": "assets/images/gallery/4.jpg",
+          "name": "Plantas"
+        },
+        {
+          "path": "assets/images/gallery/5.jpg",
+          "name": "Viveiro"
+        },
+        {
+          "path": "assets/images/gallery/6.jpg",
+          "name": "Cultivação"
+        }
+      ]
+    }
+  }
 }

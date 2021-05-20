@@ -18,7 +18,7 @@
       <!-- Slider contents -->
       <a *ngFor="let category of homeCategories?.categories" class="category" routerLink="/produtos">
         <div class="category-image">
-          <img [src]="category.image" [alt]="category.name">
+          <img [src]="category.image.path" [alt]="category.name">
         </div>
         <h2 class="mt-3 mt-md-5 text-center">{{ category.name }}</h2>
       </a>
