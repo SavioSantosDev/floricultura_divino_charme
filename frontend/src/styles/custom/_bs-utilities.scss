@@ -3,20 +3,24 @@
 $utilities: map-merge(
   $utilities,
   (
-    "width": map-merge(
-      map-get($utilities, "width"),
-      (
-        responsive: true,
-        values: map-merge(
-          map-get(map-get($utilities, "width"), "values"),
-          (
-            20: 20%,
-            40: 40%,
-            60: 60%,
-          ),
-        ),
-      ),
+    "rounded": map-merge(
+      map-get($utilities, "rounded"),
+      (responsive: true)
     ),
+    // "width": map-merge(
+    //   map-get($utilities, "width"),
+    //   (
+    //     responsive: true,
+    //     values: map-merge(
+    //       map-get(map-get($utilities, "width"), "values"),
+    //       (
+    //         20: 20%,
+    //         40: 40%,
+    //         60: 60%,
+    //       ),
+    //     ),
+    //   ),
+    // ),
     "cursor": (
       property: cursor,
       class: cursor,

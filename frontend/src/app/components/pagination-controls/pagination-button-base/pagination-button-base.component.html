@@ -1,0 +1,11 @@
+<button
+  type="button"
+  class="btn  py-1 px-2 py-sm-2 px-sm-3 px-md-4 px-lg-5  rounded-0 rounded-sm-pill   d-flex align-items-center"
+  [ngClass]="{
+    'btn-outline-primary': type === 'outline',
+    'btn-primary': type === 'filled'
+  }"
+  [disabled]="disabled"
+>
+  <ng-content></ng-content>
+</button>

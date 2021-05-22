@@ -1,0 +1,48 @@
+<nav class="py-5">
+  <div class="container">
+    <div class="row gx-2 flex-nowrap justify-content-center align-items-center">
+
+      <!-- Previous page -->
+      <div class="col-auto">
+        <app-pagination-button-base [disabled]="true">
+          <span class="material-icons">arrow_back_ios</span>
+          <span class="d-none d-xl-inline ms-2">Página anterior</span>
+        </app-pagination-button-base>
+      </div>
+
+      <!-- Items -->
+      <div class="col-auto">
+        <app-pagination-button-base><span>1</span></app-pagination-button-base>
+      </div>
+      <div class="col-auto">
+        <app-pagination-button-base type="outline"><span>2</span></app-pagination-button-base>
+      </div>
+      <div class="col-auto">
+        <app-pagination-button-base type="outline"><span>3</span></app-pagination-button-base>
+      </div>
+      <div class="col-auto">
+        <app-pagination-button-base type="outline"><span>4</span></app-pagination-button-base>
+      </div>
+      <div class="col-auto">
+        <app-pagination-button-base type="outline"><span>5</span></app-pagination-button-base>
+      </div>
+
+      <div class="col-auto">...</div>
+
+      <!-- Last item -->
+      <div class="col-auto">
+        <app-pagination-button-base type="outline"><span>14</span></app-pagination-button-base>
+      </div>
+
+      <!-- Next page -->
+      <div class="col-auto">
+        <app-pagination-button-base>
+          <span class="d-none d-xl-inline me-2">Próxima página</span>
+          <span class="material-icons">arrow_forward_ios</span>
+        </app-pagination-button-base>
+      </div>
+
+    </div>
+  </div>
+</nav>
+

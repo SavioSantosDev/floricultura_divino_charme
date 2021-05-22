@@ -87,6 +87,7 @@ input.ng-valid.ng-touched:not(form):not(fieldset){ border-color: $color-success 
   padding: 1rem .5rem;
   position: relative;
   text-decoration: none;
+  display: block;
 
   &.active {
     font-weight: bold;
