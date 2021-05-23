@@ -4,6 +4,7 @@ import { ISubCategory } from './SubCategory';
 
 export interface IProduct {
   // id: string;
+  id: string;
   name: string;
   unique_name: string;
   price: number;

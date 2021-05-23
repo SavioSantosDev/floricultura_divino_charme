@@ -16,8 +16,8 @@ export class ProductsResolver implements Resolve<IProduct | IProduct[]> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProduct | IProduct[]> {
 
-    if (route.params && route.params.productName) {
-      return this.productService.show(route.params.productName);
+    if (route.params && route.params.id) {
+      return this.productService.show(route.params.id);
     }
     return this.productService.list();
   }

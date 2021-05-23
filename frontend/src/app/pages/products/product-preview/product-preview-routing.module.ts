@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductsResolver } from 'src/app/guards/resolvers/products.resolver';
+
 import { ProductPreviewComponent } from './product-preview.component';
+import { ProductsResolver } from 'src/app/guards/resolvers/products.resolver';
 
 const routes: Routes = [
   // / produtos/:id
   {
     path: '', component: ProductPreviewComponent,
     resolve: {
-      products: ProductsResolver
+      product: ProductsResolver
     }
   }
 ];

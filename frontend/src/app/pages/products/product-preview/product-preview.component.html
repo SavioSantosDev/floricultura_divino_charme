@@ -1,1 +1,56 @@
-<p>product-preview works!</p>
+<div *ngIf="product; else noProduct">
+
+  <app-breadcrumb [links]="[
+    { namespace: 'Produtos', url: '/products' },
+    { namespace: product.name, url: '/products/' + product.id },
+  ]"></app-breadcrumb>
+
+  <div class="container pb-5 pb-md-6">
+    <div class="row gy-5 justify-content-center">
+
+      <!-- Images -->
+      <div class="order-2 order-lg-1 col-12 col-sm-10 col-lg-6 images-container">
+        <div class="bg-light border rounded p-2   main-image">
+          <div class="img-item">
+            <img [src]="product.images[activeImage].path" [alt]="product.name">
+          </div>
+        </div>
+        <div
+          class="bg-light border rounded p-2 cursor-pointer opacity-75-hover transition"
+          *ngFor="let image of product?.images; index as i"
+          (click)="activeImage = i"
+          [class.active-image]="activeImage === i"
+        >
+          <div class="img-item">
+            <img [src]="image.path" [alt]="product.name">
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Infos -->
+      <section class="order-1 order-lg-2 col-12 col-lg-6">
+        <header class="mb-5 mb-md-6">
+          <h1 class="text-primary h2 m-0">{{ product.name }}</h1>
+          <small class="d-block">Cód. {{ product.code }}</small>
+          <h2 class="h1 my-3">{{ product.price | currency:'BRL':'symbol' }}</h2>
+          <p class="text-in-light">
+            Por enquanto as negociações são feitas pelo WhatsApp, Instagram ou por E-mail.
+            Clique no botão abaixo para prosseguir com o pedido.
+          </p>
+          <app-button content="Comprar" icon="attach_money"></app-button>
+        </header>
+        <article>
+          <h3 class="border-bottom">Descrição do produto</h3>
+          <p>{{ product.description }}</p>
+        </article>
+      </section>
+
+    </div>
+  </div>
+
+</div>
+
+
+<ng-template #noProduct>
+  Carregando...
+</ng-template>

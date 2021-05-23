@@ -3,7 +3,7 @@
 
   <!-- Value and name -->
   <section class="py-4 text-center">
-    <h4 class="m-0 text-in-light">{{ product?.price | currency:'BRL':true }}</h4>
+    <h4 class="m-0 text-in-light">{{ product?.price | currency:'BRL':'symbol' }}</h4>
     <h2 class="m-0">{{ product?.name }}</h2>
   </section>
 

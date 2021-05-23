@@ -15,5 +15,5 @@ export class LinkButtonComponent {
   @Input() icon?: string; // Must be a material icon
 
   @Input() target: '_blank' | '_self' | '_parent' | '_top' = '_self';
-  @Input() namespaces: string[] = [];
+  @Input() href: string[] = [];
 }
