@@ -405,7 +405,7 @@
   "about": {
     "title": "Floricultura Divino Charme",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex. Fusce nisl leo, dignissim a scelerisque nec, commodo ac sem. Phasellus sit amet tempor metus, et auctor est. Praesent auctor nisl augue, sed tempus arcu dapibus at. Phasellus eu blandit risus. Pellentesque tincidunt libero sed sapien consequat blandit. Nullam ultricies tellus eget pellentesque congue.",
-    "image": "assets/images/about.png"
+    "images": ["assets/images/store1.png", "assets/images/store2.png"]
   },
   "contact": {
     "title": "Galeria de imagens",

@@ -1,43 +1,65 @@
 @import "../../../styles/own-variables";
 
-#aboutPage {
-  position: relative;
+.plant-decoration-1 {
+  position: absolute;
+  transform: rotate(15deg);
+  display: none;
 
-  .plant-decoration-1 {
-
-    position: absolute;
-    transform: rotate(15.26deg);
-    display: none;
-
-    @media (min-width: $bp-lg) {
-      display: block;
-      width: 172px;
-      top: 120px; left: -30px;
-    }
-
-    @media (min-width: 1600px) {
-      width: 240px;
-      top: 160px;
-      left: -120px;
-    }
+  @media (min-width: $bp-md) {
+    display: block;
+    width: 100px;
+    top: 50px; left: -20px;
   }
 
-  .plant-decoration-2 {
+  @media (min-width: $bp-lg) {
+    width: 140px;
+    top: 80px;
+  }
 
-    position: absolute;
-    transform: rotate(15.26deg);
-    display: none;
+  @media (min-width: $bp-xl) {
+    width: 180px;
+  }
 
-    @media (min-width: $bp-lg) {
-      display: block;
-      width: 212px;
-      bottom: -50px; right: -50px;
-    }
+  @media (min-width: $bp-xxl) {
+    width: 220px;
+  }
+}
 
-    @media (min-width: 1600px) {
-      width: 240px;
-      top: 300px;
-      bottom: -80px; right: -80px;
-    }
+.plant-decoration-2 {
+  position: absolute;
+  transform: matrix(-0.73, 0.69, 0.69, 0.73, 0, 0);
+  display: none;
+
+  @media (min-width: $bp-md) {
+    display: block;
+    width: 140px;
+    top: 200px; right: -70px;
+  }
+
+  @media (min-width: $bp-lg) {
+    width: 200px;
+    right: -90px;
+    top: 200px;
+  }
+
+  @media (min-width: $bp-xxl) {
+    width: 290px;
+  }
+}
+
+.plant-decoration-3 {
+  position: absolute;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  display: none;
+
+  @media (min-width: $bp-md) {
+    display: block;
+    width: 140px;
+    bottom: -40px; left: -40px;
+  }
+
+  @media (min-width: $bp-xl) {
+    width: 200px;
+    bottom: -60px; left: -60px;
   }
 }

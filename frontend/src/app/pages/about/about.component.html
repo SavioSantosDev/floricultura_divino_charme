@@ -1,10 +1,16 @@
-<section id="aboutPage" class="section">
+<!-- Telas com altura muito grande ficam faltando espaço para conteúdo -->
+<!-- TODO - Remover altura depois que haver mais texto para colocar -->
+<section class="position-relative" [style.min-height]="'70vh'">
 
-  <img class="plant-decoration-1" src="assets/svg/plant04.svg" alt="Planta Enfeite">
-  <img class="plant-decoration-2" src="assets/svg/plant03.svg" alt="Planta Enfeite">
+  <img class="plant-decoration-1" src="assets/svg/plant04.svg">
+  <img class="plant-decoration-2" src="assets/svg/plant06.svg">
+  <img class="plant-decoration-3" src="assets/svg/plant03.svg">
+
+  <app-breadcrumb [links]="[{ namespace: 'Sobre', url: '/sobre' }]"></app-breadcrumb>
+  <app-scroll-top></app-scroll-top>
 
   <div class="container">
-    <div class="row justify-content-center  gy-5">
+    <div class="row justify-content-center  gy-3 gy-md-5 py-5">
 
       <div class="col-12 col-md-10 col-lg-8">
         <header class="mb-3 mb-md-4">
@@ -13,8 +19,19 @@
         <p class="text-in-light">{{ aboutPage.content }}</p>
       </div>
 
-      <div class="col-12 col-md-10">
-        <img [src]="aboutPage.image" [alt]="aboutPage.title" class="w-100">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="row gy-5">
+          <div class="col-12 col-xs-6">
+            <div class="position-relative w-100" [style.padding-top]="'80%'">
+              <img [src]="aboutPage.images[0]" [alt]="aboutPage.title" class="w-100 h-100 position-absolute top-0 left-0">
+            </div>
+          </div>
+          <div class="col-12 col-xs-6">
+            <div class="position-relative w-100" [style.padding-top]="'80%'">
+              <img [src]="aboutPage.images[1]" [alt]="aboutPage.title" class="w-100 h-100 position-absolute top-0 left-0">
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
