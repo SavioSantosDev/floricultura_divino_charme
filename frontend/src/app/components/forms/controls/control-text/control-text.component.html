@@ -1,0 +1,14 @@
+<div [formGroup]="formGroup!">
+  <label [for]="name" class="form-label">{{ label }} <span *ngIf="!required">(Opcional):</span></label>
+  <input
+    [type]="type"
+    class="form-control"
+    [id]="name"
+    [placeholder]="placeholder"
+    [autofocus]="autofocus"
+    [readonly]="readonly"
+    [formControlName]="name"
+  >
+  <app-control-error-msg [control]="formControl" [controlLabel]="label"></app-control-error-msg>
+  <small *ngIf="formText" class="form-text d-block">{{ formText }}</small>
+</div>

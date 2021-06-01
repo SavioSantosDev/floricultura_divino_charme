@@ -6,6 +6,7 @@ import localePt from '@angular/common/locales/pt';
 import { ButtonsModule } from '../buttons/buttons.module';
 import { AdminProductCardComponent } from './admin-product-card/admin-product-card.component';
 import { PublicProductCardComponent } from './public-product-card/public-product-card.component';
+import { PurchaseModalModule } from '../purchase-modal/purchase-modal.module';
 
 registerLocaleData(localePt, 'pt');
 
@@ -14,7 +15,8 @@ registerLocaleData(localePt, 'pt');
   imports: [
     CommonModule,
     RouterModule,
-    ButtonsModule
+    ButtonsModule,
+    PurchaseModalModule
   ],
   exports: [
     AdminProductCardComponent,

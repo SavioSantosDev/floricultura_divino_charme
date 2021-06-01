@@ -16,13 +16,13 @@
         [outline]="true"
         [href]="['/', 'produtos', product.id]"
       ></app-link-button>
-      <!-- Passar '/' para ser relativo a raiz -->
     </div>
     <div class="col-auto">
-      <app-link-button
-        [content]="'Comprar'"
-        [size]="'sm'"
-      ></app-link-button>
+      <app-button
+        content="Comprar"
+        size="sm"
+        (click)="openPurchaseModal()"
+      ></app-button>
     </div>
   </footer>
 </article>

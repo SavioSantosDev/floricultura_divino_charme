@@ -1,0 +1,96 @@
+<article class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true" #purchaseModal (hide.bs.modal)="closeModal()">
+  <div
+    class="custom-backdrop position-fixed w-100 h-100"
+    [style.background-color]="'rgba(0, 0, 0, .5)'"
+    (click)="closeModal()"
+  ></div>
+
+  <div class="modal-dialog modal-lg">
+    <form class="modal-content" [formGroup]="purchaseForm" (ngSubmit)="onSubmit()">
+
+      <header class="modal-header p-3 p-sm-5">
+        <h2 class="modal-title">{{ product?.name }}</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </header>
+
+      <div class="modal-body p-3 p-sm-5">
+        <div class="row gy-5">
+
+          <div class="col-12">
+            <strong>
+              Utilize o formulário abaixo ou qualquer um dos meios de comunicação a seguir e retornaremos o mais rápido possível com informações sobre o produto, formas de pagamento e envio.
+            </strong>
+          </div>
+          <!-- TODO - Criar form debug -->
+          <div class="col-12">
+
+            <!-- NOME & EMAIL -->
+            <div class="row gy-5 mb-5">
+              <div class="col-12 col-md-6">
+                <app-control-text
+                  name="name"
+                  label="Nome"
+                  placeholder="Ex. Joana da Silva Costa"
+                  formText="Informe o seu nome completo."
+                  [autofocus]="true"
+                  [formGroup]="purchaseForm"
+                ></app-control-text>
+              </div>
+              <div class="col-12 col-md-6">
+                <app-control-text
+                  type="email"
+                  name="email"
+                  label="E-mail"
+                  placeholder="Ex. joana@email.com"
+                  formText="Informe o seu melhor E-mail."
+                  [formGroup]="purchaseForm"
+                ></app-control-text>
+              </div>
+            </div>
+
+            <!-- TELEFONE & ASSUNTO -->
+            <div class="row gy-5 mb-5">
+              <div class="col-12 col-md-6">
+                <app-control-text
+                  type="tel"
+                  name="phone"
+                  label="Telefone / Celular (opcional)"
+                  placeholder="Ex. joana@email.com"
+                  formText="Utilizaremos o seu número para aumentar a eficiência na comunicação."
+                  [formGroup]="purchaseForm"
+                ></app-control-text>
+              </div>
+              <div class="col-12 col-md-6">
+                <app-control-text
+                  name="subject"
+                  label="Assunto"
+                  formText="Nós utilizamos o código do produto para facilitar na identificação."
+                  [readonly]="true"
+                  [formGroup]="purchaseForm"
+                ></app-control-text>
+              </div>
+            </div>
+
+            <!-- Mensagem -->
+            <app-control-textarea
+              name="message"
+              rows="5"
+              label="Mensagem"
+              placeholder="Digite sua mensagem aqui..."
+              formText="Sinta-se a vontade para escrever o que quizer."
+              [formGroup]="purchaseForm"
+            ></app-control-textarea>
+
+          </div>
+
+        </div>
+      </div>
+
+      <footer class="modal-footer p-3 p-sm-5">
+        <button type="button" class="btn btn-outline-primary rounded-pill" data-bs-dismiss="modal">Voltar</button>
+        <button type="submit" class="btn btn-primary rounded-pill">Finalizar pedido</button>
+      </footer>
+
+    </form>
+  </div>
+</article>

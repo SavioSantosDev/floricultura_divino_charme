@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { Validation } from 'src/app/shared/formularios/Validation';
+import { CustomValidation } from 'src/app/shared/formularios/CustomValidation';
 
 @Component({
   selector: 'app-control-error-msg',
@@ -22,7 +22,7 @@ export class ControlErrorMsgComponent {
     if (this.control && this.controlLabel) {
       for (const errorProp in this.control.errors)  {
         if (this.control.touched) {
-          return Validation.getErrorMessage(  this.controlLabel, errorProp, this.control.errors[errorProp]  );
+          return CustomValidation.getErrorMessage(  this.controlLabel, errorProp, this.control.errors[errorProp]  );
         }
       }
     }

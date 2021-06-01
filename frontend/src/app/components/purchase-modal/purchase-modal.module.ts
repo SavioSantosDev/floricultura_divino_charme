@@ -1,21 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 
-import { AuthenticationRoutingModule } from './authentication-routing.module';
-import { LoginComponent } from './login/login.component';
+import { PurchaseModalComponent } from './purchase-modal.component';
 import { FormsModule as MyFormsModule } from 'src/app/components/forms/forms.module';
 
-
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [PurchaseModalComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
-    AuthenticationRoutingModule,
     MyFormsModule,
-  ]
+  ],
 })
-export class AuthenticationModule { }
+export class PurchaseModalModule { }

@@ -1,11 +1,12 @@
 <nav class="pt-3 pt-md-4 pt-xl-5">
-  <div class="container">
+  <!-- Os menus serão posicionados absolutamente em relação ao container abaixo -->
+  <div class="container position-relative">
     <div class="row gy-3">
 
       <!-- Search bar -->
       <div class="col-12 col-xl-6">
         <form class="d-flex">
-          <input type="text" class="form-control rounded-0" placeholder="O que você procura?">
+          <input type="text" class="form-control rounded-0" placeholder="Olá, o que você procura?">
           <button type="submit" class="btn btn-primary d-flex align-items-center rounded-0">
             <span class="d-none d-sm-inline me-3">Buscar</span><span class="material-icons">search</span>
           </button>
@@ -24,15 +25,18 @@
 
           <!-- Links -->
           <div class="col-12 col-sm-6 col-xl-auto  mx-xl-auto  order-2 order-xl-1 d-flex">
-            <ul class="p-0 d-flex my-auto ms-sm-auto">
-              <li class="me-5">
-                <a class="custom-nav-link" routerLink="/">Plantas</a>
+            <ul class="p-0 d-flex mb-0 ms-sm-auto">
+              <li class="me-5 d-flex align-items-center" (mouseenter)="openPlantsMenu()" (mouseleave)="closeMenu()">
+                <a class="custom-nav-link">Plantas</a>
+                <ng-template #plantsMenuTarget appMenuLinks></ng-template>
               </li>
-              <li class="me-5">
-                <a class="custom-nav-link" routerLink="/">Caqueiros</a>
+              <li class="me-5 d-flex align-items-center" (mouseenter)="openPotsMenu()" (mouseleave)="closeMenu()">
+                <a class="custom-nav-link">Caqueiros</a>
+                <ng-template #potsMenuTarget appMenuLinks></ng-template>
               </li>
-              <li>
-                <a class="custom-nav-link" routerLink="/">Adubos</a>
+              <li class="d-flex align-items-center" (mouseenter)="openFertilizersMenu()" (mouseleave)="closeMenu()">
+                <a class="custom-nav-link">Adubos</a>
+                <ng-template #fertilizersMenuTarget appMenuLinks></ng-template>
               </li>
             </ul>
           </div>
@@ -41,5 +45,8 @@
       </div>
 
     </div>
+
   </div>
 </nav>
+
+

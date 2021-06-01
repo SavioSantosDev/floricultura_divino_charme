@@ -1,8 +1,8 @@
 <div *ngIf="product; else noProduct">
 
   <app-breadcrumb [links]="[
-    { namespace: 'Produtos', url: '/products' },
-    { namespace: product.name, url: '/products/' + product.id },
+    { namespace: 'Produtos', url: '/produtos' },
+    { namespace: product.name, url: '/produtos/' + product.id },
   ]"></app-breadcrumb>
 
   <div class="container pb-5 pb-md-6">
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div
-          class="bg-light border rounded p-2 cursor-pointer opacity-75-hover transition"
+          class="bg-light border rounded p-2 cursor-pointer opacity-75-hover transition-2"
           *ngFor="let image of product?.images; index as i"
           (click)="activeImage = i"
           [class.active-image]="activeImage === i"
@@ -37,7 +37,7 @@
             Por enquanto as negociações são feitas pelo WhatsApp, Instagram ou por E-mail.
             Clique no botão abaixo para prosseguir com o pedido.
           </p>
-          <app-button content="Comprar" icon="attach_money"></app-button>
+          <app-button content="Comprar" icon="attach_money" (click)="openPurchaseModal()"></app-button>
         </header>
         <article>
           <h3 class="border-bottom">Descrição do produto</h3>

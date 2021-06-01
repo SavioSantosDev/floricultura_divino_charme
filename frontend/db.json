@@ -255,7 +255,36 @@
       "image": {
         "id": 4,
         "path": "assets/images/categories/plantas.png"
-      }
+      },
+      "featuredProduct": {
+        "id": 1,
+        "name": "Antúrio",
+        "code": "123456789",
+        "price": 18,
+        "description": "O antúrio é uma planta muito bonita que não gosta de contato direto com o sol. Possui folhas verdes e uma flor muito bonita vermelha. Quem não conhece, muitas vezes pode confundir o Antúrio como uma planta 'falsa' de plástico.",
+        "images": [
+          {
+            "id": 1,
+            "path": "assets/images/products/anturio.png"
+          },
+          {
+            "id": 2,
+            "path": "assets/images/products/vaso1.png"
+          },
+          {
+            "id": 3,
+            "path": "assets/images/products/vaso2.png"
+          }
+        ],
+        "active": true
+      },
+      "subCategories": [
+        "Ornamentais", "Arbóreas", "Frutíferas", "Decoração"
+      ],
+      "productSuggestions": [
+        "Muda de laranja", "Rosa do deserto", "Antúrio vermelho", "Lírio da paz",
+        "Pata de elefante", "Muda de limão", "Ráfia", "Samambia Japonesa"
+      ]
     },
     {
       "id": 2,
@@ -263,7 +292,35 @@
       "image": {
         "id": 5,
         "path": "assets/images/categories/adubos.jpg"
-      }
+      },
+      "featuredProduct": {
+        "id": 10,
+        "name": "Adubo rosa do deserto - 18Kg",
+        "code": "123456789",
+        "price": 34.9,
+        "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+        "images": [
+          {
+            "id": 1,
+            "path": "assets/images/products/adubo.png"
+          },
+          {
+            "id": 2,
+            "path": "assets/images/products/vaso3.png"
+          },
+          {
+            "id": 3,
+            "path": "assets/images/products/vaso2.png"
+          }
+        ],
+        "active": true
+      },
+      "subCategories": [
+        "Rosa do deserto", "Húmos", "Terra vegetal", "Cascas"
+      ],
+      "productSuggestions": [
+        "Húmos flor 18kg", "Substrato rosa do deserto 5kg", "Terra vegetal 5kg"
+      ]
     },
     {
       "id": 3,
@@ -271,7 +328,36 @@
       "image": {
         "id": 6,
         "path": "assets/images/categories/caqueiros.jpg"
-      }
+      },
+      "featuredProduct": {
+        "id": 9,
+        "name": "Vaso branco de porcelanato - Pequeno",
+        "code": "123456789",
+        "price": 28.9,
+        "description": "Lorem ipsum sillor somor sit amet sillun dar.",
+        "images": [
+          {
+            "id": 1,
+            "path": "assets/images/products/vaso2.png"
+          },
+          {
+            "id": 2,
+            "path": "assets/images/products/vaso3.png"
+          },
+          {
+            "id": 3,
+            "path": "assets/images/products/vaso2.png"
+          }
+        ],
+        "active": true
+      },
+      "subCategories": [
+        "Polietileno", "Plástico", "Gesso", "Cachepots"
+      ],
+      "productSuggestions": [
+        "Caqueiro oval polietilento", "Cachepot liistrado", "Cachepot cor sólida",
+        "Vaso de gesso", "Vaso de plástico para parede", "Roseira"
+      ]
     },
     {
       "id": 4,

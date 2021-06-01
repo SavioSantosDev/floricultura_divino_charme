@@ -1,0 +1,26 @@
+@import "../../../../../styles/own-variables";
+
+$container-gutter: 2rem;
+// Será posicionado em relação ao container que possui 1 rem de padding em cada latereal
+
+nav {
+  position: absolute;
+  top: 100%;
+  left: $container-gutter / 2;
+  width: calc(100% - #{$container-gutter});
+  z-index: 10;
+
+  @media (min-width: $bp-lg) {
+    left: initial;
+    right: $container-gutter / 2;
+    width: calc(83.33% - #{$container-gutter}); // col-10
+  }
+
+  @media (min-width: $bp-xl) {
+    width: calc(75% - #{$container-gutter}); // col-9
+  }
+
+  @media (min-width: $bp-xxl) {
+    width: calc(66.66% - #{$container-gutter}); // col-8
+  }
+}
