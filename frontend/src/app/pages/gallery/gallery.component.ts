@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 
 import { IImage } from 'src/models/Image';
-import { IGalleryPage } from 'src/models/pages/Gallery.page';
 import { ImagesService } from 'src/app/services/images.service';
 
 @Component({
@@ -13,21 +11,18 @@ import { ImagesService } from 'src/app/services/images.service';
 })
 export class GalleryComponent implements OnInit {
 
-  galleryImages: IImage[] = [];
-  galleryPage: IGalleryPage;
+  images: IImage[] = [];
 
   list = 1; // Será utilizado para requisitar as imagens em listas
 
   constructor(
-    route: ActivatedRoute,
     private imagesService: ImagesService
   ) {
-    this.galleryPage = route.snapshot.data.galleryPage; // Pegando os dados resolvidos
   }
 
 
   ngOnInit(): void {
-    this.requestImages(); // A primeira requisição das imagens
+    this.requestImages();
   }
 
 
@@ -47,7 +42,7 @@ export class GalleryComponent implements OnInit {
       take(1)
     )
     .subscribe(images => {
-      this.galleryImages = this.galleryImages.concat(images);
+      this.images.push(...images);
     });
   }
 

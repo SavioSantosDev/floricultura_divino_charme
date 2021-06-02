@@ -8,9 +8,9 @@ const routes: Routes = [
   // /galeria
   {
     path: '', component: GalleryComponent,
-    resolve: {
-      galleryPage: GalleryPageResolver,
-    }
+    // resolve: {
+    //   galleryPage: GalleryPageResolver,
+    // }
   }
 ];
 

@@ -9,8 +9,8 @@
   grid-template-columns: repeat(2, 1fr);  // Inicialmente exibir 2 imagens por linha
   grid-gap: 1rem;
 
-  // 3 Imagens a partir de tablets
-  @media (min-width: $bp-md) { grid-template-columns: repeat(3, 1fr); }
+  // 3 Imagens a partir do breakpoint
+  @media (min-width: $bp-sm) { grid-template-columns: repeat(3, 1fr); }
 
   // Bloco com uma única imagem
   .gallery-image-wrapper {

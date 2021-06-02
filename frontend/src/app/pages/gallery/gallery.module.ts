@@ -5,6 +5,7 @@ import { GalleryRoutingModule } from './gallery-routing.module';
 import { GalleryComponent } from './gallery.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ScrollTopModule } from 'src/app/shared/scroll-top/scroll-top.module';
+import { BreadcrumbModule } from 'src/app/components/breadcrumb/breadcrumb.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ScrollTopModule } from 'src/app/shared/scroll-top/scroll-top.module';
     GalleryRoutingModule,
     SharedModule,
     ScrollTopModule,
+    BreadcrumbModule,
   ]
 })
 export class GalleryModule { }

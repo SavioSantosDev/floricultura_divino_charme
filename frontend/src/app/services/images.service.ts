@@ -6,31 +6,23 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IImage } from 'src/models/Image';
 
+type ResponseImages = { images: IImage[]; };
+
 @Injectable({
   providedIn: 'root'
 })
 export class ImagesService {
 
-  private readonly PATH = `${environment.API}/photos.json`;
+  private readonly URL = `${environment.API}/gallery?images`;
   private hasMorePhotos = false;
 
   constructor(
     private http: HttpClient
   ) { }
 
-
-  index(): Observable<IImage[]> {
-    return this.http.get<IImage[]>(this.PATH);
-  }
-
-
-  show(id: string): Observable<IImage> {
-    return this.http.get<IImage[]>(this.PATH).pipe(
-      map((images) => images.filter((image) => image.id === id)[0])
-    );
-  }
-
-
+  /**
+   * Gambiara provisória. Arrumar essa funcionalidade de paginação no backend
+   */
   list(list = 1): Observable<IImage[]>  {
 
     if (list < 1) {
@@ -40,8 +32,8 @@ export class ImagesService {
     const limit = 6;  // Limite de imagens por requisição
     const skip = (list - 1) * limit;  // Quantas imagens 'pular'
 
-    return this.http.get<IImage[]>(this.PATH).pipe(
-      map((images: IImage[]) => images.slice(skip, skip + limit)),
+    return this.http.get<ResponseImages>(this.URL).pipe(
+      map(({ images }) => images.slice(skip, skip + limit)),
       tap(images => this.hasMorePhotos = images.length > 0),
       catchError(error => {
         console.error(error);

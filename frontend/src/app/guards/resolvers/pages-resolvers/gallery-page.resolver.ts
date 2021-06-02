@@ -10,9 +10,9 @@ import { IGalleryPage } from 'src/models/pages/Gallery.page';
 })
 export class GalleryPageResolver implements Resolve<IGalleryPage> {
 
-  constructor(private GalleryPageService: GalleryPageService) {}
+  constructor(private galleryPageService: GalleryPageService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IGalleryPage> {
-    return this.GalleryPageService.index();
+    return this.galleryPageService.index();
   }
 }

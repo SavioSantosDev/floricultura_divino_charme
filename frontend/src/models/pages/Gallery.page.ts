@@ -1,5 +1,5 @@
+import { IImage } from '../Image';
+
 export interface IGalleryPage {
-  title: string;
-  content: string;
-  info: string;
+  images: IImage[];
 }

@@ -407,6 +407,160 @@
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex. Fusce nisl leo, dignissim a scelerisque nec, commodo ac sem. Phasellus sit amet tempor metus, et auctor est. Praesent auctor nisl augue, sed tempus arcu dapibus at. Phasellus eu blandit risus. Pellentesque tincidunt libero sed sapien consequat blandit. Nullam ultricies tellus eget pellentesque congue.",
     "images": ["assets/images/store1.png", "assets/images/store2.png"]
   },
+  "gallery": {
+    "images": [
+      {
+        "id": 1,
+        "path": "assets/images/gallery/1.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 2,
+        "path": "assets/images/gallery/2.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 3,
+        "path": "assets/images/gallery/3.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 4,
+        "path": "assets/images/gallery/4.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 5,
+        "path": "assets/images/gallery/5.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 6,
+        "path": "assets/images/gallery/6.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 7,
+        "path": "assets/images/gallery/7.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 8,
+        "path": "assets/images/gallery/8.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 9,
+        "path": "assets/images/gallery/9.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 10,
+        "path": "assets/images/gallery/10.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 11,
+        "path": "assets/images/gallery/11.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 12,
+        "path": "assets/images/gallery/12.png",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 13,
+        "path": "assets/images/gallery/13.png",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 14,
+        "path": "assets/images/gallery/14.png",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 15,
+        "path": "assets/images/gallery/15.png",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 16,
+        "path": "assets/images/gallery/16.png",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 17,
+        "path": "assets/images/gallery/17.png",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 18,
+        "path": "assets/images/gallery/6.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 19,
+        "path": "assets/images/gallery/1.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 20,
+        "path": "assets/images/gallery/2.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 21,
+        "path": "assets/images/gallery/3.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 22,
+        "path": "assets/images/gallery/4.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 23,
+        "path": "assets/images/gallery/5.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 24,
+        "path": "assets/images/gallery/6.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 25,
+        "path": "assets/images/gallery/1.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 26,
+        "path": "assets/images/gallery/2.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 27,
+        "path": "assets/images/gallery/3.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 28,
+        "path": "assets/images/gallery/4.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 29,
+        "path": "assets/images/gallery/5.jpg",
+        "name": "Floricultura Divino Charme"
+      },
+      {
+        "id": 30,
+        "path": "assets/images/gallery/6.jpg",
+        "name": "Floricultura Divino Charme"
+      }
+    ]
+  },
   "contact": {
     "title": "Galeria de imagens",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",

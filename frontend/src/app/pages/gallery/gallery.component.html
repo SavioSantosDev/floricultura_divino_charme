@@ -1,31 +1,17 @@
 <app-scroll-top></app-scroll-top>
 
-<section id="s-gallery" class="section">
+<section>
 
-  <div class="container">
-    <div class="row">
-      <header class="col-12 col-md-10 col-lg-8 mb-4 mb-md-5">
-        <h1>{{ galleryPage.title }}</h1>
-        <p class="text-in-light">{{ galleryPage.content }}</p>
-        <small class="d-block text-primary">{{ galleryPage.info }}</small>
-      </header>
-    </div>
+  <app-breadcrumb [links]="[{ namespace: 'Galeria', url: '/galeria'}]"></app-breadcrumb>
+
+  <div class="container py-3">
+    <h1>Galeria de imagens</h1>
   </div>
 
-  <!-- As imagens da galeria -->
-  <div class="container-fluid" *ngIf="galleryImages as images; else noImages">
-    <app-infinite-scroll (isIntersecting)="onIntersecting()">
+  <div class="container-fluid container-md py-3">
+    <app-infinite-scroll *ngIf="images" (isIntersecting)="onIntersecting()">
       <app-gallery-images [galleryImages]="images"></app-gallery-images>
     </app-infinite-scroll>
   </div>
 
-  <!-- Caso não haja imagens -->
-  <ng-template #noImages>
-    <div class="container">
-      <div class="alert alert-info">No momento não há imagens na galeria!</div>
-    </div>
-  </ng-template>
-
 </section>
-
-
