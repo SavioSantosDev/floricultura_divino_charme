@@ -1,137 +1,168 @@
 <app-scroll-top></app-scroll-top>
+<app-breadcrumb [links]="[{ namespace: 'Contato', url: '/contato' }]"></app-breadcrumb>
 
-<section id="s-contact" class="section">
-
-  <img class="plant-decoration-1" src="assets/svg/plant04.svg" alt="Planta Enfeite">
-  <img class="plant-decoration-2" src="assets/svg/plant03.svg" alt="Planta Enfeite">
-
+<section class="form-bg py-md-8 py-xxl-9">
   <div class="container">
+    <div class="row g-0 justify-content-center">
 
-    <!-- Cabeçalho com título e descrição para o formulário -->
-    <header Class="border-bottom">
-      <div class="row">
-        <div class="col-12 col-md-10 col-lg-8">
-          <h1>{{ contactPage.title }}</h1>
-          <p class="text-in-light">{{ contactPage.content }}</p>
-        </div>
-      </div>
-    </header>
+      <div class="col-12 col-lg-10 col-xxl-8 order-2 order-xxl-1">
+        <form class="bg-white p-3 p-xs-4 p-md-5 p-lg-6 position-relative" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
 
-    <!-- Formulário e informações para contato -->
-    <div class="row gy-5 gy-md-6 my-5 my-md-6 justify-content-center">
-
-      <!-- Formulário -->
-      <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-        <form>
-
-          <!-- E-mail -->
-          <div class="mb-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email">
-          </div>
-
-          <div class="row">
-
-            <!-- Nome -->
+          <!-- NOME & EMAIL -->
+          <div class="row gy-5 mb-5">
             <div class="col-12 col-md-6">
-              <div class="mb-3">
-                <label for="name" class="form-label">Nome:</label>
-                <input type="text" class="form-control" id="name">
-              </div>
+              <app-control-text
+                name="name"
+                label="Nome"
+                placeholder="Ex. Joana da Silva Costa"
+                formText="Informe o seu nome completo."
+                [autofocus]="true"
+                [formGroup]="contactForm"
+              ></app-control-text>
             </div>
-
-            <!-- Telefone -->
             <div class="col-12 col-md-6">
-              <div class="mb-3">
-                <label for="phone" class="form-label">Telefone / Celular (opcional):</label>
-                <input type="tel" class="form-control" id="phone">
-              </div>
+              <app-control-text
+                type="email"
+                name="email"
+                label="E-mail"
+                placeholder="Ex. joana@email.com"
+                formText="Informe o seu melhor E-mail."
+                [formGroup]="contactForm"
+              ></app-control-text>
             </div>
-
           </div>
 
-          <!-- Mensagem -->
-          <div class="mb-3">
-            <label for="mensagem" class="form-label">Mensagem:</label>
-            <textarea id="mensagem"rows="4" class="form-control"></textarea>
+          <!-- TELEFONE & ASSUNTO -->
+          <div class="row gy-5 mb-5">
+            <div class="col-12 col-md-6">
+              <app-control-text
+                type="tel"
+                name="phone"
+                label="Telefone / Celular"
+                placeholder="Ex. joana@email.com"
+                [required]="false"
+                formText="Utilizaremos o seu número para aumentar a eficiência na comunicação."
+                [formGroup]="contactForm"
+              ></app-control-text>
+            </div>
+            <div class="col-12 col-md-6">
+              <app-control-text
+                name="subject"
+                label="Assunto"
+                placeholder="Ex. joana@email.com"
+                formText="Sobre o que quer falar?"
+                [formGroup]="contactForm"
+              ></app-control-text>
+            </div>
           </div>
 
-          <button type="submit" class="btn btn-primary d-flex align-items-center">
-            Enviar mensagem <span class="material-icons ms-2">send</span>
-          </button>
+          <div class="mb-5">
+            <!-- Mensagem -->
+            <app-control-textarea
+              name="message"
+              rows="5"
+              label="Mensagem"
+              placeholder="Digite sua mensagem aqui..."
+              formText="Sinta-se a vontade para escrever o que quizer."
+              [formGroup]="contactForm"
+            ></app-control-textarea>
+          </div>
+
+          <app-button type="submit" content="Enviar menssagem" icon="send"></app-button>
 
         </form>
       </div>
 
-      <!-- Contatos -->
-      <address class="col-12 col-md-10 col-lg-8 col-xl-6 mb-0"><!-- removendo mb padrão do bootstrap -->
-        <div class="bg-light rounded p-3 p-md-5 border d-grid gap-5">
+      <div class="col-12 col-lg-10 col-xxl-4 order-1 order-xxl-2">
+        <article class="bg-primary text-white h-100 p-3 p-xs-4 p-md-5 p-lg-6">
+          <div *ngIf="storeInformation; else loadingStoreInformations">
+            <header>
+              <h2>Entre em contato</h2>
+              <p>Tire dúvidas, nos dê feedback, solicite orçamentos ou qualquer outra coisa que queira falar. Responderemos dentro de 24h.</p>
+            </header>
+            <address class="my-5 my-lg-6">
 
-          <!-- email -->
-          <div class="d-flex">
-            <span class="material-icons me-3">mail</span>
-            <strong class="d-grid gap-1">
-              <div *ngFor="let email of storeInformation.emails">{{ email }}</div>
-            </strong>
+              <div class="row gy-3 gy-sm-4 gy-md-5">
+                <!-- EMAILS -->
+                <div class="col-12 col-md-6 col-xxl-12 d-flex">
+                  <div class="material-icons me-2">mail</div>
+                  <div>
+                    <div *ngFor="let email of storeInformation.emails" class="mb-1">{{ email }}</div>
+                  </div>
+                </div>
+                <!-- TELEFONES -->
+                <div class="col-12 col-md-6 col-xxl-12 d-flex">
+                  <div class="material-icons me-2">phone</div>
+                  <div>
+                    <div *ngFor="let phone of storeInformation.phones" class="mb-1">{{ phone }}</div>
+                  </div>
+                </div>
+                <!-- ENDEREÇOS -->
+                <div *ngFor="let location of storeInformation.locations" class="col-12 col-md-6 col-xxl-12 d-flex">
+                  <div class="material-icons me-2">room</div>
+                  <div>
+                    <div class="mb-1">{{ location.city }} - {{ location.uf }}</div>
+                    <div class="mb-1">{{ location.address }}</div>
+                  </div>
+                </div>
+              </div>
+            </address>
+            <nav class="d-flex">
+              <a [href]="storeInformation!.social.instagram.url" target="_blank" class="material-icons text-white me-5">
+                <svg width="48" height="48"><use xlink:href="#i-instagram"/></svg>
+              </a>
+              <!-- TODO - Configurar API do Whatsapp -->
+              <a
+                href="https://api.whatsapp.com/send?phone=5577991476770"
+                target="_blank"
+                class="material-icons text-white"
+              >
+                <svg width="48" height="48"><use xlink:href="#i-whatsapp"/></svg>
+              </a>
+            </nav>
           </div>
-
-          <!-- telefones -->
-          <div class="d-flex">
-            <svg class="symbol me-3"><use xlink:href="#i-whatsapp"/></svg>
-            <strong class="d-grid gap-1">
-              <div *ngFor="let phone of storeInformation.phones">{{ phone }}</div>
-            </strong>
-          </div>
-
-          <!-- Redes sociais (Instagram) -->
-          <div class="d-flex">
-            <svg class="symbol me-3"><use xlink:href="#i-instagram"/></svg>
-            <strong class="d-grid gap-1">
-              <div>{{ storeInformation.social.instagram }}</div>
-            </strong>
-          </div>
-
-        </div>
-      </address>
+        </article>
+      </div>
 
     </div>
+  </div>
+</section>
 
-    <!-- Mapas com as localizações e endereços -->
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="bg-light border rounded p-3 p-md-5">
-          <div class="row justify-content-center gy-5">
+<!-- Mapas -->
+<section class="py-6 py-md-7 py-xl-8">
+  <div *ngIf="storeInformation?.locations; else loadingMaps" class="container-fluid">
 
-            <!-- Cada localização -->
-            <div class="col-12 col-lg-6" *ngFor="let location of storeInformation.locations">
+    <header class="section-header">
+      <div class="section-title">Localização</div>
+      <h1>Venha nos fazer uma visita!</h1>
+    </header>
 
-              <!-- Cidade - Estado - Endereço -->
-              <header class="mb-3 d-flex">
-                <span class="material-icons me-3">room</span>
-                <strong class="d-grid gap-1">
-                  <div>{{ location.city | camelCase }} - {{ location.uf | uppercase }}</div>
-                  <div>{{ location.address }}</div>
-                </strong>
-              </header>
-
-              <!-- mapa. position: relative para pegar o mapa que está absolute -->
-              <div class="map">
-                <app-map [mapLat]="location.lat" [mapLng]="location.lng"></app-map>
-              </div>
-              <!-- Link para rotas no google maps -->
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-outline-primary w-100 mt-3 d-flex aling-items-center justify-content-center"
-                href='https://www.google.com/maps/dir/?api=1&destination={{ location.lat }},{{ location.lng }}'
-              ><span class="material-icons me-2">map</span> Ver rotas no Google Maps</a>
-
+    <div class="row gy-5">
+      <div *ngFor="let location of storeInformation!.locations" class="col-12 col-lg-6 d-flex flex-column align-items-center">
+        <figure class="w-100 position-relative rounded border   map-container">
+          <figcaption class="p-3 p-md-5 position-absolute top-0 end-0" [style.z-index]="'1100'">
+            <div class="bg-white p-3" [style.box-shadow]="'0 0 16px rgba(0, 0, 0, .15)'">
+              {{ location.city }} - {{ location.uf }}
             </div>
-
-          </div>
-        </div>
+          </figcaption>
+          <app-map [mapLat]="location.lat" [mapLng]="location.lng"></app-map>
+        </figure>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary mt-3 d-flex aling-items-center rounded-pill"
+          href='https://www.google.com/maps/dir/?api=1&destination={{ location.lat }},{{ location.lng }}'
+        >Ver rotas no Google Maps <span class="material-icons ms-2">map</span></a>
       </div>
     </div>
 
   </div>
 </section>
+
+<ng-template #loadingStoreInformations>
+  Carregando informações da loja ...
+</ng-template>
+
+<ng-template #loadingMaps>
+  Carregando mapa ...
+</ng-template>

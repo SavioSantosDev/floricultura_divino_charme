@@ -10,12 +10,12 @@ import { StoreInformation } from 'src/models/StoreInformation';
 })
 export class StoreInformationService {
 
-  private readonly PATH = `${environment.API}store-information.json`;
+  private readonly URL = `${environment.API}/store_informations`;
 
   constructor(private http: HttpClient) { }
 
 
   index(): Observable<StoreInformation> {
-    return this.http.get<StoreInformation>(this.PATH);
+    return this.http.get<StoreInformation>(this.URL);
   }
 }

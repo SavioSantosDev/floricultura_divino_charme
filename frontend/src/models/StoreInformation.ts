@@ -7,7 +7,10 @@ export interface StoreInformation {
 
 
 export interface Social {
-  instagram: string;
+  instagram: {
+    url: string;
+    name: string;
+  };
 }
 
 

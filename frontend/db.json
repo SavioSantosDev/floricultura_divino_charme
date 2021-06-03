@@ -7,7 +7,10 @@
     "emails": [ "contato@floriculturadc.com" ],
     "phones": [ "(77) 99165-4556", "(88) 95324-5432" ],
     "social": {
-      "instagram": "@divino._charme"
+      "instagram": {
+        "url": "https://www.instagram.com/divino._charme/",
+        "name": "@divino._charme"
+      }
     },
     "locations": [
       {
@@ -560,11 +563,6 @@
         "name": "Floricultura Divino Charme"
       }
     ]
-  },
-  "contact": {
-    "title": "Galeria de imagens",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur dui sem, eget ullamcorper purus rhoncus ac. In hac habitasse platea dictumst. Curabitur venenatis vitae mi vitae euismod. Nulla in ante dictum, ultricies lacus et, sollicitudin ex.",
-    "info": "Clique em uma imagem para vê-la em tela cheia. Orientação paisagem para ter uma melhor visualização."
   },
   "home": {
     "banner": {

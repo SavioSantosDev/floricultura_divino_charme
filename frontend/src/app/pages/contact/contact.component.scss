@@ -1,48 +1,17 @@
 @import "../../../styles/own-variables";
 
-#s-contact {
-  position: relative;
+.form-bg {
+  @media (min-width: $bp-md) {
+    background-image: url('../../../assets/images/nevoeiro.jpg');
+    background-size: cover;
+    background-position: center;
 
-  .plant-decoration-1 {
-
-    position: absolute;
-    transform: matrix(-0.87, 0.5, 0.5, 0.87, 0, 0);
-    display: none;
-
-    @media (min-width: $bp-lg) {
-      display: block;
-      width: 229px;
-      top: 0px; right: -130px;
-    }
-
-    @media (min-width: 1600px) {
-      width: 300px;
-      top: 30px;
-      right: -160px;
-    }
-  }
-
-  .plant-decoration-2 {
-
-    position: absolute;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
-    display: none;
-
-    @media (min-width: $bp-lg) {
-      display: block;
-      width: 212px;
-      bottom: -50px; left: -50px;
-    }
-
-    @media (min-width: 1600px) {
-      width: 300px;
-      left: -80px;
-      bottom: -80px;
+    form {
+      box-shadow: 0 0 16px rgba(0, 0, 0, .24);
     }
   }
 }
 
-.map {
-  padding-top: 60%;
-  position: relative;
+.map-container {
+  padding-top: 80%;
 }
